@@ -94,3 +94,6 @@
 [submodule "bundle/HTML-AutoCloseTag"]
 	path = bundle/HTML-AutoCloseTag
 	url = https://github.com/vim-scripts/HTML-AutoCloseTag
+[submodule "bundle/SrcExpl"]
+	path = bundle/SrcExpl
+	url = https://github.com/wesleyche/SrcExpl
