@@ -10,3 +10,6 @@
 [submodule "bundle/repeat.vim"]
 	path = bundle/repeat.vim
 	url = https://github.com/tpope/vim-repeat
+[submodule "bundle/fugitive.vim"]
+	path = bundle/fugitive.vim
+	url = https://github.com/tpope/vim-fugitive
