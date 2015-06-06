@@ -7,19 +7,24 @@
 
 # hlsearch on (H) or off (h):
 ~h
+# Last Search Pattern:
+~MSle0~/toggle
+
 # Last Substitute Search Pattern:
-~MSle0~&$HOME
+~MSle0&$HOME
 
 # Last Substitute String:
 $\~
 
 # Command Line History (newest to oldest):
 :q
-:bd!
+:w
+:tab help indentguides
+:Helptags
 :so %
 :w!
-:w
 :set rnu!
+:bd!
 :map <F2> :set rnu!<CR>
 :close
 :b 
@@ -33,6 +38,7 @@ $\~
 :set viewdir
 
 # Search String History (newest to oldest):
+?/toggle
 ? $HOME
 
 # Expression History (newest to oldest):
@@ -42,35 +48,114 @@ $\~
 # Input Line History (newest to oldest):
 
 # Registers:
-""-	CHAR	0
-	_
+""1	BLOCK	1
+	~/
+	~/
+	~/
+	~/
+	~/
+"2	LINE	0
+	runtime! autoload/pathogen.vim
+	silent! call pathogen#helptags()
+	silent! call pathogen#runtime_append_all_bundles()
+"3	LINE	0
+	
+"4	LINE	0
+	"execute pathogen#infect()
+"-	CHAR	0
+	vimrc  
 
 # File marks:
-'0  297  0  ~/.vimrc
-'1  1  0  ~/.vimrc
-'2  1  0  ~/.vimrc
+'0  7  9  ~/.vim/.gitignore
+'1  49  0  ~/.vim/bundle/CamelCaseMotion/README.rst
+'2  55  0  ~/.vimrc
+'3  147  0  ~/.vimrc
+'4  297  0  ~/.vimrc
+'5  1  0  ~/.vimrc
+'6  1  0  ~/.vimrc
+'7  1  0  ~/.vimrc
 
 # Jumplist (newest first):
--'  297  0  ~/.vimrc
--'  74  8  ~/.vimrc
--'  70  0  ~/.vimrc
+-'  7  9  ~/.vim/.gitignore
+-'  1  0  ~/.vim/.gitignore
+-'  49  0  ~/.vim/bundle/CamelCaseMotion/README.rst
+-'  1  0  ~/.vim/bundle/CamelCaseMotion/README.rst
+-'  55  0  ~/.vimrc
+-'  53  0  ~/.vimrc
+-'  54  0  ~/.vimrc
 -'  1  0  ~/.vimrc
 -'  147  0  ~/.vimrc
 -'  297  0  ~/.vimrc
 -'  74  8  ~/.vimrc
 -'  70  0  ~/.vimrc
+-'  129  0  ~/vim_git_setup.txt
+-'  119  0  ~/vim_git_setup.txt
+-'  1  0  ~/vim_git_setup.txt
+-'  1  0  ~/.vim/yankring_history_v2.txt
+-'  55  0  ~/.vimrc
+-'  53  0  ~/.vimrc
+-'  54  0  ~/.vimrc
 -'  1  0  ~/.vimrc
+-'  147  0  ~/.vimrc
+-'  297  0  ~/.vimrc
+-'  74  8  ~/.vimrc
+-'  70  0  ~/.vimrc
+-'  129  0  ~/vim_git_setup.txt
+-'  119  0  ~/vim_git_setup.txt
+-'  1  0  ~/vim_git_setup.txt
+-'  1  0  ~/.vim/yankring_history_v2.txt
+-'  49  0  ~/.vim/bundle/CamelCaseMotion/README.rst
+-'  1  0  ~/.vim/bundle/CamelCaseMotion/README.rst
+-'  55  0  ~/.vimrc
+-'  53  0  ~/.vimrc
+-'  54  0  ~/.vimrc
+-'  1  0  ~/.vimrc
+-'  147  0  ~/.vimrc
+-'  297  0  ~/.vimrc
+-'  74  8  ~/.vimrc
+-'  70  0  ~/.vimrc
+-'  129  0  ~/vim_git_setup.txt
+-'  119  0  ~/vim_git_setup.txt
+-'  1  0  ~/vim_git_setup.txt
+-'  1  0  ~/.vim/yankring_history_v2.txt
+-'  55  0  ~/.vimrc
+-'  53  0  ~/.vimrc
+-'  54  0  ~/.vimrc
+-'  1  0  ~/.vimrc
+-'  147  0  ~/.vimrc
+-'  297  0  ~/.vimrc
+-'  74  8  ~/.vimrc
+-'  70  0  ~/.vimrc
+-'  129  0  ~/vim_git_setup.txt
+-'  119  0  ~/vim_git_setup.txt
+-'  1  0  ~/vim_git_setup.txt
+-'  1  0  ~/.vim/yankring_history_v2.txt
 
 # History of marks within files (newest to oldest):
 
+> ~/.vim/.gitignore
+	"	7	9
+	^	4	9
+	.	3	0
+	+	3	13
+	+	4	11
+	+	5	11
+	+	6	11
+	+	7	11
+	+	4	9
+	+	3	0
+
+> ~/.vim/bundle/CamelCaseMotion/README.rst
+	"	49	0
+
 > ~/.vimrc
-	"	147	0
-	^	146	18
-	.	147	0
+	"	55	0
+	^	55	0
+	.	57	0
 	+	73	0
 	+	71	0
 	+	54	0
-	+	57	0
+	+	58	0
 	+	70	43
 	+	71	41
 	+	72	40
@@ -88,6 +173,20 @@ $\~
 	+	161	0
 	+	146	17
 	+	147	0
+	+	146	9
+	+	54	0
+	+	53	0
+	+	54	0
+	+	56	0
+	+	57	0
+
+> ~/vim_git_setup.txt
+	"	129	0
+	.	123	0
+	+	123	0
+
+> ~/.vim/yankring_history_v2.txt
+	"	1	0
 
 > ~/.vim/[YankRing]
 	"	4	0

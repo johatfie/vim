@@ -51,10 +51,10 @@ if has('win32')
     behave mswin
 endif
 
-"execute pathogen#infect()
-runtime! autoload/pathogen.vim
-silent! call pathogen#helptags()
-silent! call pathogen#runtime_append_all_bundles()
+execute pathogen#infect()
+"runtime! autoload/pathogen.vim
+"silent! call pathogen#helptags()
+"silent! call pathogen#runtime_append_all_bundles()
 
 
 " Setting up the directories {
