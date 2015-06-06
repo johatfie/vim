@@ -52,3 +52,6 @@
 [submodule "bundle/rails.vim"]
 	path = bundle/rails.vim
 	url = https://github.com/tpope/vim-rails
+[submodule "bundle/endwise.vim"]
+	path = bundle/endwise.vim
+	url = https://github.com/tpope/vim-endwise
