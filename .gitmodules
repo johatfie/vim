@@ -88,3 +88,6 @@
 [submodule "bundle/ToggleLineNumberMode"]
 	path = bundle/ToggleLineNumberMode
 	url = https://github.com/vim-scripts/ToggleLineNumberMode
+[submodule "bundle/vim-ps1"]
+	path = bundle/vim-ps1
+	url = https://github.com/PProvost/vim-ps1
