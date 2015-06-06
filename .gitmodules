@@ -97,3 +97,6 @@
 [submodule "bundle/SrcExpl"]
 	path = bundle/SrcExpl
 	url = https://github.com/wesleyche/SrcExpl
+[submodule "bundle/YankRing.vim"]
+	path = bundle/YankRing.vim
+	url = https://github.com/vim-scripts/YankRing.vim
