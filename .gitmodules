@@ -25,3 +25,6 @@
 [submodule "bundle/matchit"]
 	path = bundle/matchit
 	url = https://github.com/vim-scripts/matchit.zip
+[submodule "bundle/checksyntax_vim"]
+	path = bundle/checksyntax_vim
+	url = https://github.com/tomtom/checksyntax_vim
