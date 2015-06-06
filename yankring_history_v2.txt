@@ -1,3 +1,5 @@
+git commit -m "Install YankRing.vim bundle as a submodule.",V
+ignore,v
 git submodule add https://github.com/nathanaelkane/vim-indent-guidesgit add .git commit -m "Install vim-indent-guides bundle as a submodule.",V
 vim-indent-guides,v
 https://github.com/nathanaelkane/vim-indent-guides,V
