@@ -58,3 +58,6 @@
 [submodule "bundle/obsession.vim"]
 	path = bundle/obsession.vim
 	url = https://github.com/tpope/vim-obsession
+[submodule "bundle/rake.vim"]
+	path = bundle/rake.vim
+	url = https://github.com/tpope/vim-rake
