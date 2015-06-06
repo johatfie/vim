@@ -16,3 +16,6 @@
 [submodule "bundle/tabular"]
 	path = bundle/tabular
 	url = https://github.com/godlygeek/tabular
+[submodule "bundle/vim-showmarks"]
+	path = bundle/vim-showmarks
+	url = https://github.com/jacquesbh/vim-showmarks
