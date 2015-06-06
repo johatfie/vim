@@ -73,3 +73,6 @@
 [submodule "bundle/CamelCaseMotion"]
 	path = bundle/CamelCaseMotion
 	url = https://github.com/bkad/CamelCaseMotion
+[submodule "bundle/abolish.vim"]
+	path = bundle/abolish.vim
+	url = https://github.com/tpope/vim-abolish
