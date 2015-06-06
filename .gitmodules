@@ -19,3 +19,6 @@
 [submodule "bundle/vim-showmarks"]
 	path = bundle/vim-showmarks
 	url = https://github.com/jacquesbh/vim-showmarks
+[submodule "bundle/nerdcommenter"]
+	path = bundle/nerdcommenter
+	url = https://github.com/scrooloose/nerdcommenter
