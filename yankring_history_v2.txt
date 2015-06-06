@@ -1,0 +1,12 @@
+git submodule add https://github.com/mtth/scratch.vim bundle/scratch.vimgit add .git commit -m "Install scratch.vim bundle as a submodule."git submodule add https://github.com/PProvost/vim-ps1 bundle/vim-ps1git add .git commit -m "Install vim-ps1 bundle as a submodule."git submodule add https://github.com/vim-scripts/HTML-AutoCloseTag bundle/HTML-AutoCloseTaggit add .git commit -m "Install HTML-AutoCloseTag bundle as a submodule."git submodule add https://github.com/wesleyche/SrcExpl bundle/SrcExplgit add .git commit -m "Install SrcExpl bundle as a submodule."git submodule add https://github.com/vim-scripts/YankRing.vim bundle/YankRing.vimgit add .git commit -m "Install YankRing.vim bundle as a submodule.",V
+git submodule add https://github.com/vim-scripts/ToggleLineNumberMode bundle/ToggleLineNumberModegit add .git commit -m "Install ToggleLineNumberMode bundle as a submodule.",V
+bundle/ToggleLineNumberMode,v
+remove,v
+map <F2> :set rnu!<CR>,v
+<Esc>;w,v
+_,v
+inoremap {} {}<Left>inoremap [] []<Left>inoremap () ()<Left>,v
+tab settings backspace,v
+git submodule add https://github.com/mtth/scratch.vim bundle/scratch.vimgit add .git commit -m "Install scratch.vim bundle as a submodule."git submodule add https://github.com/vim-scripts/ToggleLineNumberMode bundle/ToggleLineNumberModegit add .git commit -m "Install ToggleLineNumberMode bundle as a submodule."git submodule add https://github.com/PProvost/vim-ps1 bundle/vim-ps1git add .git commit -m "Install vim-ps1 bundle as a submodule."git submodule add https://github.com/vim-scripts/HTML-AutoCloseTag bundle/HTML-AutoCloseTaggit add .git commit -m "Install HTML-AutoCloseTag bundle as a submodule."git submodule add https://github.com/wesleyche/SrcExpl bundle/SrcExplgit add .git commit -m "Install SrcExpl bundle as a submodule."git submodule add https://github.com/vim-scripts/YankRing.vim bundle/YankRing.vimgit add .git commit -m "Install YankRing.vim bundle as a submodule.",v
+',v
+" " " ,v
