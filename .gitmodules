@@ -61,3 +61,6 @@
 [submodule "bundle/rake.vim"]
 	path = bundle/rake.vim
 	url = https://github.com/tpope/vim-rake
+[submodule "bundle/eunuch.vim"]
+	path = bundle/eunuch.vim
+	url = https://github.com/tpope/vim-eunuch
