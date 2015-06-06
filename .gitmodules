@@ -64,3 +64,6 @@
 [submodule "bundle/eunuch.vim"]
 	path = bundle/eunuch.vim
 	url = https://github.com/tpope/vim-eunuch
+[submodule "bundle/gem-shut-the-fuck-up"]
+	path = bundle/gem-shut-the-fuck-up
+	url = https://github.com/tpope/gem-shut-the-fuck-up
