@@ -1,3 +1,4 @@
+git submodule add https://github.com/vim-scripts/YankRing.vim bundle/YankRing.vimgit add .git commit -m "Install YankRing.vim bundle as a submodule.",V
 git submodule add https://github.com/tpope/vim-rails bundle/rails.vimgit add .git commit -m "Install vim-rails bundle as a submodule.",V
 ~/~/~/~/~/,v
 ~/~/~/~/~/,2
