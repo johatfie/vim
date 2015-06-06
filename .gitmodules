@@ -55,3 +55,6 @@
 [submodule "bundle/endwise.vim"]
 	path = bundle/endwise.vim
 	url = https://github.com/tpope/vim-endwise
+[submodule "bundle/obsession.vim"]
+	path = bundle/obsession.vim
+	url = https://github.com/tpope/vim-obsession
