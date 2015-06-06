@@ -85,3 +85,6 @@
 [submodule "bundle/scratch.vim"]
 	path = bundle/scratch.vim
 	url = https://github.com/mtth/scratch.vim
+[submodule "bundle/ToggleLineNumberMode"]
+	path = bundle/ToggleLineNumberMode
+	url = https://github.com/vim-scripts/ToggleLineNumberMode
