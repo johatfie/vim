@@ -2,9 +2,9 @@
 "
 " To use it, copy it to
 "     for Unix and OS/2:  ~/.vimrc
-"	      for Amiga:  s:.vimrc
+"          for Amiga:  s:.vimrc
 "  for MS-DOS and Win32:  $VIM\_vimrc
-"	    for OpenVMS:  sys$login:.vimrc
+"        for OpenVMS:  sys$login:.vimrc
 
 " When started as "evim", evim.vim will already have done these settings.
 if v:progname =~? "evim"
@@ -23,16 +23,16 @@ colorscheme desert
 "set guifont=Monospace:h10:cANSI
 
 if has("vms")
-  set nobackup		" do not keep a backup file, use versions instead
+  set nobackup      " do not keep a backup file, use versions instead
 else
-  set backup		" keep a backup file
+  set backup        " keep a backup file
 endif
-set history=500		" keep 500 lines of command line history
-set ruler			" show the cursor position all the time
-set showcmd			" display incomplete commands
-set incsearch		" do incremental searching
-set cmdheight=2 	" The commandbar height
-set showmatch		" Show matching brackets when text indicator is over them
+set history=500     " keep 500 lines of command line history
+set ruler           " show the cursor position all the time
+set showcmd         " display incomplete commands
+set incsearch       " do incremental searching
+set cmdheight=2     " The commandbar height
+set showmatch       " Show matching brackets when text indicator is over them
 set number          " show line numbers
 set ignorecase
 set smartcase
@@ -58,13 +58,13 @@ silent! call pathogen#runtime_append_all_bundles()
 
 
 " Setting up the directories {
-	set backup                          " backups are nice ...
+    set backup                          " backups are nice ...
 
     if has('win32')
-        set backupdir=C:/Users/Jon.Hatfield/Documents/vimbackup//	    " but not when they clog.
-        set directory=C:/Users/Jon.Hatfield/Documents/vimswap// 	    " Same for swap files
-        set viewdir=C:/Users/Jon.Hatfield/Documents/vimviews//  		" same for view files
-        set undodir=C:/Users/Jon.Hatfield/Documents/vimundos//          " Same for undo files
+        set backupdir=C:/Users/Jon.Hatfield/Documents/vimbackup//     " but not when they clog.
+        set directory=C:/Users/Jon.Hatfield/Documents/vimswap//       " Same for swap files
+        set viewdir=C:/Users/Jon.Hatfield/Documents/vimviews//        " same for view files
+        set undodir=C:/Users/Jon.Hatfield/Documents/vimundos//        " Same for undo files
         set viminfo+=nC:/Users/Jon.Hatfield/Documents/_viminfo
     else
         set backupdir=~/.vim/vimbackup//                              " but not when they clog.
@@ -77,7 +77,7 @@ silent! call pathogen#runtime_append_all_bundles()
 
     set undofile
 
-	" Creating directories if they don't exist
+    " Creating directories if they don't exist
     if has('win32')
         silent execute '!if not exist C:\Users\Jon.Hatfield\Documents\vimbackup\ ( md C:\Users\Jon.Hatfield\Documents\vimbackup\ )'
         silent execute '!if not exist C:\Users\Jon.Hatfield\Documents\vimswap\ ( md C:\Users\Jon.Hatfield\Documents\vimswap\ )'
@@ -90,8 +90,8 @@ silent! call pathogen#runtime_append_all_bundles()
         silent execute '!mkdir -p ~/.vim/vimundo'
     endif
 
-	au BufWinLeave * silent! mkview                                 " make vim save view (state) (folds, cursor, etc)
-	au BufWinEnter * silent! loadview                               " make vim load view (state) (folds, cursor, etc)
+    au BufWinLeave * silent! mkview                                 " make vim save view (state) (folds, cursor, etc)
+    au BufWinEnter * silent! loadview                               " make vim load view (state) (folds, cursor, etc)
 " }
 
 " Vim UI {
@@ -240,7 +240,7 @@ if has("autocmd")
 
 else
 
-  set autoindent		" always set autoindenting on
+  set autoindent        " always set autoindenting on
 
 endif " has("autocmd")
 
@@ -249,7 +249,7 @@ endif " has("autocmd")
 " Only define it when not defined already.
 if !exists(":DiffOrig")
   command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
-		  \ | wincmd p | diffthis
+          \ | wincmd p | diffthis
 endif
 
 
