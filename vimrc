@@ -313,8 +313,12 @@ endif
     let MRU_Max_Entries = 1000
     let MRU_Max_Menu_Entries = 100
     let MRU_Max_Submenu_Entries = 25
-    let MRU_Exclude_Files = '.*\.tmp$\|.*\\Temp\\.*\|.*\\Temporary Internet Files\\.*'
-    
+
+    if has('win32')
+        let MRU_Exclude_Files = '.*\.tmp$\|.*\\Temp\\.*\|.*\\Temporary Internet Files\\.*'
+    else
+        let MRU_Exclude_Files = '^/tmp/.*\|^/var/tmp/.*'  " For Unix  
+    endif
 " }
 
 nnoremap <up> <nop>
@@ -354,7 +358,8 @@ nmap <F9>   ;TrinityToggleSourceExplorer<CR>
 nmap <F10>  ;TrinityToggleTagList<CR> 
 
 " Open and close the NERD_tree.vim separately 
-nmap <F11>  ;TrinityToggleNERDTree<CR> 
+"nmap <F11>  ;TrinityToggleNERDTree<CR> 
+nmap <F11>  ;NERDTreeToggle<CR> 
 
 let g:MRU_num = 12
 
