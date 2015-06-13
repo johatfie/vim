@@ -308,7 +308,7 @@ endif
     if has('win32')
         let MRU_File = 'c:/users/jon.hatfield/documents/_vim_mru_files'
     else
-        "let MRU_File = '~/.vim/vim_mru_files'
+        let MRU_File = '~/.vim/vim_mru_files'
         "let MRU_File = '~/vim_mru_files'
     endif
 
