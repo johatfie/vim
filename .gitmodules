@@ -109,3 +109,6 @@
 [submodule "bundle/mru"]
 	path = bundle/mru
 	url = https://github.com/yegappan/mru
+[submodule "bundle/bundle/YankRing.vim"]
+	path = bundle/bundle/YankRing.vim
+	url = https://github.com/vim-scripts/YankRing.vim
