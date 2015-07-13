@@ -128,3 +128,6 @@
 [submodule "bundle/switch.vim"]
 	path = bundle/switch.vim
 	url = http://github.com/AndrewRadev/switch.vim
+[submodule "bundle/bash-suppport.vim"]
+	path = bundle/bash-suppport.vim
+	url = http://github.com/vim-scripts/bash-support.vim
