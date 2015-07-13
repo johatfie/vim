@@ -106,3 +106,22 @@
 [submodule "bundle/scratch.vim"]
 	path = bundle/scratch.vim
 	url = https://github.com/mtth/scratch.vim
+    ignore = dirty
+[submodule "bundle/vim-speeddating"]
+	path = bundle/vim-speeddating
+	url = https://github.com/tpope/vim-speeddating.git
+[submodule "bundle/vim-dispatch"]
+	path = bundle/vim-dispatch
+	url = git://github.com/tpope/vim-dispatch.git
+[submodule "bundle/refactor-rails"]
+	path = bundle/refactor-rails
+	url = https://github.com/sandeepravi/refactor-rails.vim
+[submodule "bundle/recover.vim"]
+	path = bundle/recover.vim
+	url = https://github.com/chrisbra/Recover.vim
+[submodule "bundle/colour-sampler-pack"]
+	path = bundle/colour-sampler-pack
+	url = https://github.com/vim-scripts/Colour-Sampler-Pack
+[submodule "bundle/scrollcolors"]
+	path = bundle/scrollcolors
+	url = https://github.com/vim-scripts/ScrollColors
