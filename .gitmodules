@@ -115,3 +115,6 @@
 [submodule "bundle/refactor-rails"]
 	path = bundle/refactor-rails
 	url = https://github.com/sandeepravi/refactor-rails.vim
+[submodule "bundle/recover.vim"]
+	path = bundle/recover.vim
+	url = https://github.com/chrisbra/Recover.vim
