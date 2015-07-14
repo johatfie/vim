@@ -20,7 +20,7 @@ set backspace=indent,eol,start
 
 colorscheme desert
 
-if has('win32') || has( 'win64' )
+if has('win32') || has('win64')
     set guifont=Consolas:h11:cANSI
     "set guifont=Monospace:h10:cANSI
 endif
@@ -50,7 +50,7 @@ set wrap            " Wrap lines
 set hidden
 
 
-if has('win32') || has( 'win64' )
+if has('win32') || has('win64')
     " source $VIMRUNTIME/mswin.vim
     behave mswin
 else
