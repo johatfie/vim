@@ -112,3 +112,6 @@
 [submodule "bundle/vim-dispatch"]
 	path = bundle/vim-dispatch
 	url = git://github.com/tpope/vim-dispatch.git
+[submodule "bundle/refactor-rails"]
+	path = bundle/refactor-rails
+	url = https://github.com/sandeepravi/refactor-rails.vim
