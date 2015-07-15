@@ -48,6 +48,10 @@ set autoindent
 set smartindent
 set wrap            " Wrap lines
 set hidden
+set laststatus=2
+set completeopt=longest,menuone,preview
+set wildmode=longest,list
+
 
 
 if has('win32') || has('win64')
@@ -127,6 +131,7 @@ inoremap jj <Esc>
 nnoremap <leader>tp :tabnew +pu
 vnoremap <leader>ps  daputs "<ESC>pa: #{ <ESC>pa }"<ESC>
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
+nnoremap <expr> gV    '`['.getregtype(v:register)[0].'`]l'
 
 " Next Tab
 nnoremap <silent> <C-Right> :tabnext<CR>
@@ -245,8 +250,6 @@ if has("autocmd")
 
     augroup END
 
-else
-    set autoindent        " always set autoindenting on
 endif " has("autocmd")
 
 " Convenient command to see the difference between the current buffer and the
@@ -352,7 +355,8 @@ else
 endif
 
 
-nnoremap <F6> :GundoToggle<CR>
+nnoremap <F6> ;GundoToggle<CR>
+nmap <F8> ;TagbarToggle<CR>
 
 "" Open and close all the three plugins on the same time
 "nmap <F8>   ;TrinityToggleAll<CR>
@@ -367,5 +371,7 @@ nnoremap <F6> :GundoToggle<CR>
 ""nmap <F11>  ;TrinityToggleNERDTree<CR>
 nmap <F11>  ;NERDTreeToggle<CR>
 
+
+let g:indent_guides_enable_on_vim_startup = 1
 let g:MRU_num = 12
 
