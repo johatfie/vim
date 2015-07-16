@@ -60,14 +60,12 @@ else
     behave xterm
 endif
 
-"C:\Program Files (x86)\Vim\vimfiles\bundle\pathogen\autoload
 runtime bundle/pathogen/autoload/pathogen.vim 
 execute pathogen#infect()
-"runtime! autoload/pathogen.vim
 "silent! call pathogen#helptags()
 "silent! call pathogen#runtime_append_all_bundles()
 
-runtime! autoload/MRU.vim
+"runtime! autoload/MRU.vim
 
 " Setting up the directories {
     set backup                          " backups are nice ...
