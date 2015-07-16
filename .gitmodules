@@ -132,3 +132,6 @@
 [submodule "bundle/bash-suppport.vim"]
 	path = bundle/bash-suppport.vim
 	url = http://github.com/vim-scripts/bash-support.vim
+[submodule "bundle/tab-name"]
+	path = bundle/tab-name
+	url = https://github.com/vim-scripts/Tab-Name
