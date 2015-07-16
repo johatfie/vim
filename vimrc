@@ -355,7 +355,7 @@ else
 endif
 
 
-nnoremap <F6> ;GundoToggle<CR>
+nnoremap <F6> :GundoToggle<CR>
 nmap <F8> ;TagbarToggle<CR>
 
 "" Open and close all the three plugins on the same time
