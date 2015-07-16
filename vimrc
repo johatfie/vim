@@ -130,7 +130,7 @@ inoremap jj <Esc>
 nnoremap <leader>tp :tabnew +pu
 vnoremap <leader>ps  daputs "<ESC>pa: #{ <ESC>pa }"<ESC>
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
-nnoremap <expr> gV    '`['.getregtype(v:register)[0].'`]l'
+nnoremap <expr> gV '`['.getregtype(v:register)[0].'`]l'
 
 " Next Tab
 nnoremap <silent> <C-Right> :tabnext<CR>
