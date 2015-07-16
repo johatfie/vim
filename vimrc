@@ -53,7 +53,6 @@ set completeopt=longest,menuone,preview
 set wildmode=longest,list
 
 
-
 if has('win32') || has('win64')
     " source $VIMRUNTIME/mswin.vim
     behave mswin
@@ -61,10 +60,10 @@ else
     behave xterm
 endif
 
-"execute pathogen#infect()
-runtime! autoload/pathogen.vim
-silent! call pathogen#helptags()
-silent! call pathogen#runtime_append_all_bundles()
+execute pathogen#infect()
+"runtime! autoload/pathogen.vim
+"silent! call pathogen#helptags()
+"silent! call pathogen#runtime_append_all_bundles()
 
 runtime! autoload/MRU.vim
 
@@ -156,7 +155,6 @@ set scrolloff=5               " keep at least 5 lines above/below
 set sidescrolloff=5           " keep at least 5 lines left/right
 
 map <F2> ;set rnu!<CR>
-"map! <F2> <Esc>;w<CR>
 map <f4>  <ESC>;%s/\(.\{80\}\)\n/\1/g<CR>
 map <f5>  <ESC>;%s/\(.\{100\}\)\n/\1/g<CR>
 
@@ -282,8 +280,11 @@ endif
     " // according to the command ":buffers!"
     let g:SrcExpl_pluginList = [
             \ "__Tag_List__",
+            \ "__Tagbar__",
             \ "_NERD_tree_",
-            \ "Source_Explorer"
+            \ "Source_Explorer",
+            \ "__Gundo__",
+            \ "__Gundo_Preview__"
         \ ]
 
     " // Enable/Disable the local definition searching, and note that this is not
