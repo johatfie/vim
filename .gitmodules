@@ -138,3 +138,6 @@
 [submodule "bundle/gitgutter.vim"]
 	path = bundle/gitgutter.vim
 	url = https://github.com/airblade/vim-gitgutter
+[submodule "bundle/MRU.vim"]
+	path = bundle/MRU.vim
+	url = https://github.com/vim-scripts/MRU.git
