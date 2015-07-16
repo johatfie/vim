@@ -60,6 +60,8 @@ else
     behave xterm
 endif
 
+"C:\Program Files (x86)\Vim\vimfiles\bundle\pathogen\autoload
+runtime bundle/pathogen/autoload/pathogen.vim 
 execute pathogen#infect()
 "runtime! autoload/pathogen.vim
 "silent! call pathogen#helptags()
