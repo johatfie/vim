@@ -94,6 +94,7 @@
 [submodule "bundle/yankring.vim"]
 	path = bundle/yankring.vim
 	url = https://github.com/vim-scripts/YankRing.vim
+    ignore = dirty
 [submodule "bundle/gem-shut-the-fudge-up"]
 	path = bundle/gem-shut-the-fudge-up
 	url = https://github.com/tpope/gem-shut-the-fuck-up
