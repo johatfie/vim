@@ -101,9 +101,11 @@
 [submodule "bundle/gundo"]
 	path = bundle/gundo
 	url = https://github.com/vim-scripts/Gundo
+    ignore = dirty
 [submodule "bundle/matchit"]
 	path = bundle/matchit
 	url = https://github.com/vim-scripts/matchit.zip
+    ignore = dirty
 [submodule "bundle/scratch.vim"]
 	path = bundle/scratch.vim
 	url = https://github.com/mtth/scratch.vim
