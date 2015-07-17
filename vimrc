@@ -65,7 +65,6 @@ execute pathogen#infect()
 "silent! call pathogen#helptags()
 "silent! call pathogen#runtime_append_all_bundles()
 
-"runtime! autoload/MRU.vim
 
 " Setting up the directories {
     set backup                          " backups are nice ...
