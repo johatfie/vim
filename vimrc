@@ -121,7 +121,8 @@ nnoremap : ;
 " Yank from the cursor to the end of the line, to be consistent with C and D.
 nnoremap Y y$
 
-nnoremap <leader>l :ls<CR>:b
+
+nnoremap <leader>l :ls<CR>:b<space>
 
 " This is totally awesome - remap jj to escape in insert mode.  You'll never type jj anyway, so it's great!
 inoremap jj <Esc>
