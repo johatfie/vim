@@ -143,3 +143,6 @@
 [submodule "bundle/MRU.vim"]
 	path = bundle/MRU.vim
 	url = https://github.com/vim-scripts/MRU.git
+[submodule "bundle/vimp4python"]
+	path = bundle/vimp4python
+	url = https://github.com/jpflouret/vimp4python
