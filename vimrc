@@ -122,7 +122,7 @@ nnoremap : ;
 nnoremap Y y$
 
 
-nnoremap <leader>l :ls<CR>:b<space>
+nnoremap <leader>l :ls<CR>:b<Space>
 
 " This is totally awesome - remap jj to escape in insert mode.  You'll never type jj anyway, so it's great!
 inoremap jj <Esc>
