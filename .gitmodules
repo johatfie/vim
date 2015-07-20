@@ -146,3 +146,6 @@
 [submodule "bundle/vimp4python"]
 	path = bundle/vimp4python
 	url = https://github.com/jpflouret/vimp4python
+[submodule "bundle/vim-bufkill"]
+	path = bundle/vim-bufkill
+	url = https://github.com/qpkorr/vim-bufkill
