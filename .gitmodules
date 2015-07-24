@@ -122,6 +122,7 @@
 [submodule "bundle/recover.vim"]
 	path = bundle/recover.vim
 	url = https://github.com/chrisbra/Recover.vim
+    ignore = dirty
 [submodule "bundle/colour-sampler-pack"]
 	path = bundle/colour-sampler-pack
 	url = https://github.com/vim-scripts/Colour-Sampler-Pack
