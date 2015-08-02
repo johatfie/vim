@@ -15,29 +15,30 @@ endif
 " This must be first, because it changes other options as a side effect.
 set nocompatible
 
-" allow backspacing over everything in insert mode
-set backspace=indent,eol,start
+
+" DRY helpers {{{
+let s:running_windows=has("win16") || has("win32") || has("win64")
+let s:colorful_term=(&term  =~ "xterm") || (&term  =~ "screen")
+" }}}
+
 
 colorscheme desert
 
-if has('win32') || has('win64')
+if s:running_windows
     set guifont=Consolas:h11:cANSI
     "set guifont=Monospace:h10:cANSI
 endif
 
-if has("vms")
-    set nobackup      " do not keep a backup file, use versions instead
-else
-    set backup        " keep a backup file
-endif
 
-set history=500     " keep 500 lines of command line history
-set ruler           " show the cursor position all the time
-set showcmd         " display incomplete commands
-set incsearch       " do incremental searching
-set cmdheight=2     " The commandbar height
-set showmatch       " Show matching brackets when text indicator is over them
-set number          " show line numbers
+set backspace=indent,eol,start " allow backspacing over everything in insert mode
+set backup                     " keep a backup file
+set history=500                " keep 500 lines of command line history
+set ruler                      " show the cursor position all the time
+set showcmd                    " display incomplete commands
+set incsearch                  " do incremental searching
+set cmdheight=2                " The commandbar height
+set showmatch                  " Show matching brackets when text indicator is over them
+set number                     " show line numbers
 set ignorecase
 set smartcase
 set expandtab
@@ -46,35 +47,55 @@ set tabstop=4
 set softtabstop=4
 set autoindent
 set smartindent
-set wrap            " Wrap lines
+set wrap                        " Wrap lines
 set hidden
 set laststatus=2
 set completeopt=longest,menuone,preview
 set wildmode=longest,list
+set virtualedit=block           " block mode, yey (onemore is evil)
+set mousehide                   " Hide the mouse cursor while typing
+
+if v:version > 703 || v:version == 703 && has("patch541")
+  set formatoptions+=j
+endif
+
+"Use Ctrl-L to clear the highlighting of :set hlsearch.
+nnoremap <silent> <C-L> :nohlsearch<CR><C-L>
 
 
-if has('win32') || has('win64')
-    " source $VIMRUNTIME/mswin.vim
+" Auto center on matched string.
+noremap n nzz
+noremap N Nzz
+
+
+if s:running_windows
     behave mswin
 else
     behave xterm
 endif
 
 runtime bundle/pathogen/autoload/pathogen.vim 
-execute pathogen#infect()
-"silent! call pathogen#helptags()
-"silent! call pathogen#runtime_append_all_bundles()
+"execute pathogen#infect()
+"Helptag " Help for plugins
+""silent! call pathogen#helptags()
+""silent! call pathogen#runtime_append_all_bundles()
+
+" Use pathogen to easily modify the runtime path to include all plugins under
+" the ~/.vim/bundle directory
+filetype off                    " force reloading *after* pathogen loaded
+call pathogen#infect()
+call pathogen#helptags()
 
 
 " Setting up the directories {
     set backup                          " backups are nice ...
 
-    if has('win32') || has('win64')
-        set backupdir=C:/Users/Jon.Hatfield/Documents/vimbackup//     " but not when they clog.
-        set directory=C:/Users/Jon.Hatfield/Documents/vimswap//       " Same for swap files
-        set viewdir=C:/Users/Jon.Hatfield/Documents/vimviews//        " same for view files
-        set undodir=C:/Users/Jon.Hatfield/Documents/vimundos//        " Same for undo files
-        set viminfo+=nC:/Users/Jon.Hatfield/Documents/_viminfo
+    if s:running_windows
+        set backupdir=$HOME/.vim/vimbackup//     " but not when they clog.
+        set directory=$HOME/.vim/vimswap//       " Same for swap files
+        set viewdir=$HOME/.vim/vimviews//        " same for view files
+        set undodir=$HOME/.vim/vimundos//        " Same for undo files
+        set viminfo+=n$HOME/.vim/_viminfo
     else
         set backupdir=~/.vim/vimbackup//                              " but not when they clog.
         set directory=~/.vim/vimswap//                                " Same for swap files
@@ -83,21 +104,40 @@ execute pathogen#infect()
         set viminfo+=n~/.vim/viminfo
     endif
 
+set viminfo+=! " Store upper-case registers in viminfo
 
     set undofile
+    set undolevels=1000         " persistent undo
+    set undoreload=10000        " to undo forced reload with :e!
 
-    " Creating directories if they don't exist
-    if has('win32') || has('win64')
-        silent execute '!if not exist C:\Users\Jon.Hatfield\Documents\vimbackup\ ( md C:\Users\Jon.Hatfield\Documents\vimbackup\ )'
-        silent execute '!if not exist C:\Users\Jon.Hatfield\Documents\vimswap\ ( md C:\Users\Jon.Hatfield\Documents\vimswap\ )'
-        silent execute '!if not exist C:\Users\Jon.Hatfield\Documents\vimviews\ ( md C:\Users\Jon.Hatfield\Documents\vimviews\ )'
-        silent execute '!if not exist C:\Users\Jon.Hatfield\Documents\vimundos\ ( md C:\Users\Jon.Hatfield\Documents\vimundos\ )'
-    else
-        silent execute '!mkdir -p ~/.vim/vimbackup'
-        silent execute '!mkdir -p ~/.vim/vimswap'
-        silent execute '!mkdir -p ~/.vim/vimviews'
-        silent execute '!mkdir -p ~/.vim/vimundo'
-    endif
+    function! EnsureDirExists (dir)
+        if !isdirectory(a:dir)
+            if exists("*mkdir")
+                call mkdir(a:dir,'p')
+                echo "Created directory: " . a:dir
+            else
+                echo "Please create directory: " . a:dir
+            endif
+        endif
+    endfunction
+
+    call EnsureDirExists($HOME . '/.vim/vimbackup')
+    call EnsureDirExists($HOME . '/.vim/vimswap')
+    call EnsureDirExists($HOME . '/.vim/vimviews')
+    call EnsureDirExists($HOME . '/.vim/vimundos')
+
+    "" Creating directories if they don't exist
+    "if s:running_windows
+        "silent execute '!if not exist $HOME\.vim\vimbackup\ ( md %HOME%\.vim\vimbackup\ )'
+        "silent execute '!if not exist $HOME\.vim\vimswap\   ( md %HOME%\.vim\vimswap\ )'
+        "silent execute '!if not exist $HOME\.vim\vimviews\  ( md %HOME%\.vim\vimviews\ )'
+        "silent execute '!if not exist $HOME\.vim\vimundos\  ( md %HOME%\.vim\vimundos\ )'
+    "else
+        "silent execute '!mkdir -p ~/.vim/vimbackup'
+        "silent execute '!mkdir -p ~/.vim/vimswap'
+        "silent execute '!mkdir -p ~/.vim/vimviews'
+        "silent execute '!mkdir -p ~/.vim/vimundo'
+    "endif
 
     au BufWinLeave * silent! mkview                                 " make vim save view (state) (folds, cursor, etc)
     au BufWinEnter * silent! loadview                               " make vim load view (state) (folds, cursor, etc)
@@ -112,6 +152,19 @@ execute pathogen#infect()
     hi CursorColumn guibg=#333333   " highlight cursor
 
 " }
+
+" Conflict markers {{{
+" highlight conflict markers
+match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
+
+" shortcut to jump to next conflict marker
+nnoremap <silent> <leader>c /^\(<\\|=\\|>\)\{7\}\([^=].\+\)\?$<CR>
+" }}}
+
+" Fugitive {{{
+nnoremap <leader>gs :Gstatus<cr>
+nnoremap <leader>gc :Gwrite<cr>:Gcommit<cr>
+" }}}
 
 
 " Making it so ; works like : for commands. Saves typing and eliminates :W style typos due to lazy holding shift.
@@ -132,18 +185,34 @@ vnoremap <leader>ps  daputs "<ESC>pa: #{ <ESC>pa }"<ESC>
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 nnoremap <expr> gV '`['.getregtype(v:register)[0].'`]l'
 
+
 " Next Tab
 nnoremap <silent> <C-Right> :tabnext<CR>
+inoremap <C-tab> <ESC>:tabnext<CR>i
 
 " Previous Tab
 nnoremap <silent> <C-Left> :tabprevious<CR>
+inoremap <C-S-tab> <ESC>:tabprevious<CR>i
 
 " New Tab
 " nnoremap <silent> <C-t> :tabnew<CR>
+" inoremap <C-t> <ESC>:tabnew<cr>i
+
+"map <C-w> :tabclose<cr>
 
 " Move tabs back and forth
 nnoremap <silent> <A-Left> :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
 nnoremap <silent> <A-Right> :execute 'silent! tabmove ' . tabpagenr()<CR>
+
+" buffer switching
+noremap <C-j> :bprev<CR>
+noremap <C-k> :bnext<CR>
+
+""Smart way to move between windows:
+"map <C-j> <C-W>j
+"map <C-k> <C-W>k
+"map <C-h> <C-W>h
+"map <C-l> <C-W>l
 
 
 " Create Blank Newlines and stay in Normal mode
@@ -151,12 +220,12 @@ nnoremap <silent> zj o<Esc>
 nnoremap <silent> zk O<Esc>
 
 
-set scrolloff=5               " keep at least 5 lines above/below
-set sidescrolloff=5           " keep at least 5 lines left/right
+set scrolloff=3               " keep at least 3 lines above/below
+set sidescrolloff=3           " keep at least 3 lines left/right
 
-map <F2> ;set rnu!<CR>
-map <f4>  <ESC>;%s/\(.\{80\}\)\n/\1/g<CR>
-map <f5>  <ESC>;%s/\(.\{100\}\)\n/\1/g<CR>
+noremap <F2> :set rnu!<CR>
+noremap <f4>  <ESC>:%s/\(.\{80\}\)\n/\1/g<CR>
+noremap <f5>  <ESC>:%s/\(.\{100\}\)\n/\1/g<CR>
 
 " This is the way I like my quotation marks and various braces
 inoremap '' ''<Left>
@@ -172,30 +241,20 @@ inoremap () (  )<Left><Left>
 inoremap %% %  %<Left><Left><Left>
 inoremap `` `  `<Left><Left>
 
-map <C-j> ;bprev<CR>
-map <C-k> ;bnext<CR>
-
-" TAB navigation like firefox
-:nmap <C-S-tab> ;tabprevious<cr>
-:nmap <C-tab> ;tabnext<cr>
-:imap <C-S-tab> <ESC>;tabprevious<cr>i
-:imap <C-tab> <ESC>;tabnext<cr>i
-":nmap <C-t> :tabnew<cr>
-":imap <C-t> <ESC>:tabnew<cr>i
-":map <C-w> :tabclose<cr>
-
 
 " Always open help in a new tab
-:cabbrev help tab help
+if has("gui_running")
+    cabbrev help tab help
+endif
 
 
 " Mapping for executing current line as vim command
-nmap <leader>x Y;<C-R>"<C-H><CR>
-
-map  :!p4 edit "%":set noro
-
+nnoremap <leader>x Y:<C-R>"<C-H><CR>
 
 " map http://kb.perforce.com/article/11/checking-out-a-file-from-vi
+noremap  :!p4 edit "%":set noro
+
+
 " For Win32 GUI: remove 't' flag from 'guioptions': no tearoff menu entries
 " let &guioptions = substitute(&guioptions, "t", "", "g")
 
@@ -215,7 +274,8 @@ endif
 " Also switch on highlighting the last used search pattern.
 if &t_Co > 2 || has("gui_running")
     syntax on
-    " set hlsearch
+    syntax sync minlines=100 " helps to avoid syntax highlighting bugs
+    set hlsearch
 endif
 
 " Only do this part when compiled with support for autocommands.
@@ -261,7 +321,7 @@ endif
 
 " Source Explorer {
     " // The switch of the Source Explorer
-    nmap <F7> ;SrcExplToggle<CR>
+    nnoremap <F7> :SrcExplToggle<CR>
 
     " // Set the height of Source Explorer window
     let g:SrcExpl_winHeight = 8
@@ -304,7 +364,7 @@ endif
 " }
 
 
-if has('win32') || has('win64')
+if s:running_windows
     au FileType xhtml,xml,html,xaml,erb so "C:/Program Files (x86)/Vim/vimfiles/bundle/html_autoCloseTag/plugin/html_autoclosetag.vim"
 else
     au FileType xhtml,xml,html,xaml,erb so "~/.vim/bundle/html_autoCloseTag/plugin/html_autoclosetag.vim"
@@ -313,8 +373,8 @@ endif
 
 " MRU {
 
-    if has('win32') || has('win64')
-        let MRU_File = 'c:/users/jon.hatfield/documents/_vim_mru_files'
+    if s:running_windows
+        "let MRU_File = '$HOME/.vim/_vim_mru_files'
     else
         "let MRU_File = '~/.vim/vim_mru_files'
         "let MRU_File = '~/vim_mru_files'
@@ -324,24 +384,32 @@ endif
     let MRU_Max_Menu_Entries = 100
     let MRU_Max_Submenu_Entries = 25
 
-    if has('win32') || has('win64')
+    if s:running_windows
         let MRU_Exclude_Files = '.*\.tmp$\|.*\\Temp\\.*\|.*\\Temporary Internet Files\\.*'
     else
         let MRU_Exclude_Files = '^/tmp/.*\|^/var/tmp/.*'  " For Unix
     endif
 " }
 
-nnoremap <up> <nop>
-nnoremap <down> <nop>
-nnoremap <left> <nop>
-nnoremap <right> <nop>
+
+" Arrow keys are NOT for moving around
+nnoremap <down> <C-b>
+nnoremap <up> <C-f>
+nnoremap <left> :NERDTreeToggle<cr>
+nnoremap <right> :TagbarToggle<cr>
+nnoremap <C-down> :cnext<cr>zvzz
+nnoremap <C-up> :cprev<cr>zvzz
+nnoremap <S-down> :lnext<cr>zvzz
+nnoremap <S-up> :lprev<cr>zvzz
 " inoremap <up> <nop>
 " inoremap <down> <nop>
 " inoremap <left> <nop>
 " inoremap <right> <nop>
 nnoremap j gj
 nnoremap k gk
-vnoremap y "+y
+nnoremap gj j
+nnoremap gk k
+"vnoremap y "+y
 
 set sessionoptions=buffers,curdir,folds,globals,help,options,localoptions,resize,slash,tabpages,winpos,winsize
 let g:outlook_use_tabs = 1
@@ -349,28 +417,16 @@ let g:outlook_servername = 'GVIM'
 
 
 
-if has('win32') || has('win64')
-    let g:yankring_history_dir = 'c:/users/Jon.Hatfield/Documents'
+if s:running_windows
+    let g:yankring_history_dir = '$HOME/.vim'
 else
     let g:yankring_history_dir = '~/.vim/'
 endif
 
 
 nnoremap <F6> :GundoToggle<CR>
-nmap <F8> ;TagbarToggle<CR>
-
-"" Open and close all the three plugins on the same time
-"nmap <F8>   ;TrinityToggleAll<CR>
-
-"" Open and close the srcexpl.vim separately
-"nmap <F9>   ;TrinityToggleSourceExplorer<CR>
-
-"" Open and close the taglist.vim separately
-"nmap <F10>  ;TrinityToggleTagList<CR>
-
-"" Open and close the NERD_tree.vim separately
-""nmap <F11>  ;TrinityToggleNERDTree<CR>
-nmap <F11>  ;NERDTreeToggle<CR>
+nnoremap <F8> :TagbarToggle<CR>
+nnoremap <F11>  :NERDTreeToggle<CR>
 
 
 let g:indent_guides_enable_on_vim_startup = 1
