@@ -161,3 +161,6 @@
 [submodule "bundle/splitjoin.vim"]
 	path = bundle/splitjoin.vim
 	url = https://github.com/AndrewRadev/splitjoin.vim
+[submodule "bundle/vim-ir_black"]
+	path = bundle/vim-ir_black
+	url = https://github.com/wesgibbs/vim-irblack
