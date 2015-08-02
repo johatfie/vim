@@ -54,6 +54,8 @@ set completeopt=longest,menuone,preview
 set wildmode=longest,list
 set virtualedit=block           " block mode, yey (onemore is evil)
 set mousehide                   " Hide the mouse cursor while typing
+set splitright                  " Puts new vsplit windows to the right of the current
+set splitbelow                  " Puts new split windows to the bottom of the current
 
 if v:version > 703 || v:version == 703 && has("patch541")
   set formatoptions+=j
@@ -431,4 +433,36 @@ nnoremap <F11>  :NERDTreeToggle<CR>
 
 let g:indent_guides_enable_on_vim_startup = 1
 let g:MRU_num = 12
+
+" Use local vimrc if available {
+    if filereadable(expand("~/.vimrc.local"))
+        source ~/.vimrc.local
+    endif
+" }
+
+" Use local gvimrc if available and gui is running {
+    if has('gui_running')
+        if filereadable(expand("~/.gvimrc.local"))
+            source ~/.gvimrc.local
+        endif
+    endif
+" }
+
+    " Fugitive {
+        if isdirectory(expand("~/.vim/bundle/vim-fugitive/"))
+            nnoremap <silent> <leader>gs :Gstatus<CR>
+            nnoremap <silent> <leader>gd :Gdiff<CR>
+            nnoremap <silent> <leader>gc :Gcommit<CR>
+            nnoremap <silent> <leader>gb :Gblame<CR>
+            nnoremap <silent> <leader>gl :Glog<CR>
+            nnoremap <silent> <leader>gp :Git push<CR>
+            nnoremap <silent> <leader>gr :Gread<CR>
+            nnoremap <silent> <leader>gw :Gwrite<CR>
+            nnoremap <silent> <leader>ge :Gedit<CR>
+            " Mnemonic _i_nteractive
+            nnoremap <silent> <leader>gi :Git add -p %<CR>
+            nnoremap <silent> <leader>gg :SignifyToggle<CR>
+        endif
+    "}
+
 
