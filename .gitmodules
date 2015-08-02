@@ -135,6 +135,7 @@
 [submodule "bundle/bash-suppport.vim"]
 	path = bundle/bash-suppport.vim
 	url = http://github.com/vim-scripts/bash-support.vim
+    ignore = dirty
 [submodule "bundle/tab-name"]
 	path = bundle/tab-name
 	url = https://github.com/vim-scripts/Tab-Name
@@ -150,6 +151,7 @@
 [submodule "bundle/vim-bufkill"]
 	path = bundle/vim-bufkill
 	url = https://github.com/qpkorr/vim-bufkill
+    ignore = dirty
 [submodule "bundle/vim-better-whitespace"]
 	path = bundle/vim-better-whitespace
 	url = https://github.com/ntpeters/vim-better-whitespace
