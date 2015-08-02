@@ -158,3 +158,6 @@
 [submodule "bundle/tab-menu"]
 	path = bundle/tab-menu
 	url = https://github.com/johatfie/Tab-Menu.git
+[submodule "bundle/splitjoin.vim"]
+	path = bundle/splitjoin.vim
+	url = https://github.com/AndrewRadev/splitjoin.vim
