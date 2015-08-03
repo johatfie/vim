@@ -145,7 +145,7 @@ call pathogen#helptags()
     au BufWinEnter * silent! loadview                               " make vim load view (state) (folds, cursor, etc)
 " }
 
-" Vim UI {
+" Vim UI {{{
     set tabpagemax=50               " only show 50 tabs
     set showmode                    " display the current mode
 
@@ -153,7 +153,40 @@ call pathogen#helptags()
     hi cursorline guibg=#333333     " highlight bg color of current line
     hi CursorColumn guibg=#333333   " highlight cursor
 
-" }
+
+    " The below mapping will change the behavior of the <Enter> key when the popup menu is visible. 
+    " In that case the Enter key will simply select the highlighted menu item, just as <C-Y> does.
+    inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
+    " These two mappings further improve the completion popup menu:
+    " In the below mappings, the first will make <C-N> work the way it normally does; 
+    " however, when the menu appears, the <Down> key will be simulated. What this accomplishes is 
+    " it keeps a menu item always highlighted. This way you can keep typing characters to narrow the 
+    " matches, and the nearest match will be selected so that you can hit Enter at any time to insert it. 
+    " In the below mappings, the second one is a little more exotic: it simulates <C-X><C-O> to bring up 
+    " the omni completion menu, then it simulates <C-N><C-P> to remove the longest common text, and 
+    " finally it simulates <Down> again to keep a match highlighted.
+
+    inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
+      \ '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
+
+    inoremap <expr> <M-,> pumvisible() ? '<C-n>' :
+      \ '<C-x><C-o><C-n><C-p><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
+
+
+    "Here is a hacky example of a set of mappings that first close any popups that are open which 
+    "means you can seamlessly switch between omni and user completions. Then they try the omni or user 
+    "complete function. If the menu is visible they use the above trick to keep the text you typed 
+    "and select the first.
+
+    " open omni completion menu closing previous if open and opening new menu without changing the text
+    inoremap <expr> <C-Space> (pumvisible() ? (col('.') > 1 ? '<Esc>i<Right>' : '<Esc>i') : '') .
+                \ '<C-x><C-o><C-r>=pumvisible() ? "\<lt>C-n>\<lt>C-p>\<lt>Down>" : ""<CR>'
+    " open user completion menu closing previous if open and opening new menu without changing the text
+    inoremap <expr> <S-Space> (pumvisible() ? (col('.') > 1 ? '<Esc>i<Right>' : '<Esc>i') : '') .
+                \ '<C-x><C-u><C-r>=pumvisible() ? "\<lt>C-n>\<lt>C-p>\<lt>Down>" : ""<CR>'
+
+" }}}
 
 " Conflict markers {{{
 " highlight conflict markers
@@ -430,14 +463,14 @@ let g:indent_guides_enable_on_vim_startup = 1
 let g:MRU_num = 12
 
 " Use local vimrc if available {
-    if filereadable(expand("~/.vimrc.local"))
+    if filereadable(expand("~/.vim/vimrc.local"))
         source ~/.vimrc.local
     endif
 " }
 
 " Use local gvimrc if available and gui is running {
     if has('gui_running')
-        if filereadable(expand("~/.gvimrc.local"))
+        if filereadable(expand("~/.vim/gvimrc.local"))
             source ~/.gvimrc.local
         endif
     endif
