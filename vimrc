@@ -1,10 +1,7 @@
-" An example for a vimrc file.
-"
-" To use it, copy it to
-"     for Unix and OS/2:  ~/.vimrc
-"          for Amiga:  s:.vimrc
-"  for MS-DOS and Win32:  $VIM\_vimrc
-"        for OpenVMS:  sys$login:.vimrc
+
+" Author: Jon Hatfield
+" Last Modified: Sun Aug 02, 2015  05:31PM
+
 
 " When started as "evim", evim.vim will already have done these settings.
 if v:progname =~? "evim"
@@ -141,8 +138,6 @@ set viminfo+=! " Store upper-case registers in viminfo
         "silent execute '!mkdir -p ~/.vim/vimundo'
     "endif
 
-    au BufWinLeave * silent! mkview                                 " make vim save view (state) (folds, cursor, etc)
-    au BufWinEnter * silent! loadview                               " make vim load view (state) (folds, cursor, etc)
 " }
 
 " Vim UI {
@@ -163,10 +158,10 @@ match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 nnoremap <silent> <leader>c /^\(<\\|=\\|>\)\{7\}\([^=].\+\)\?$<CR>
 " }}}
 
-" Fugitive {{{
-nnoremap <leader>gs :Gstatus<cr>
-nnoremap <leader>gc :Gwrite<cr>:Gcommit<cr>
-" }}}
+"" Fugitive {{{
+"nnoremap <leader>gs :Gstatus<cr>
+"nnoremap <leader>gc :Gwrite<cr>:Gcommit<cr>
+"" }}}
 
 
 " Making it so ; works like : for commands. Saves typing and eliminates :W style typos due to lazy holding shift.
@@ -310,6 +305,31 @@ if has("autocmd")
 
     augroup END
 
+    " If buffer modified, update any 'Last modified: ' in the first 20 lines.
+    " 'Last modified: ' can have up to 10 characters before (they are retained).
+    " Restores cursor and window position using save_cursor variable.
+    function! LastModified()
+        if &modified
+            let save_cursor = getpos(".")
+            let n = min([20, line("$")])
+            keepjumps exe '1,' . n . 's#^\(.\{,10}Last Modified: \).*#\1' .
+                        \ strftime('%a %b %d, %Y  %I:%M%p') . '#e'
+            call histdel('search', -1)
+            call setpos('.', save_cursor)
+        endif
+    endfun
+
+    autocmd BufWritePre * call LastModified()
+
+    if s:running_windows
+        au FileType xhtml,xml,html,xaml,erb so "bundle/html_autoCloseTag/plugin/html_autoclosetag.vim"
+    else
+        au FileType xhtml,xml,html,xaml,erb so "~/.vim/bundle/html_autoCloseTag/plugin/html_autoclosetag.vim"
+    endif
+
+    au BufWinLeave * silent! mkview                                 " make vim save view (state) (folds, cursor, etc)
+    au BufWinEnter * silent! loadview                               " make vim load view (state) (folds, cursor, etc)
+
 endif " has("autocmd")
 
 " Convenient command to see the difference between the current buffer and the
@@ -365,12 +385,6 @@ endif
     let g:SrcExpl_updateTagsKey = "<F12>"
 " }
 
-
-if s:running_windows
-    au FileType xhtml,xml,html,xaml,erb so "C:/Program Files (x86)/Vim/vimfiles/bundle/html_autoCloseTag/plugin/html_autoclosetag.vim"
-else
-    au FileType xhtml,xml,html,xaml,erb so "~/.vim/bundle/html_autoCloseTag/plugin/html_autoclosetag.vim"
-endif
 
 
 " MRU {
