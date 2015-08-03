@@ -1,6 +1,6 @@
 
 " Author: Jon Hatfield
-" Last Modified: Sun Aug 02, 2015  11:09PM
+" Last Modified: Sun Aug 02, 2015  11:53PM
 
 
 " When started as "evim", evim.vim will already have done these settings.
@@ -73,7 +73,7 @@ else
     behave xterm
 endif
 
-runtime bundle/pathogen/autoload/pathogen.vim 
+runtime bundle/pathogen/autoload/pathogen.vim
 "execute pathogen#infect()
 "Helptag " Help for plugins
 ""silent! call pathogen#helptags()
@@ -86,8 +86,10 @@ call pathogen#infect()
 call pathogen#helptags()
 
 
-" Setting up the directories {
+" Setting up the directories {{{
     set backup                          " backups are nice ...
+    set viminfo+='1000,f1,<500,!        " Store upper-case registers in viminfo
+
 
     if s:running_windows
         set backupdir=$HOME/.vim/vimbackup//     " but not when they clog.
@@ -96,14 +98,12 @@ call pathogen#helptags()
         set undodir=$HOME/.vim/vimundos//        " Same for undo files
         set viminfo+=n$HOME/.vim/_viminfo
     else
-        set backupdir=~/.vim/vimbackup//                              " but not when they clog.
-        set directory=~/.vim/vimswap//                                " Same for swap files
-        set viewdir=~/.vim/vimviews//                                 " same for view files
-        set undodir=~/.vim/vimundo//                                  " Same for undo files
+        set backupdir=~/.vim/vimbackup//         " but not when they clog.
+        set directory=~/.vim/vimswap//           " Same for swap files
+        set viewdir=~/.vim/vimviews//            " same for view files
+        set undodir=~/.vim/vimundo//             " Same for undo files
         set viminfo+=n~/.vim/viminfo
     endif
-
-    set viminfo+=! " Store upper-case registers in viminfo
 
     set undofile
     set undolevels=1000         " persistent undo
@@ -138,7 +138,7 @@ call pathogen#helptags()
         "silent execute '!mkdir -p ~/.vim/vimundo'
     "endif
 
-" }
+" }}}
 
 " Vim UI {{{
     set tabpagemax=50               " only show 50 tabs
@@ -149,17 +149,17 @@ call pathogen#helptags()
     hi CursorColumn guibg=#333333   " highlight cursor
 
 
-    " The below mapping will change the behavior of the <Enter> key when the popup menu is visible. 
+    " The below mapping will change the behavior of the <Enter> key when the popup menu is visible.
     " In that case the Enter key will simply select the highlighted menu item, just as <C-Y> does.
     inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
     " These two mappings further improve the completion popup menu:
-    " In the below mappings, the first will make <C-N> work the way it normally does; 
-    " however, when the menu appears, the <Down> key will be simulated. What this accomplishes is 
-    " it keeps a menu item always highlighted. This way you can keep typing characters to narrow the 
-    " matches, and the nearest match will be selected so that you can hit Enter at any time to insert it. 
-    " In the below mappings, the second one is a little more exotic: it simulates <C-X><C-O> to bring up 
-    " the omni completion menu, then it simulates <C-N><C-P> to remove the longest common text, and 
+    " In the below mappings, the first will make <C-N> work the way it normally does;
+    " however, when the menu appears, the <Down> key will be simulated. What this accomplishes is
+    " it keeps a menu item always highlighted. This way you can keep typing characters to narrow the
+    " matches, and the nearest match will be selected so that you can hit Enter at any time to insert it.
+    " In the below mappings, the second one is a little more exotic: it simulates <C-X><C-O> to bring up
+    " the omni completion menu, then it simulates <C-N><C-P> to remove the longest common text, and
     " finally it simulates <Down> again to keep a match highlighted.
 
     inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
@@ -169,9 +169,9 @@ call pathogen#helptags()
       \ '<C-x><C-o><C-n><C-p><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
 
 
-    "Here is a hacky example of a set of mappings that first close any popups that are open which 
-    "means you can seamlessly switch between omni and user completions. Then they try the omni or user 
-    "complete function. If the menu is visible they use the above trick to keep the text you typed 
+    "Here is a hacky example of a set of mappings that first close any popups that are open which
+    "means you can seamlessly switch between omni and user completions. Then they try the omni or user
+    "complete function. If the menu is visible they use the above trick to keep the text you typed
     "and select the first.
 
     " open omni completion menu closing previous if open and opening new menu without changing the text
@@ -190,11 +190,6 @@ match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 " shortcut to jump to next conflict marker
 nnoremap <silent> <leader>c /^\(<\\|=\\|>\)\{7\}\([^=].\+\)\?$<CR>
 " }}}
-
-"" Fugitive {{{
-"nnoremap <leader>gs :Gstatus<cr>
-"nnoremap <leader>gc :Gwrite<cr>:Gcommit<cr>
-"" }}}
 
 
 " Making it so ; works like : for commands. Saves typing and eliminates :W style typos due to lazy holding shift.
@@ -360,8 +355,8 @@ if has("autocmd")
         au FileType xhtml,xml,html,xaml,erb so "~/.vim/bundle/html_autoCloseTag/plugin/html_autoclosetag.vim"
     endif
 
-    au BufWinLeave * silent! mkview                                 " make vim save view (state) (folds, cursor, etc)
-    au BufWinEnter * silent! loadview                               " make vim load view (state) (folds, cursor, etc)
+    au BufWinLeave * silent! mkview               " make vim save view (state) (folds, cursor, etc)
+    au BufWinEnter * silent! loadview             " make vim load view (state) (folds, cursor, etc)
 
 endif " has("autocmd")
 
@@ -374,7 +369,46 @@ if !exists(":DiffOrig")
 endif
 
 
-" Source Explorer {
+" Fugitive {{{
+    "if isdirectory(expand("~/.vim/bundle/vim-fugitive/"))
+        nnoremap <silent> <leader>gs :Gstatus<CR>
+        nnoremap <silent> <leader>gd :Gdiff<CR>
+        nnoremap <silent> <leader>gc :Gcommit<CR>
+        nnoremap <silent> <leader>gb :Gblame<CR>
+        nnoremap <silent> <leader>gl :Glog<CR>
+        nnoremap <silent> <leader>gp :Git push<CR>
+        nnoremap <silent> <leader>gr :Gread<CR>
+        nnoremap <silent> <leader>gw :Gwrite<CR>
+        nnoremap <silent> <leader>ge :Gedit<CR>
+        " Mnemonic _i_nteractive
+        nnoremap <silent> <leader>gi :Git add -p %<CR>
+        nnoremap <silent> <leader>gg :SignifyToggle<CR>
+    "endif
+" }}}
+
+
+" MRU {{{
+
+    if s:running_windows
+        "let MRU_File = '$HOME/.vim/_vim_mru_files'
+    else
+        "let MRU_File = '~/.vim/vim_mru_files'
+        "let MRU_File = '~/vim_mru_files'
+    endif
+
+    let MRU_Max_Entries = 1000
+    let MRU_Max_Menu_Entries = 100
+    let MRU_Max_Submenu_Entries = 25
+
+    if s:running_windows
+        let MRU_Exclude_Files = '.*\.tmp$\|.*\\Temp\\.*\|.*\\Temporary Internet Files\\.*'
+    else
+        let MRU_Exclude_Files = '^/tmp/.*\|^/var/tmp/.*'  " For Unix
+    endif
+" }}}
+
+
+" Source Explorer {{{
     " // The switch of the Source Explorer
     nnoremap <F7> :SrcExplToggle<CR>
 
@@ -416,29 +450,9 @@ endif
 
     " // Set "<F12>" key for updating the tags file artificially
     let g:SrcExpl_updateTagsKey = "<F12>"
-" }
+" }}}
 
 
-
-" MRU {
-
-    if s:running_windows
-        "let MRU_File = '$HOME/.vim/_vim_mru_files'
-    else
-        "let MRU_File = '~/.vim/vim_mru_files'
-        "let MRU_File = '~/vim_mru_files'
-    endif
-
-    let MRU_Max_Entries = 1000
-    let MRU_Max_Menu_Entries = 100
-    let MRU_Max_Submenu_Entries = 25
-
-    if s:running_windows
-        let MRU_Exclude_Files = '.*\.tmp$\|.*\\Temp\\.*\|.*\\Temporary Internet Files\\.*'
-    else
-        let MRU_Exclude_Files = '^/tmp/.*\|^/var/tmp/.*'  " For Unix
-    endif
-" }
 
 
 " Arrow keys are NOT for moving around
@@ -473,43 +487,26 @@ else
 endif
 
 
-nnoremap <F6> :GundoToggle<CR>
-nnoremap <F8> :TagbarToggle<CR>
-nnoremap <F11>  :NERDTreeToggle<CR>
+nnoremap <F6>  :GundoToggle<CR>
+nnoremap <F8>  :TagbarToggle<CR>
+nnoremap <F11> :NERDTreeToggle<CR>
 
 
 let g:indent_guides_enable_on_vim_startup = 1
 let g:MRU_num = 12
 
-" Use local vimrc if available {
+" Use local vimrc if available {{{
     if filereadable(expand("~/.vim/vimrc.local"))
         source ~/.vimrc.local
     endif
-" }
+" }}}
 
-" Use local gvimrc if available and gui is running {
+" Use local gvimrc if available and gui is running {{{
     if has('gui_running')
         if filereadable(expand("~/.vim/gvimrc.local"))
             source ~/.gvimrc.local
         endif
     endif
-" }
-
-" Fugitive {{{
-    "if isdirectory(expand("~/.vim/bundle/vim-fugitive/"))
-        nnoremap <silent> <leader>gs :Gstatus<CR>
-        nnoremap <silent> <leader>gd :Gdiff<CR>
-        nnoremap <silent> <leader>gc :Gcommit<CR>
-        nnoremap <silent> <leader>gb :Gblame<CR>
-        nnoremap <silent> <leader>gl :Glog<CR>
-        nnoremap <silent> <leader>gp :Git push<CR>
-        nnoremap <silent> <leader>gr :Gread<CR>
-        nnoremap <silent> <leader>gw :Gwrite<CR>
-        nnoremap <silent> <leader>ge :Gedit<CR>
-        " Mnemonic _i_nteractive
-        nnoremap <silent> <leader>gi :Git add -p %<CR>
-        nnoremap <silent> <leader>gg :SignifyToggle<CR>
-    "endif
 " }}}
 
 
