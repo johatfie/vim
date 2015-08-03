@@ -1,6 +1,6 @@
 
 " Author: Jon Hatfield
-" Last Modified: Sun Aug 02, 2015  05:31PM
+" Last Modified: Sun Aug 02, 2015  11:09PM
 
 
 " When started as "evim", evim.vim will already have done these settings.
@@ -103,7 +103,7 @@ call pathogen#helptags()
         set viminfo+=n~/.vim/viminfo
     endif
 
-set viminfo+=! " Store upper-case registers in viminfo
+    set viminfo+=! " Store upper-case registers in viminfo
 
     set undofile
     set undolevels=1000         " persistent undo
@@ -140,7 +140,7 @@ set viminfo+=! " Store upper-case registers in viminfo
 
 " }
 
-" Vim UI {
+" Vim UI {{{
     set tabpagemax=50               " only show 50 tabs
     set showmode                    " display the current mode
 
@@ -148,7 +148,40 @@ set viminfo+=! " Store upper-case registers in viminfo
     hi cursorline guibg=#333333     " highlight bg color of current line
     hi CursorColumn guibg=#333333   " highlight cursor
 
-" }
+
+    " The below mapping will change the behavior of the <Enter> key when the popup menu is visible. 
+    " In that case the Enter key will simply select the highlighted menu item, just as <C-Y> does.
+    inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
+    " These two mappings further improve the completion popup menu:
+    " In the below mappings, the first will make <C-N> work the way it normally does; 
+    " however, when the menu appears, the <Down> key will be simulated. What this accomplishes is 
+    " it keeps a menu item always highlighted. This way you can keep typing characters to narrow the 
+    " matches, and the nearest match will be selected so that you can hit Enter at any time to insert it. 
+    " In the below mappings, the second one is a little more exotic: it simulates <C-X><C-O> to bring up 
+    " the omni completion menu, then it simulates <C-N><C-P> to remove the longest common text, and 
+    " finally it simulates <Down> again to keep a match highlighted.
+
+    inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
+      \ '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
+
+    inoremap <expr> <M-,> pumvisible() ? '<C-n>' :
+      \ '<C-x><C-o><C-n><C-p><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
+
+
+    "Here is a hacky example of a set of mappings that first close any popups that are open which 
+    "means you can seamlessly switch between omni and user completions. Then they try the omni or user 
+    "complete function. If the menu is visible they use the above trick to keep the text you typed 
+    "and select the first.
+
+    " open omni completion menu closing previous if open and opening new menu without changing the text
+    inoremap <expr> <C-Space> (pumvisible() ? (col('.') > 1 ? '<Esc>i<Right>' : '<Esc>i') : '') .
+                \ '<C-x><C-o><C-r>=pumvisible() ? "\<lt>C-n>\<lt>C-p>\<lt>Down>" : ""<CR>'
+    " open user completion menu closing previous if open and opening new menu without changing the text
+    inoremap <expr> <S-Space> (pumvisible() ? (col('.') > 1 ? '<Esc>i<Right>' : '<Esc>i') : '') .
+                \ '<C-x><C-u><C-r>=pumvisible() ? "\<lt>C-n>\<lt>C-p>\<lt>Down>" : ""<CR>'
+
+" }}}
 
 " Conflict markers {{{
 " highlight conflict markers
@@ -409,8 +442,8 @@ endif
 
 
 " Arrow keys are NOT for moving around
-nnoremap <down> <C-b>
-nnoremap <up> <C-f>
+nnoremap <down> <C-f>
+nnoremap <up> <C-b>
 nnoremap <left> :NERDTreeToggle<cr>
 nnoremap <right> :TagbarToggle<cr>
 nnoremap <C-down> :cnext<cr>zvzz
@@ -449,34 +482,34 @@ let g:indent_guides_enable_on_vim_startup = 1
 let g:MRU_num = 12
 
 " Use local vimrc if available {
-    if filereadable(expand("~/.vimrc.local"))
+    if filereadable(expand("~/.vim/vimrc.local"))
         source ~/.vimrc.local
     endif
 " }
 
 " Use local gvimrc if available and gui is running {
     if has('gui_running')
-        if filereadable(expand("~/.gvimrc.local"))
+        if filereadable(expand("~/.vim/gvimrc.local"))
             source ~/.gvimrc.local
         endif
     endif
 " }
 
-    " Fugitive {
-        if isdirectory(expand("~/.vim/bundle/vim-fugitive/"))
-            nnoremap <silent> <leader>gs :Gstatus<CR>
-            nnoremap <silent> <leader>gd :Gdiff<CR>
-            nnoremap <silent> <leader>gc :Gcommit<CR>
-            nnoremap <silent> <leader>gb :Gblame<CR>
-            nnoremap <silent> <leader>gl :Glog<CR>
-            nnoremap <silent> <leader>gp :Git push<CR>
-            nnoremap <silent> <leader>gr :Gread<CR>
-            nnoremap <silent> <leader>gw :Gwrite<CR>
-            nnoremap <silent> <leader>ge :Gedit<CR>
-            " Mnemonic _i_nteractive
-            nnoremap <silent> <leader>gi :Git add -p %<CR>
-            nnoremap <silent> <leader>gg :SignifyToggle<CR>
-        endif
-    "}
+" Fugitive {{{
+    "if isdirectory(expand("~/.vim/bundle/vim-fugitive/"))
+        nnoremap <silent> <leader>gs :Gstatus<CR>
+        nnoremap <silent> <leader>gd :Gdiff<CR>
+        nnoremap <silent> <leader>gc :Gcommit<CR>
+        nnoremap <silent> <leader>gb :Gblame<CR>
+        nnoremap <silent> <leader>gl :Glog<CR>
+        nnoremap <silent> <leader>gp :Git push<CR>
+        nnoremap <silent> <leader>gr :Gread<CR>
+        nnoremap <silent> <leader>gw :Gwrite<CR>
+        nnoremap <silent> <leader>ge :Gedit<CR>
+        " Mnemonic _i_nteractive
+        nnoremap <silent> <leader>gi :Git add -p %<CR>
+        nnoremap <silent> <leader>gg :SignifyToggle<CR>
+    "endif
+" }}}
 
 
