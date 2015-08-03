@@ -106,7 +106,7 @@ call pathogen#helptags()
         set viminfo+=n~/.vim/viminfo
     endif
 
-set viminfo+=! " Store upper-case registers in viminfo
+    set viminfo+=! " Store upper-case registers in viminfo
 
     set undofile
     set undolevels=1000         " persistent undo
@@ -161,11 +161,6 @@ match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 
 " shortcut to jump to next conflict marker
 nnoremap <silent> <leader>c /^\(<\\|=\\|>\)\{7\}\([^=].\+\)\?$<CR>
-" }}}
-
-" Fugitive {{{
-nnoremap <leader>gs :Gstatus<cr>
-nnoremap <leader>gc :Gwrite<cr>:Gcommit<cr>
 " }}}
 
 
@@ -395,8 +390,8 @@ endif
 
 
 " Arrow keys are NOT for moving around
-nnoremap <down> <C-b>
-nnoremap <up> <C-f>
+nnoremap <down> <C-f>
+nnoremap <up> <C-b>
 nnoremap <left> :NERDTreeToggle<cr>
 nnoremap <right> :TagbarToggle<cr>
 nnoremap <C-down> :cnext<cr>zvzz
@@ -448,21 +443,21 @@ let g:MRU_num = 12
     endif
 " }
 
-    " Fugitive {
-        if isdirectory(expand("~/.vim/bundle/vim-fugitive/"))
-            nnoremap <silent> <leader>gs :Gstatus<CR>
-            nnoremap <silent> <leader>gd :Gdiff<CR>
-            nnoremap <silent> <leader>gc :Gcommit<CR>
-            nnoremap <silent> <leader>gb :Gblame<CR>
-            nnoremap <silent> <leader>gl :Glog<CR>
-            nnoremap <silent> <leader>gp :Git push<CR>
-            nnoremap <silent> <leader>gr :Gread<CR>
-            nnoremap <silent> <leader>gw :Gwrite<CR>
-            nnoremap <silent> <leader>ge :Gedit<CR>
-            " Mnemonic _i_nteractive
-            nnoremap <silent> <leader>gi :Git add -p %<CR>
-            nnoremap <silent> <leader>gg :SignifyToggle<CR>
-        endif
-    "}
+" Fugitive {{{
+    "if isdirectory(expand("~/.vim/bundle/vim-fugitive/"))
+        nnoremap <silent> <leader>gs :Gstatus<CR>
+        nnoremap <silent> <leader>gd :Gdiff<CR>
+        nnoremap <silent> <leader>gc :Gcommit<CR>
+        nnoremap <silent> <leader>gb :Gblame<CR>
+        nnoremap <silent> <leader>gl :Glog<CR>
+        nnoremap <silent> <leader>gp :Git push<CR>
+        nnoremap <silent> <leader>gr :Gread<CR>
+        nnoremap <silent> <leader>gw :Gwrite<CR>
+        nnoremap <silent> <leader>ge :Gedit<CR>
+        " Mnemonic _i_nteractive
+        nnoremap <silent> <leader>gi :Git add -p %<CR>
+        nnoremap <silent> <leader>gg :SignifyToggle<CR>
+    "endif
+" }}}
 
 
