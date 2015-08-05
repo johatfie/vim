@@ -1,6 +1,6 @@
 
 " Author: Jon Hatfield
-" Last Modified: Sun Aug 02, 2015  11:53PM
+" Last Modified: Mon Aug 03, 2015  02:00PM
 
 
 " When started as "evim", evim.vim will already have done these settings.
@@ -92,11 +92,11 @@ call pathogen#helptags()
 
 
     if s:running_windows
-        set backupdir=$HOME/.vim/vimbackup//     " but not when they clog.
-        set directory=$HOME/.vim/vimswap//       " Same for swap files
-        set viewdir=$HOME/.vim/vimviews//        " same for view files
-        set undodir=$HOME/.vim/vimundos//        " Same for undo files
-        set viminfo+=n$HOME/.vim/_viminfo
+        set backupdir=c:/users/jon.hatfield/.vim/vimbackup//     " but not when they clog.
+        set directory=c:/users/jon.hatfield/.vim/vimswap//       " Same for swap files
+        set viewdir=c:/users/jon.hatfield/.vim/vimviews//        " same for view files
+        set undodir=c:/users/jon.hatfield/.vim/vimundos//        " Same for undo files
+        set viminfo+=nc:/users/jon.hatfield/.vim/_viminfo
     else
         set backupdir=~/.vim/vimbackup//         " but not when they clog.
         set directory=~/.vim/vimswap//           " Same for swap files
@@ -120,10 +120,10 @@ call pathogen#helptags()
         endif
     endfunction
 
-    call EnsureDirExists($HOME . '/.vim/vimbackup')
-    call EnsureDirExists($HOME . '/.vim/vimswap')
-    call EnsureDirExists($HOME . '/.vim/vimviews')
-    call EnsureDirExists($HOME . '/.vim/vimundos')
+    call EnsureDirExists('c:/users/jon.hatfield/.vim/vimbackup')
+    call EnsureDirExists('c:/users/jon.hatfield/.vim/vimswap')
+    call EnsureDirExists('c:/users/jon.hatfield/.vim/vimviews')
+    call EnsureDirExists('c:/users/jon.hatfield/.vim/vimundos')
 
     "" Creating directories if they don't exist
     "if s:running_windows
@@ -390,7 +390,7 @@ endif
 " MRU {{{
 
     if s:running_windows
-        "let MRU_File = '$HOME/.vim/_vim_mru_files'
+        "let MRU_File = 'c:/users/jon.hatfield/.vim/_vim_mru_files'
     else
         "let MRU_File = '~/.vim/vim_mru_files'
         "let MRU_File = '~/vim_mru_files'
@@ -481,7 +481,7 @@ let g:outlook_servername = 'GVIM'
 
 
 if s:running_windows
-    let g:yankring_history_dir = '$HOME/.vim'
+    let g:yankring_history_dir = 'c:/users/jon.hatfield/.vim'
 else
     let g:yankring_history_dir = '~/.vim/'
 endif
