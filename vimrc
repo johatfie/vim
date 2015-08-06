@@ -1,6 +1,6 @@
 
 " Author: Jon Hatfield
-" Last Modified: Wed Aug 05, 2015  11:38PM
+" Last Modified: Wed Aug 05, 2015  11:43PM
 
 
 " When started as "evim", evim.vim will already have done these settings.
