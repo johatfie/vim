@@ -1,6 +1,6 @@
 
 " Author: Jon Hatfield
-" Last Modified: Wed Aug 05, 2015  11:49PM
+" Last Modified: Thu Aug 06, 2015  12:06AM
 
 
 " When started as "evim", evim.vim will already have done these settings.
@@ -494,7 +494,7 @@ let g:outlook_servername = 'GVIM'
 
 
 if s:running_windows
-    let g:yankring_history_dir = 'c:/users/jon.hatfield/.vim'
+    let g:yankring_history_dir = expand("~/.vim")
 else
     let g:yankring_history_dir = '~/.vim/'
 endif
