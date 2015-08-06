@@ -1,6 +1,6 @@
 
 " Author: Jon Hatfield
-" Last Modified: Thu Aug 06, 2015  02:01PM
+" Last Modified: Thu Aug 06, 2015  02:16PM
 
 
 " When started as "evim", evim.vim will already have done these settings.
@@ -55,11 +55,11 @@ set splitright                  " Puts new vsplit windows to the right of the cu
 set splitbelow                  " Puts new split windows to the bottom of the current
 
 if v:version > 703 || v:version == 703 && has("patch541")
-  set formatoptions+=j
+    set formatoptions+=j
 endif
 
 "Use Ctrl-L to clear the highlighting of :set hlsearch.
-nnoremap <silent> <C-L> :nohlsearch<CR><C-L>
+"nnoremap <silent> <C-L> :nohlsearch<CR>
 
 
 " Auto center on matched string.
@@ -73,22 +73,41 @@ else
     behave xterm
 endif
 
-runtime bundle/pathogen/autoload/pathogen.vim
-"execute pathogen#infect()
-"Helptag " Help for plugins
-""silent! call pathogen#helptags()
-""silent! call pathogen#runtime_append_all_bundles()
 
-" Use pathogen to easily modify the runtime path to include all plugins under
-" the ~/.vim/bundle directory
-filetype off                    " force reloading *after* pathogen loaded
-call pathogen#infect()
-call pathogen#helptags()
+" pathogen {{{
+    " To disable a plugin, add it's bundle name to the following list
+    if !exists('pathogen_disabled')
+        let g:pathogen_disabled = []
+    endif
+
+    "" for some reason the csscolor plugin is very slow when run on the terminal
+    "" but not in GVim, so disable it if no GUI is running
+    "if !has('gui_running')
+        "call add(g:pathogen_disabled, 'csscolor')
+    "endif
+
+    " Gundo requires at least vim 7.3
+    if v:version < '703' || !has('python')
+        call add(g:pathogen_disabled, 'gundo')
+    endif
+
+    runtime bundle/pathogen/autoload/pathogen.vim
+    "execute pathogen#infect()
+    "Helptag " Help for plugins
+    ""silent! call pathogen#helptags()
+    ""silent! call pathogen#runtime_append_all_bundles()
+
+    " Use pathogen to easily modify the runtime path to include all plugins under
+    " the ~/.vim/bundle directory
+    filetype off                    " force reloading *after* pathogen loaded
+    call pathogen#infect()
+    call pathogen#helptags()
+" }}}
 
 
 " Setting up the directories {{{
-    set backup                          " backups are nice ...
     set viminfo+='1000,f1,<500,!        " Store upper-case registers in viminfo
+    set backup                          " backups are nice ...
 
 
     if s:running_windows
@@ -99,9 +118,9 @@ call pathogen#helptags()
         set viminfo+=n$USERPROFILE/.vim/_viminfo
     else
         set backupdir=~/.vim/vimbackup//         " but not when they clog.
-        set directory=~/.vim/vimswap//           " Same for swap files
+        set directory=~/.vim/vimswap//           " same for swap files
         set viewdir=~/.vim/vimviews//            " same for view files
-        set undodir=~/.vim/vimundo//             " Same for undo files
+        set undodir=~/.vim/vimundo//             " same for undo files
         set viminfo+=n~/.vim/viminfo
     endif
 
@@ -120,24 +139,10 @@ call pathogen#helptags()
         endif
     endfunction
 
-    call EnsureDirExists('$USERPROFILE/.vim/vimbackup')
-    call EnsureDirExists('$USERPROFILE/.vim/vimswap')
-    call EnsureDirExists('$USERPROFILE/.vim/vimviews')
-    call EnsureDirExists('$USERPROFILE/.vim/vimundos')
-
-    "" Creating directories if they don't exist
-    "if s:running_windows
-        "silent execute '!if not exist $HOME\.vim\vimbackup\ ( md %HOME%\.vim\vimbackup\ )'
-        "silent execute '!if not exist $HOME\.vim\vimswap\   ( md %HOME%\.vim\vimswap\ )'
-        "silent execute '!if not exist $HOME\.vim\vimviews\  ( md %HOME%\.vim\vimviews\ )'
-        "silent execute '!if not exist $HOME\.vim\vimundos\  ( md %HOME%\.vim\vimundos\ )'
-    "else
-        "silent execute '!mkdir -p ~/.vim/vimbackup'
-        "silent execute '!mkdir -p ~/.vim/vimswap'
-        "silent execute '!mkdir -p ~/.vim/vimviews'
-        "silent execute '!mkdir -p ~/.vim/vimundo'
-    "endif
-
+    call EnsureDirExists($USERPROFILE . '/.vim/vimbackup')
+    call EnsureDirExists($USERPROFILE . '/.vim/vimswap')
+    call EnsureDirExists($USERPROFILE . '/.vim/vimviews')
+    call EnsureDirExists($USERPROFILE . '/.vim/vimundos')
 " }}}
 
 " Vim UI {{{
@@ -266,6 +271,14 @@ inoremap () (  )<Left><Left>
 inoremap %% %  %<Left><Left><Left>
 inoremap `` `  `<Left><Left>
 
+cnoremap '' ''<Left>
+cnoremap "" ""<Left>
+cnoremap <> <><Left>
+cnoremap // //<Left>
+cnoremap {} {}<Left><Left>
+cnoremap [] []<Left><Left>
+cnoremap () ()<Left><Left>
+
 
 " Always open help in a new tab
 if has("gui_running")
@@ -350,7 +363,7 @@ if has("autocmd")
     autocmd BufWritePre * call LastModified()
 
     if s:running_windows
-        au FileType xhtml,xml,html,xaml,erb so "bundle/html_autoCloseTag/plugin/html_autoclosetag.vim"
+        au FileType xhtml,xml,html,xaml,erb so expand("%:p:h") . "/bundle/html_autoCloseTag/plugin/html_autoclosetag.vim"
     else
         au FileType xhtml,xml,html,xaml,erb so "~/.vim/bundle/html_autoCloseTag/plugin/html_autoclosetag.vim"
     endif
@@ -370,7 +383,7 @@ endif
 
 
 " Fugitive {{{
-    "if isdirectory(expand("~/.vim/bundle/vim-fugitive/"))
+    if isdirectory(expand("%:p:h") . '/bundle/fugitive.vim/')
         nnoremap <silent> <leader>gs :Gstatus<CR>
         nnoremap <silent> <leader>gd :Gdiff<CR>
         nnoremap <silent> <leader>gc :Gcommit<CR>
@@ -383,7 +396,7 @@ endif
         " Mnemonic _i_nteractive
         nnoremap <silent> <leader>gi :Git add -p %<CR>
         nnoremap <silent> <leader>gg :SignifyToggle<CR>
-    "endif
+    endif
 " }}}
 
 
@@ -481,7 +494,7 @@ let g:outlook_servername = 'GVIM'
 
 
 if s:running_windows
-    let g:yankring_history_dir = '$USERPROFILE/.vim'
+    let g:yankring_history_dir = expand($USERPROFILE . '/.vim')
 else
     let g:yankring_history_dir = '~/.vim/'
 endif
@@ -494,6 +507,8 @@ nnoremap <F11> :NERDTreeToggle<CR>
 
 let g:indent_guides_enable_on_vim_startup = 1
 let g:MRU_num = 12
+"let g:MRU = expand("~/.vim/_vimrecent")
+
 
 " Use local vimrc if available {{{
     if filereadable(expand("~/.vim/vimrc.local"))
@@ -509,4 +524,9 @@ let g:MRU_num = 12
     endif
 " }}}
 
+let hostfile = expand("~/.vim/vimrc-" . hostname())
+
+if filereadable(hostfile)
+    exe 'source ' . hostfile
+endif
 
