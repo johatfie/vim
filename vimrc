@@ -1,10 +1,6 @@
 
 " Author: Jon Hatfield
-<<<<<<< HEAD
-" Last Modified: Thu Aug 06, 2015  02:16PM
-=======
-" Last Modified: Thu Aug 06, 2015  12:06AM
->>>>>>> 8c125d6ea4beb83bcc924ed416e7daef8a9cd980
+" Last Modified: Thu Aug 06, 2015  02:34PM
 
 
 " When started as "evim", evim.vim will already have done these settings.
@@ -115,19 +111,11 @@ endif
 
 
     if s:running_windows
-<<<<<<< HEAD
         set backupdir=$USERPROFILE/.vim/vimbackup//     " but not when they clog.
         set directory=$USERPROFILE/.vim/vimswap//       " Same for swap files
         set viewdir=$USERPROFILE/.vim/vimviews//        " same for view files
         set undodir=$USERPROFILE/.vim/vimundos//        " Same for undo files
         set viminfo+=n$USERPROFILE/.vim/_viminfo
-=======
-        set backupdir=$HOME/.vim/vimbackup//     " but not when they clog.
-        set directory=$HOME/.vim/vimswap//       " same for swap files
-        set viewdir=$HOME/.vim/vimviews//        " same for view files
-        set undodir=$HOME/.vim/vimundos//        " same for undo files
-        set viminfo+=n$HOME/.vim/_viminfo
->>>>>>> 8c125d6ea4beb83bcc924ed416e7daef8a9cd980
     else
         set backupdir=~/.vim/vimbackup//         " but not when they clog.
         set directory=~/.vim/vimswap//           " same for swap files
@@ -151,17 +139,10 @@ endif
         endif
     endfunction
 
-<<<<<<< HEAD
     call EnsureDirExists($USERPROFILE . '/.vim/vimbackup')
     call EnsureDirExists($USERPROFILE . '/.vim/vimswap')
     call EnsureDirExists($USERPROFILE . '/.vim/vimviews')
     call EnsureDirExists($USERPROFILE . '/.vim/vimundos')
-=======
-    call EnsureDirExists($HOME . '/.vim/vimbackup')
-    call EnsureDirExists($HOME . '/.vim/vimswap')
-    call EnsureDirExists($HOME . '/.vim/vimviews')
-    call EnsureDirExists($HOME . '/.vim/vimundos')
->>>>>>> 8c125d6ea4beb83bcc924ed416e7daef8a9cd980
 " }}}
 
 " Vim UI {{{
@@ -422,11 +403,7 @@ endif
 " MRU {{{
 
     if s:running_windows
-<<<<<<< HEAD
-        "let MRU_File = '$USERPROFILE/.vim/_vim_mru_files'
-=======
-        let MRU_File = expand("~/.vim/_vim_mru_files")
->>>>>>> 8c125d6ea4beb83bcc924ed416e7daef8a9cd980
+        let MRU_File = expand("$USERPROFILE/.vim/_vim_mru_files")
     else
         "let MRU_File = '~/.vim/vim_mru_files'
         "let MRU_File = '~/vim_mru_files'
@@ -517,11 +494,7 @@ let g:outlook_servername = 'GVIM'
 
 
 if s:running_windows
-<<<<<<< HEAD
     let g:yankring_history_dir = expand($USERPROFILE . '/.vim')
-=======
-    let g:yankring_history_dir = expand("~/.vim")
->>>>>>> 8c125d6ea4beb83bcc924ed416e7daef8a9cd980
 else
     let g:yankring_history_dir = '~/.vim/'
 endif
