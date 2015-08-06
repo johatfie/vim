@@ -1,6 +1,6 @@
 
 " Author: Jon Hatfield
-" Last Modified: Wed Aug 05, 2015  11:43PM
+" Last Modified: Wed Aug 05, 2015  11:47PM
 
 
 " When started as "evim", evim.vim will already have done these settings.
@@ -111,11 +111,11 @@ endif
 
 
     if s:running_windows
-        set backupdir=$HOME/.vim/vimbackup//     " but not when they clog.
-        set directory=$HOME/.vim/vimswap//       " same for swap files
-        set viewdir=$HOME/.vim/vimviews//        " same for view files
-        set undodir=$HOME/.vim/vimundos//        " same for undo files
-        set viminfo+=n$HOME/.vim/_viminfo
+        set backupdir=c:/users/jon.hatfield/.vim/vimbackup//     " but not when they clog.
+        set directory=c:/users/jon.hatfield/.vim/vimswap//       " Same for swap files
+        set viewdir=c:/users/jon.hatfield/.vim/vimviews//        " same for view files
+        set undodir=c:/users/jon.hatfield/.vim/vimundos//        " Same for undo files
+        set viminfo+=nc:/users/jon.hatfield/.vim/_viminfo
     else
         set backupdir=~/.vim/vimbackup//         " but not when they clog.
         set directory=~/.vim/vimswap//           " same for swap files
@@ -139,10 +139,24 @@ endif
         endif
     endfunction
 
-    call EnsureDirExists($HOME . '/.vim/vimbackup')
-    call EnsureDirExists($HOME . '/.vim/vimswap')
-    call EnsureDirExists($HOME . '/.vim/vimviews')
-    call EnsureDirExists($HOME . '/.vim/vimundos')
+    call EnsureDirExists('c:/users/jon.hatfield/.vim/vimbackup')
+    call EnsureDirExists('c:/users/jon.hatfield/.vim/vimswap')
+    call EnsureDirExists('c:/users/jon.hatfield/.vim/vimviews')
+    call EnsureDirExists('c:/users/jon.hatfield/.vim/vimundos')
+
+    "" Creating directories if they don't exist
+    "if s:running_windows
+        "silent execute '!if not exist $HOME\.vim\vimbackup\ ( md %HOME%\.vim\vimbackup\ )'
+        "silent execute '!if not exist $HOME\.vim\vimswap\   ( md %HOME%\.vim\vimswap\ )'
+        "silent execute '!if not exist $HOME\.vim\vimviews\  ( md %HOME%\.vim\vimviews\ )'
+        "silent execute '!if not exist $HOME\.vim\vimundos\  ( md %HOME%\.vim\vimundos\ )'
+    "else
+        "silent execute '!mkdir -p ~/.vim/vimbackup'
+        "silent execute '!mkdir -p ~/.vim/vimswap'
+        "silent execute '!mkdir -p ~/.vim/vimviews'
+        "silent execute '!mkdir -p ~/.vim/vimundo'
+    "endif
+
 " }}}
 
 " Vim UI {{{
@@ -403,7 +417,7 @@ endif
 " MRU {{{
 
     if s:running_windows
-        let MRU_File = expand("~/.vim/_vim_mru_files")
+        "let MRU_File = 'c:/users/jon.hatfield/.vim/_vim_mru_files'
     else
         "let MRU_File = '~/.vim/vim_mru_files'
         "let MRU_File = '~/vim_mru_files'
