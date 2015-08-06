@@ -164,3 +164,7 @@
 [submodule "bundle/vim-ir_black"]
 	path = bundle/vim-ir_black
 	url = https://github.com/wesgibbs/vim-irblack
+[submodule "bundle/vim-gutentags"]
+	path = bundle/vim-gutentags
+	url = https://github.com/ludovicchabant/vim-gutentags
+    ignore = dirty
