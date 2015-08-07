@@ -1,6 +1,6 @@
 
 " Author: Jon Hatfield
-" Last Modified: Fri Aug 07, 2015  12:33PM
+" Last Modified: Fri Aug 07, 2015  12:42PM
 
 
 " When started as "evim", evim.vim will already have done these settings.
@@ -448,7 +448,7 @@ endif
     let g:SrcExpl_refreshTime = 4000
 
     " // Set "Enter" key to jump into the exact definition context
-    " let g:SrcExpl_jumpKey = "<ENTER>"
+    let g:SrcExpl_jumpKey = "<ENTER>"
 
     " // Set "Space" key for back from the definition context
     let g:SrcExpl_gobackKey = "<SPACE>"
