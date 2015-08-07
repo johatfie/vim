@@ -1,6 +1,6 @@
 
 " Author: Jon Hatfield
-" Last Modified: Fri Aug 07, 2015  12:49AM
+" Last Modified: Fri Aug 07, 2015  12:33PM
 
 
 " When started as "evim", evim.vim will already have done these settings.
@@ -48,11 +48,24 @@ set wrap                        " Wrap lines
 set hidden
 set laststatus=2
 set completeopt=longest,menuone,preview
-set wildmode=longest,list
 set virtualedit=block           " block mode, yey (onemore is evil)
 set mousehide                   " Hide the mouse cursor while typing
 set splitright                  " Puts new vsplit windows to the right of the current
 set splitbelow                  " Puts new split windows to the bottom of the current
+
+
+" Wildmenu {{{
+    if has("wildmenu")
+        set wildignore+=*.a,*.o
+        set wildignore+=*.bmp,*.gif,*.ico,*.jpg,*.png
+        set wildignore+=.DS_Store,.git,.hg,.svn
+        set wildignore+=*~,*.swp,*.tmp
+        set wildmenu
+        "set wildmode=longest,list:longest
+        set wildmode=longest:list,full
+    endif
+" }}}
+
 
 if v:version > 703 || v:version == 703 && has("patch541")
     set formatoptions+=j
@@ -81,6 +94,7 @@ endif
     endif
 
     call add(g:pathogen_disabled, 'vim-easytags')
+    call add(g:pathogen_disabled, 'vim-bufkill')
 
     "" for some reason the csscolor plugin is very slow when run on the terminal
     "" but not in GVim, so disable it if no GUI is running
@@ -405,7 +419,7 @@ endif
 " MRU {{{
 
     if s:running_windows
-        let MRU_File = expand("$USERPROFILE/.vim/_vim_mru_files")
+        let MRU_File = expand($USERPROFILE . "/.vim/_vim_mru_files")
     else
         "let MRU_File = '~/.vim/vim_mru_files'
         "let MRU_File = '~/vim_mru_files'
@@ -469,7 +483,6 @@ endif
 
 
 
-
 " Arrow keys are NOT for moving around
 nnoremap <down> <C-f>
 nnoremap <up> <C-b>
@@ -513,21 +526,30 @@ let g:MRU_num = 12
 "let g:MRU = expand("~/.vim/_vimrecent")
 
 
+if s:running_windows
+    let local_vimrc  = expand($USERPROFILE . "/.vim/vimrc.local")
+    let local_gvimrc = expand($USERPROFILE . "/.vim/gvimrc.local")
+    let hostfile     = expand($USERPROFILE . "/.vim/vimrc-" . hostname())
+else
+    let local_vimrc  = expand("~/.vim/vimrc.local")
+    let local_gvimrc = expand("~/.vim/gvimrc.local")
+    let hostfile     = expand("~/.vim/vimrc-" . hostname())
+endif
+
+
 " Use local vimrc if available {{{
-    if filereadable(expand("~/.vim/vimrc.local"))
-        source ~/.vimrc.local
+    if filereadable(local_vimrc)
+        source local_vimrc
     endif
 " }}}
 
 " Use local gvimrc if available and gui is running {{{
     if has('gui_running')
-        if filereadable(expand("~/.vim/gvimrc.local"))
-            source ~/.gvimrc.local
+        if filereadable(local_gvimrc)
+            source local_gvimrc
         endif
     endif
 " }}}
-
-let hostfile = expand("~/.vim/vimrc-" . hostname())
 
 if filereadable(hostfile)
     exe 'source ' . hostfile
