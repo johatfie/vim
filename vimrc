@@ -1,6 +1,6 @@
 
 " Author: Jon Hatfield
-" Last Modified: Thu Aug 06, 2015  02:34PM
+" Last Modified: Fri Aug 07, 2015  12:49AM
 
 
 " When started as "evim", evim.vim will already have done these settings.
@@ -59,7 +59,7 @@ if v:version > 703 || v:version == 703 && has("patch541")
 endif
 
 "Use Ctrl-L to clear the highlighting of :set hlsearch.
-"nnoremap <silent> <C-L> :nohlsearch<CR>
+nnoremap <silent> <C-L> :nohlsearch<CR>
 
 
 " Auto center on matched string.
@@ -79,6 +79,8 @@ endif
     if !exists('pathogen_disabled')
         let g:pathogen_disabled = []
     endif
+
+    call add(g:pathogen_disabled, 'vim-easytags')
 
     "" for some reason the csscolor plugin is very slow when run on the terminal
     "" but not in GVim, so disable it if no GUI is running
@@ -505,6 +507,7 @@ nnoremap <F8>  :TagbarToggle<CR>
 nnoremap <F11> :NERDTreeToggle<CR>
 
 
+let g:gutentags_define_advanced_commands = 1
 let g:indent_guides_enable_on_vim_startup = 1
 let g:MRU_num = 12
 "let g:MRU = expand("~/.vim/_vimrecent")
