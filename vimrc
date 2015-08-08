@@ -1,6 +1,6 @@
 
 " Author: Jon Hatfield
-" Last Modified: Fri Aug 07, 2015  12:42PM
+" Last Modified: Fri Aug 07, 2015  01:28PM
 
 
 " When started as "evim", evim.vim will already have done these settings.
@@ -95,6 +95,10 @@ endif
 
     call add(g:pathogen_disabled, 'vim-easytags')
     call add(g:pathogen_disabled, 'vim-bufkill')
+    call add(g:pathogen_disabled, 'vim-gutentags')
+    call add(g:pathogen_disabled, 'splitjoin.vim')
+    "call add(g:pathogen_disabled, '')
+    "call add(g:pathogen_disabled, '')
 
     "" for some reason the csscolor plugin is very slow when run on the terminal
     "" but not in GVim, so disable it if no GUI is running
@@ -170,9 +174,10 @@ endif
     hi CursorColumn guibg=#333333   " highlight cursor
 
 
+    " http://vim.wikia.com/wiki/Make_Vim_completion_popup_menu_work_just_like_in_an_IDE
     " The below mapping will change the behavior of the <Enter> key when the popup menu is visible.
     " In that case the Enter key will simply select the highlighted menu item, just as <C-Y> does.
-    inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+    inoremap <expr> <C-CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
     " These two mappings further improve the completion popup menu:
     " In the below mappings, the first will make <C-N> work the way it normally does;
@@ -209,7 +214,8 @@ endif
 match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 
 " shortcut to jump to next conflict marker
-nnoremap <silent> <leader>c /^\(<\\|=\\|>\)\{7\}\([^=].\+\)\?$<CR>
+"nnoremap <silent> <leader>c /^\(<\\|=\\|>\)\{7\}\([^=].\+\)\?$<CR>
+nnoremap  <leader>c /^\(<\\|=\\|>\)\{7\}\([^=].\+\)\?$<CR>
 " }}}
 
 
