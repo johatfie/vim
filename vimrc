@@ -1,6 +1,6 @@
 
 " Author: Jon Hatfield
-" Last Modified: Fri Aug 07, 2015  01:28PM
+" Last Modified: Mon Aug 10, 2015  12:28PM
 
 
 " When started as "evim", evim.vim will already have done these settings.
@@ -94,9 +94,9 @@ endif
     endif
 
     call add(g:pathogen_disabled, 'vim-easytags')
-    call add(g:pathogen_disabled, 'vim-bufkill')
-    call add(g:pathogen_disabled, 'vim-gutentags')
-    call add(g:pathogen_disabled, 'splitjoin.vim')
+    "call add(g:pathogen_disabled, 'vim-bufkill')
+    "call add(g:pathogen_disabled, 'vim-gutentags')
+    "call add(g:pathogen_disabled, 'splitjoin.vim')
     "call add(g:pathogen_disabled, '')
     "call add(g:pathogen_disabled, '')
 
@@ -527,6 +527,7 @@ nnoremap <F11> :NERDTreeToggle<CR>
 
 
 let g:gutentags_define_advanced_commands = 1
+let g:gutentags_trace = 1
 let g:indent_guides_enable_on_vim_startup = 1
 let g:MRU_num = 12
 "let g:MRU = expand("~/.vim/_vimrecent")
