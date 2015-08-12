@@ -1,6 +1,6 @@
 
 " Author: Jon Hatfield
-" Last Modified: Mon Aug 10, 2015  12:28PM
+" Last Modified: Tue Aug 11, 2015  10:51PM
 
 
 " When started as "evim", evim.vim will already have done these settings.
@@ -14,8 +14,8 @@ set nocompatible
 
 
 " DRY helpers {{{
-let s:running_windows=has("win16") || has("win32") || has("win64")
-let s:colorful_term=(&term  =~ "xterm") || (&term  =~ "screen")
+let s:running_windows = has("win16") || has("win32") || has("win64")
+let s:colorful_term   = (&term =~ "xterm") || (&term =~ "screen")
 " }}}
 
 
@@ -95,8 +95,6 @@ endif
 
     call add(g:pathogen_disabled, 'vim-easytags')
     "call add(g:pathogen_disabled, 'vim-bufkill')
-    "call add(g:pathogen_disabled, 'vim-gutentags')
-    "call add(g:pathogen_disabled, 'splitjoin.vim')
     "call add(g:pathogen_disabled, '')
     "call add(g:pathogen_disabled, '')
 
@@ -126,7 +124,8 @@ endif
 
 
 " Setting up the directories {{{
-    set viminfo+='1000,f1,<500,!        " Store upper-case registers in viminfo
+    "set viminfo='1000,f1,<500,!        " Store upper-case registers in viminfo
+    set viminfo='1000,f1,<500
     set backup                          " backups are nice ...
 
 
