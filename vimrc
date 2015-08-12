@@ -1,6 +1,6 @@
 
 " Author: Jon Hatfield
-" Last Modified: Fri Aug 07, 2015  12:33PM
+" Last Modified: Tue Aug 11, 2015  10:51PM
 
 
 " When started as "evim", evim.vim will already have done these settings.
@@ -14,8 +14,8 @@ set nocompatible
 
 
 " DRY helpers {{{
-let s:running_windows=has("win16") || has("win32") || has("win64")
-let s:colorful_term=(&term  =~ "xterm") || (&term  =~ "screen")
+let s:running_windows = has("win16") || has("win32") || has("win64")
+let s:colorful_term   = (&term =~ "xterm") || (&term =~ "screen")
 " }}}
 
 
@@ -94,7 +94,7 @@ endif
     endif
 
     call add(g:pathogen_disabled, 'vim-easytags')
-    call add(g:pathogen_disabled, 'vim-bufkill')
+    "call add(g:pathogen_disabled, 'vim-bufkill')
 
     "" for some reason the csscolor plugin is very slow when run on the terminal
     "" but not in GVim, so disable it if no GUI is running
@@ -122,7 +122,8 @@ endif
 
 
 " Setting up the directories {{{
-    set viminfo+='1000,f1,<500,!        " Store upper-case registers in viminfo
+    "set viminfo='1000,f1,<500,!        " Store upper-case registers in viminfo
+    set viminfo='1000,f1,<500
     set backup                          " backups are nice ...
 
 
@@ -172,7 +173,7 @@ endif
 
     " The below mapping will change the behavior of the <Enter> key when the popup menu is visible.
     " In that case the Enter key will simply select the highlighted menu item, just as <C-Y> does.
-    inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+    inoremap <expr> <C-CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
     " These two mappings further improve the completion popup menu:
     " In the below mappings, the first will make <C-N> work the way it normally does;
@@ -525,6 +526,7 @@ let g:indent_guides_enable_on_vim_startup = 1
 let g:MRU_num = 12
 "let g:MRU = expand("~/.vim/_vimrecent")
 
+GutentagsToggleTrace
 
 if s:running_windows
     let local_vimrc  = expand($USERPROFILE . "/.vim/vimrc.local")
