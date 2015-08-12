@@ -7,3 +7,4 @@ vimundo/*
 vimviews/*
 vim_mru_files
 tags
+tags.log
