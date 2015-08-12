@@ -95,6 +95,8 @@ endif
 
     call add(g:pathogen_disabled, 'vim-easytags')
     "call add(g:pathogen_disabled, 'vim-bufkill')
+    "call add(g:pathogen_disabled, '')
+    "call add(g:pathogen_disabled, '')
 
     "" for some reason the csscolor plugin is very slow when run on the terminal
     "" but not in GVim, so disable it if no GUI is running
@@ -171,6 +173,7 @@ endif
     hi CursorColumn guibg=#333333   " highlight cursor
 
 
+    " http://vim.wikia.com/wiki/Make_Vim_completion_popup_menu_work_just_like_in_an_IDE
     " The below mapping will change the behavior of the <Enter> key when the popup menu is visible.
     " In that case the Enter key will simply select the highlighted menu item, just as <C-Y> does.
     inoremap <expr> <C-CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
@@ -210,7 +213,8 @@ endif
 match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 
 " shortcut to jump to next conflict marker
-nnoremap <silent> <leader>c /^\(<\\|=\\|>\)\{7\}\([^=].\+\)\?$<CR>
+"nnoremap <silent> <leader>c /^\(<\\|=\\|>\)\{7\}\([^=].\+\)\?$<CR>
+nnoremap  <leader>c /^\(<\\|=\\|>\)\{7\}\([^=].\+\)\?$<CR>
 " }}}
 
 
@@ -449,7 +453,7 @@ endif
     let g:SrcExpl_refreshTime = 4000
 
     " // Set "Enter" key to jump into the exact definition context
-    " let g:SrcExpl_jumpKey = "<ENTER>"
+    let g:SrcExpl_jumpKey = "<ENTER>"
 
     " // Set "Space" key for back from the definition context
     let g:SrcExpl_gobackKey = "<SPACE>"
