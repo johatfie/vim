@@ -1,6 +1,6 @@
 
 " Author: Jon Hatfield
-" Last Modified: Tue Aug 11, 2015  10:51PM
+" Last Modified: Wed Aug 12, 2015  07:06PM
 
 
 " When started as "evim", evim.vim will already have done these settings.
@@ -526,11 +526,11 @@ nnoremap <F11> :NERDTreeToggle<CR>
 
 
 let g:gutentags_define_advanced_commands = 1
+let g:gutentags_trace = 1
 let g:indent_guides_enable_on_vim_startup = 1
 let g:MRU_num = 12
 "let g:MRU = expand("~/.vim/_vimrecent")
 
-GutentagsToggleTrace
 
 if s:running_windows
     let local_vimrc  = expand($USERPROFILE . "/.vim/vimrc.local")
