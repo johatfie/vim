@@ -1,6 +1,6 @@
 
 " Author: Jon Hatfield
-" Last Modified: Fri Aug 07, 2015  12:33PM
+" Last Modified: Fri Aug 07, 2015  11:11PM
 
 
 " When started as "evim", evim.vim will already have done these settings.
@@ -172,7 +172,7 @@ endif
 
     " The below mapping will change the behavior of the <Enter> key when the popup menu is visible.
     " In that case the Enter key will simply select the highlighted menu item, just as <C-Y> does.
-    inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+    inoremap <expr> <C-CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
     " These two mappings further improve the completion popup menu:
     " In the below mappings, the first will make <C-N> work the way it normally does;
