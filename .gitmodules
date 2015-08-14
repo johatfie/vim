@@ -171,3 +171,6 @@
 [submodule "bundle/darkerdesert"]
 	path = bundle/darkerdesert
 	url = https://github.com/vim-scripts/darkerdesert
+[submodule "bundle/VimBookmarking"]
+	path = bundle/VimBookmarking
+	url = https://github.com/dterei/VimBookmarking
