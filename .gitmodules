@@ -174,3 +174,4 @@
 [submodule "bundle/VimBookmarking"]
 	path = bundle/VimBookmarking
 	url = https://github.com/dterei/VimBookmarking
+    ignore = dirty
