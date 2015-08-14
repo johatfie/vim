@@ -168,3 +168,6 @@
 	path = bundle/vim-gutentags
 	url = https://github.com/johatfie/vim-gutentags
     ignore = dirty
+[submodule "bundle/darkerdesert"]
+	path = bundle/darkerdesert
+	url = https://github.com/vim-scripts/darkerdesert
