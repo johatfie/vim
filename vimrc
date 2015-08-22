@@ -1,6 +1,6 @@
 
 " Author: Jon Hatfield
-" Last Modified: Wed Aug 12, 2015  07:06PM
+" Last Modified: Sat Aug 15, 2015  06:56PM
 
 
 " When started as "evim", evim.vim will already have done these settings.
@@ -158,10 +158,15 @@ endif
         endif
     endfunction
 
-    call EnsureDirExists($USERPROFILE . '/.vim/vimbackup')
-    call EnsureDirExists($USERPROFILE . '/.vim/vimswap')
-    call EnsureDirExists($USERPROFILE . '/.vim/vimviews')
-    call EnsureDirExists($USERPROFILE . '/.vim/vimundos')
+    "call EnsureDirExists($USERPROFILE . '/.vim/vimbackup')
+    "call EnsureDirExists($USERPROFILE . '/.vim/vimswap')
+    "call EnsureDirExists($USERPROFILE . '/.vim/vimviews')
+    "call EnsureDirExists($USERPROFILE . '/.vim/vimundos')
+
+    call EnsureDirExists( &backupdir )   "      $USERPROFILE . '/.vim/vimbackup')
+    call EnsureDirExists( &directory )   "      $USERPROFILE . '/.vim/vimswap')
+    call EnsureDirExists( &viewdir   )   "      $USERPROFILE . '/.vim/vimviews')
+    call EnsureDirExists( &undodir   )   "      $USERPROFILE . '/.vim/vimundos')
 " }}}
 
 " Vim UI {{{
