@@ -1,6 +1,6 @@
 
 " Author: Jon Hatfield
-" Last Modified: Sat Aug 15, 2015  06:56PM
+" Last Modified: Fri Aug 21, 2015  08:45PM
 
 
 " When started as "evim", evim.vim will already have done these settings.
@@ -389,14 +389,15 @@ if has("autocmd")
     autocmd BufWritePre * call LastModified()
 
     if s:running_windows
-        au FileType xhtml,xml,html,xaml,erb so expand("%:p:h") . "/bundle/html_autoCloseTag/plugin/html_autoclosetag.vim"
+        au FileType xhtml,xml,html,xaml,erb exec "source " . expand("%:p:h") . "/bundle/html_autoCloseTag/plugin/html_autoclosetag.vim"
     else
-        au FileType xhtml,xml,html,xaml,erb so "~/.vim/bundle/html_autoCloseTag/plugin/html_autoclosetag.vim"
+        au FileType xhtml,xml,html,xaml,erb source "~/.vim/bundle/html_autoCloseTag/plugin/html_autoclosetag.vim"
     endif
 
-    au BufWinLeave * silent! mkview               " make vim save view (state) (folds, cursor, etc)
-    au BufWinEnter * silent! loadview             " make vim load view (state) (folds, cursor, etc)
+    au BufWinLeave * silent! mkview             " make vim save view (state) (folds, cursor, etc)
+    au BufWinEnter * silent! loadview           " make vim load view (state) (folds, cursor, etc)
 
+    autocmd BufEnter * silent! lcd %:p:h        " change local current directory to the directory of the current file
 endif " has("autocmd")
 
 " Convenient command to see the difference between the current buffer and the
@@ -531,7 +532,7 @@ nnoremap <F11> :NERDTreeToggle<CR>
 
 
 let g:gutentags_define_advanced_commands = 1
-let g:gutentags_trace = 1
+"let g:gutentags_trace = 1
 let g:indent_guides_enable_on_vim_startup = 1
 let g:MRU_num = 12
 "let g:MRU = expand("~/.vim/_vimrecent")
