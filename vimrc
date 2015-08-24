@@ -208,10 +208,15 @@ endif
         endif
     endfunction
 
-    call EnsureDirExists($USERPROFILE . '/.vim/vimbackup')
-    call EnsureDirExists($USERPROFILE . '/.vim/vimswap')
-    call EnsureDirExists($USERPROFILE . '/.vim/vimviews')
-    call EnsureDirExists($USERPROFILE . '/.vim/vimundos')
+    "call EnsureDirExists($USERPROFILE . '/.vim/vimbackup')
+    "call EnsureDirExists($USERPROFILE . '/.vim/vimswap')
+    "call EnsureDirExists($USERPROFILE . '/.vim/vimviews')
+    "call EnsureDirExists($USERPROFILE . '/.vim/vimundos')
+
+    call EnsureDirExists( &backupdir )   "      $USERPROFILE . '/.vim/vimbackup')
+    call EnsureDirExists( &directory )   "      $USERPROFILE . '/.vim/vimswap')
+    call EnsureDirExists( &viewdir   )   "      $USERPROFILE . '/.vim/vimviews')
+    call EnsureDirExists( &undodir   )   "      $USERPROFILE . '/.vim/vimundos')
 " }}}
 
 " Vim UI {{{
@@ -434,14 +439,15 @@ if has("autocmd")
     autocmd BufWritePre * call LastModified()
 
     if s:running_windows
-        au FileType xhtml,xml,html,xaml,erb so expand("%:p:h") . "/bundle/html_autoCloseTag/plugin/html_autoclosetag.vim"
+        au FileType xhtml,xml,html,xaml,erb exec "source " . expand("%:p:h") . "/bundle/html_autoCloseTag/plugin/html_autoclosetag.vim"
     else
-        au FileType xhtml,xml,html,xaml,erb so "~/.vim/bundle/html_autoCloseTag/plugin/html_autoclosetag.vim"
+        au FileType xhtml,xml,html,xaml,erb source "~/.vim/bundle/html_autoCloseTag/plugin/html_autoclosetag.vim"
     endif
 
-    au BufWinLeave * silent! mkview               " make vim save view (state) (folds, cursor, etc)
-    au BufWinEnter * silent! loadview             " make vim load view (state) (folds, cursor, etc)
+    au BufWinLeave * silent! mkview             " make vim save view (state) (folds, cursor, etc)
+    au BufWinEnter * silent! loadview           " make vim load view (state) (folds, cursor, etc)
 
+    autocmd BufEnter * silent! lcd %:p:h        " change local current directory to the directory of the current file
 endif " has("autocmd")
 
 " Convenient command to see the difference between the current buffer and the
