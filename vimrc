@@ -1,6 +1,6 @@
 
 " Author: Jon Hatfield
-" Last Modified: Sun Aug 23, 2015  04:51PM
+" Last Modified: Mon Aug 24, 2015  04:56PM
 
 
 " When started as "evim", evim.vim will already have done these settings.
@@ -459,6 +459,35 @@ if !exists(":DiffOrig")
                 \ | wincmd p | diffthis
 endif
 
+" Cscope {{{
+if has('cscope')
+    set cscopetag cscopeverbose
+
+    if has('quickfix')
+        set cscopequickfix=s-,c-,d-,i-,t-,e-
+    endif
+
+    "cnoreabbrev csa cs add
+    "cnoreabbrev csf cs find
+    "cnoreabbrev csk cs kill
+    "cnoreabbrev csr cs reset
+    "cnoreabbrev css cs show
+    "cnoreabbrev csh cs help
+
+    cnoreabbrev <expr> csa
+                \ ((getcmdtype() == ':' && getcmdpos() <= 4)? 'cs add'  : 'csa')
+    cnoreabbrev <expr> csf
+                \ ((getcmdtype() == ':' && getcmdpos() <= 4)? 'cs find' : 'csf')
+    cnoreabbrev <expr> csk
+                \ ((getcmdtype() == ':' && getcmdpos() <= 4)? 'cs kill' : 'csk')
+    cnoreabbrev <expr> csr
+                \ ((getcmdtype() == ':' && getcmdpos() <= 4)? 'cs reset' : 'csr')
+    cnoreabbrev <expr> css
+                \ ((getcmdtype() == ':' && getcmdpos() <= 4)? 'cs show' : 'css')
+    cnoreabbrev <expr> csh
+                \ ((getcmdtype() == ':' && getcmdpos() <= 4)? 'cs help' : 'csh')
+endif
+"}}}
 
 " Fugitive {{{
     if isdirectory(expand("%:p:h") . '/bundle/fugitive.vim/')
@@ -585,6 +614,7 @@ nnoremap <F11> :NERDTreeToggle<CR>
 let g:gutentags_define_advanced_commands = 1
 "let g:gutentags_trace = 1
 let g:indent_guides_enable_on_vim_startup = 1
+"let g:gutentags_modules = ['ctags', 'cscope']
 let g:MRU_num = 12
 "let g:MRU = expand("~/.vim/_vimrecent")
 
