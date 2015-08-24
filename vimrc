@@ -1,6 +1,6 @@
 
 " Author: Jon Hatfield
-" Last Modified: Fri Aug 21, 2015  10:27AM
+" Last Modified: Fri Aug 21, 2015  03:55PM
 
 
 " When started as "evim", evim.vim will already have done these settings.
@@ -60,6 +60,7 @@ set splitbelow                  " Puts new split windows to the bottom of the cu
         set wildignore+=*.bmp,*.gif,*.ico,*.jpg,*.png
         set wildignore+=.DS_Store,.git,.hg,.svn
         set wildignore+=*~,*.swp,*.tmp
+        set wildignore+=cscope.out,tags
         set wildmenu
         "set wildmode=longest,list:longest
         set wildmode=longest:list,full
