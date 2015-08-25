@@ -1,6 +1,6 @@
 
 " Author: Jon Hatfield
-" Last Modified: Mon Aug 24, 2015  04:56PM
+" Last Modified: Tue Aug 25, 2015  10:18AM
 
 
 " When started as "evim", evim.vim will already have done these settings.
@@ -461,7 +461,7 @@ endif
 
 " Cscope {{{
 if has('cscope')
-    set cscopetag cscopeverbose
+    "set cscopetag cscopeverbose
 
     if has('quickfix')
         set cscopequickfix=s-,c-,d-,i-,t-,e-
