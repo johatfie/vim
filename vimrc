@@ -1,6 +1,6 @@
 
 " Author: Jon Hatfield
-" Last Modified: Thu Aug 27, 2015  06:49PM
+" Last Modified: Thu Aug 27, 2015  06:51PM
 
 
 " When started as "evim", evim.vim will already have done these settings.
@@ -60,6 +60,7 @@ set splitbelow                  " Puts new split windows to the bottom of the cu
         set wildignore+=*.bmp,*.gif,*.ico,*.jpg,*.png
         set wildignore+=.DS_Store,.git,.hg,.svn
         set wildignore+=*~,*.swp,*.tmp
+        set wildignore+=cscope.out,tags
         set wildmenu
         "set wildmode=longest,list:longest
         set wildmode=longest:list,full
@@ -97,6 +98,56 @@ endif
     "call add(g:pathogen_disabled, 'vim-bufkill')
     "call add(g:pathogen_disabled, '')
     "call add(g:pathogen_disabled, '')
+    "call add(g:pathogen_disabled, 'a.vim')
+    "call add(g:pathogen_disabled, 'abolish.vim')
+    "call add(g:pathogen_disabled, 'ack.vim')
+    "call add(g:pathogen_disabled, 'bash-suppport.vim')
+    "call add(g:pathogen_disabled, 'bufexplorer')
+    "call add(g:pathogen_disabled, 'CamelCaseMotion')
+    "call add(g:pathogen_disabled, 'checksyntax_vim')
+    "call add(g:pathogen_disabled, 'colour-sampler-pack')
+    "call add(g:pathogen_disabled, 'endwise.vim')
+    "call add(g:pathogen_disabled, 'eunuch.vim')
+    "call add(g:pathogen_disabled, 'fugitive.vim')
+    "call add(g:pathogen_disabled, 'gem-shut-the-fudge-up')
+    "call add(g:pathogen_disabled, 'gitgutter.vim')
+    "call add(g:pathogen_disabled, 'gundo')
+    "call add(g:pathogen_disabled, 'HTML-AutoCloseTag')
+    "call add(g:pathogen_disabled, 'matchit')
+    "call add(g:pathogen_disabled, 'mru')
+    "call add(g:pathogen_disabled, 'MRU.vim')
+    "call add(g:pathogen_disabled, 'nerdcommenter')
+    "call add(g:pathogen_disabled, 'nerdtree')
+    "call add(g:pathogen_disabled, 'obsession.vim')
+    "call add(g:pathogen_disabled, 'rails.vim')
+    "call add(g:pathogen_disabled, 'rake.vim')
+    "call add(g:pathogen_disabled, 'recover.vim')
+    "call add(g:pathogen_disabled, 'refactor-rails')
+    "call add(g:pathogen_disabled, 'repeat.vim')
+    "call add(g:pathogen_disabled, 'scratch.vim')
+    "call add(g:pathogen_disabled, 'scrollcolors')
+    "call add(g:pathogen_disabled, 'splitjoin.vim')
+    "call add(g:pathogen_disabled, 'SrcExpl')
+    "call add(g:pathogen_disabled, 'surround.vim')
+    "call add(g:pathogen_disabled, 'switch.vim')
+    "call add(g:pathogen_disabled, 'syntastic')
+    "call add(g:pathogen_disabled, 'tab-menu')
+    "call add(g:pathogen_disabled, 'tab-name')
+    "call add(g:pathogen_disabled, 'tabular')
+    "call add(g:pathogen_disabled, 'tagbar')
+    "call add(g:pathogen_disabled, 'vim-airline')
+    "call add(g:pathogen_disabled, 'vim-better-whitespace')
+    "call add(g:pathogen_disabled, 'vim-bufkill')
+    "call add(g:pathogen_disabled, 'vim-dispatch')
+    "call add(g:pathogen_disabled, 'vim-indent-guides')
+    "call add(g:pathogen_disabled, 'vim-ir_black')
+    "call add(g:pathogen_disabled, 'vim-misc')
+    "call add(g:pathogen_disabled, 'vim-ps1')
+    "call add(g:pathogen_disabled, 'vim-ruby')
+    "call add(g:pathogen_disabled, 'vim-showmarks')
+    "call add(g:pathogen_disabled, 'vim-speeddating')
+    "call add(g:pathogen_disabled, 'vimp4python')
+    "call add(g:pathogen_disabled, 'yankring.vim')
 
     "" for some reason the csscolor plugin is very slow when run on the terminal
     "" but not in GVim, so disable it if no GUI is running
@@ -408,6 +459,35 @@ if !exists(":DiffOrig")
                 \ | wincmd p | diffthis
 endif
 
+" Cscope {{{
+if has('cscope')
+    "set cscopetag cscopeverbose
+
+    if has('quickfix')
+        set cscopequickfix=s-,c-,d-,i-,t-,e-
+    endif
+
+    "cnoreabbrev csa cs add
+    "cnoreabbrev csf cs find
+    "cnoreabbrev csk cs kill
+    "cnoreabbrev csr cs reset
+    "cnoreabbrev css cs show
+    "cnoreabbrev csh cs help
+
+    cnoreabbrev <expr> csa
+                \ ((getcmdtype() == ':' && getcmdpos() <= 4)? 'cs add'  : 'csa')
+    cnoreabbrev <expr> csf
+                \ ((getcmdtype() == ':' && getcmdpos() <= 4)? 'cs find' : 'csf')
+    cnoreabbrev <expr> csk
+                \ ((getcmdtype() == ':' && getcmdpos() <= 4)? 'cs kill' : 'csk')
+    cnoreabbrev <expr> csr
+                \ ((getcmdtype() == ':' && getcmdpos() <= 4)? 'cs reset' : 'csr')
+    cnoreabbrev <expr> css
+                \ ((getcmdtype() == ':' && getcmdpos() <= 4)? 'cs show' : 'css')
+    cnoreabbrev <expr> csh
+                \ ((getcmdtype() == ':' && getcmdpos() <= 4)? 'cs help' : 'csh')
+endif
+"}}}
 
 " Fugitive {{{
     if isdirectory(expand("%:p:h") . '/bundle/fugitive.vim/')
@@ -534,6 +614,7 @@ nnoremap <F11> :NERDTreeToggle<CR>
 let g:gutentags_define_advanced_commands = 1
 "let g:gutentags_trace = 1
 let g:indent_guides_enable_on_vim_startup = 1
+"let g:gutentags_modules = ['ctags', 'cscope']
 let g:MRU_num = 12
 "let g:MRU = expand("~/.vim/_vimrecent")
 
