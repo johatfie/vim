@@ -1,6 +1,6 @@
 
 " Author: Jon Hatfield
-" Last Modified: Tue Aug 25, 2015  10:18AM
+" Last Modified: Thu Aug 27, 2015  11:38AM
 
 
 " When started as "evim", evim.vim will already have done these settings.
@@ -106,9 +106,11 @@ endif
     "call add(g:pathogen_disabled, 'CamelCaseMotion')
     "call add(g:pathogen_disabled, 'checksyntax_vim')
     "call add(g:pathogen_disabled, 'colour-sampler-pack')
+    "call add(g:pathogen_disabled, 'cscope-menu')
+    "call add(g:pathogen_disabled, 'darkerdesert')
     "call add(g:pathogen_disabled, 'endwise.vim')
     "call add(g:pathogen_disabled, 'eunuch.vim')
-    "call add(g:pathogen_disabled, 'fugitive.vim')
+    ""call add(g:pathogen_disabled, 'fugitive.vim')
     "call add(g:pathogen_disabled, 'gem-shut-the-fudge-up')
     "call add(g:pathogen_disabled, 'gitgutter.vim')
     "call add(g:pathogen_disabled, 'gundo')
@@ -119,6 +121,7 @@ endif
     "call add(g:pathogen_disabled, 'nerdcommenter')
     "call add(g:pathogen_disabled, 'nerdtree')
     "call add(g:pathogen_disabled, 'obsession.vim')
+    ""call add(g:pathogen_disabled, 'pathogen')
     "call add(g:pathogen_disabled, 'rails.vim')
     "call add(g:pathogen_disabled, 'rake.vim')
     "call add(g:pathogen_disabled, 'recover.vim')
@@ -139,6 +142,8 @@ endif
     "call add(g:pathogen_disabled, 'vim-better-whitespace')
     "call add(g:pathogen_disabled, 'vim-bufkill')
     "call add(g:pathogen_disabled, 'vim-dispatch')
+    "call add(g:pathogen_disabled, 'vim-easytags')
+    "call add(g:pathogen_disabled, 'vim-gutentags')
     "call add(g:pathogen_disabled, 'vim-indent-guides')
     "call add(g:pathogen_disabled, 'vim-ir_black')
     "call add(g:pathogen_disabled, 'vim-misc')
@@ -146,6 +151,8 @@ endif
     "call add(g:pathogen_disabled, 'vim-ruby')
     "call add(g:pathogen_disabled, 'vim-showmarks')
     "call add(g:pathogen_disabled, 'vim-speeddating')
+    "call add(g:pathogen_disabled, 'vim-textobj-user')
+    "call add(g:pathogen_disabled, 'VimBookmarking')
     "call add(g:pathogen_disabled, 'vimp4python')
     "call add(g:pathogen_disabled, 'yankring.vim')
 
