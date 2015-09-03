@@ -1,6 +1,6 @@
 
 " Author: Jon Hatfield
-" Last Modified: Thu Aug 27, 2015  06:51PM
+" Last Modified: Thu Sep 03, 2015  03:13PM
 
 
 " When started as "evim", evim.vim will already have done these settings.
@@ -52,7 +52,9 @@ set virtualedit=block           " block mode, yey (onemore is evil)
 set mousehide                   " Hide the mouse cursor while typing
 set splitright                  " Puts new vsplit windows to the right of the current
 set splitbelow                  " Puts new split windows to the bottom of the current
-
+"
+" search first in current directory then file directory for tag file
+set tags=tags,./tags;/
 
 " Wildmenu {{{
     if has("wildmenu")
