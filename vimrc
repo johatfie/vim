@@ -1,6 +1,6 @@
 
 " Author: Jon Hatfield
-" Last Modified: Thu Sep 03, 2015  03:13PM
+" Last Modified: Mon Sep 28, 2015  11:11AM
 
 
 " When started as "evim", evim.vim will already have done these settings.
@@ -419,6 +419,8 @@ if has("autocmd")
 
     " For all text files set 'textwidth' to 100 characters.
     autocmd FileType text setlocal textwidth=100
+
+    autocmd FileType c,h,cpp setlocal foldmethod=syntax
 
     " When editing a file, always jump to the last known cursor position.
     " Don't do it when the position is invalid or when inside an event handler
