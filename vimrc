@@ -1,6 +1,6 @@
 
 " Author: Jon Hatfield
-" Last Modified: Mon Sep 28, 2015  11:11AM
+" Last Modified: Thu Oct 08, 2015  04:51PM
 
 
 " When started as "evim", evim.vim will already have done these settings.
@@ -335,6 +335,8 @@ noremap <C-k> :bnext<CR>
 nnoremap <silent> zj o<Esc>
 nnoremap <silent> zk O<Esc>
 
+nnoremap <silent> zJ zj
+nnoremap <silent> zK zk
 
 set scrolloff=3               " keep at least 3 lines above/below
 set sidescrolloff=3           " keep at least 3 lines left/right
@@ -528,7 +530,7 @@ endif
     endif
 
     let MRU_Max_Entries = 1000
-    let MRU_Max_Menu_Entries = 100
+    let MRU_Max_Menu_Entries = 200
     let MRU_Max_Submenu_Entries = 25
 
     if s:running_windows
