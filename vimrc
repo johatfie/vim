@@ -1,6 +1,6 @@
 
 " Author: Jon Hatfield
-" Last Modified: Thu Oct 08, 2015  04:51PM
+" Last Modified: Thu Nov 12, 2015  02:30PM
 
 
 " When started as "evim", evim.vim will already have done these settings.
@@ -625,7 +625,7 @@ nnoremap <F11> :NERDTreeToggle<CR>
 
 
 let g:gutentags_define_advanced_commands = 1
-"let g:gutentags_trace = 1
+let g:gutentags_trace = 1
 let g:indent_guides_enable_on_vim_startup = 1
 "let g:gutentags_modules = ['ctags', 'cscope']
 let g:MRU_num = 12
