@@ -1,6 +1,6 @@
 
 " Author: Jon Hatfield
-" Last Modified: Thu Nov 12, 2015  02:30PM
+" Last Modified: Fri Dec 04, 2015  03:58PM
 
 
 " When started as "evim", evim.vim will already have done these settings.
@@ -54,7 +54,7 @@ set splitright                  " Puts new vsplit windows to the right of the cu
 set splitbelow                  " Puts new split windows to the bottom of the current
 "
 " search first in current directory then file directory for tag file
-set tags=tags,./tags;/
+set tags=tags,./tags;
 
 " Wildmenu {{{
     if has("wildmenu")
@@ -611,7 +611,6 @@ let g:outlook_use_tabs = 1
 let g:outlook_servername = 'GVIM'
 
 
-
 if s:running_windows
     let g:yankring_history_dir = expand($USERPROFILE . '/.vim')
 else
@@ -624,8 +623,9 @@ nnoremap <F8>  :TagbarToggle<CR>
 nnoremap <F11> :NERDTreeToggle<CR>
 
 
-let g:gutentags_define_advanced_commands = 1
-let g:gutentags_trace = 1
+"let g:airline_section_z = airline#section#create(['%{ObsessionStatus(''$'', '''')}', 'windowswap', '%3p%% ', 'linenr', ':%3v '])
+let g:gutentags_define_advanced_commands = 0
+let g:gutentags_trace = 0
 let g:indent_guides_enable_on_vim_startup = 1
 "let g:gutentags_modules = ['ctags', 'cscope']
 let g:MRU_num = 12
