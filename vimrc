@@ -1,6 +1,6 @@
 
 " Author: Jon Hatfield
-" Last Modified: Fri Dec 04, 2015  03:58PM
+" Last Modified: Thu Dec 17, 2015  11:59AM
 
 
 " When started as "evim", evim.vim will already have done these settings.
@@ -453,7 +453,7 @@ if has("autocmd")
     autocmd BufWritePre * call LastModified()
 
     if s:running_windows
-        au FileType xhtml,xml,html,xaml,erb exec "source " . expand("%:p:h") . "/bundle/html_autoCloseTag/plugin/html_autoclosetag.vim"
+        au FileType xhtml,xml,html,xaml,erb exec "source " . expand("%:p:h") . "/vimfiles/bundle/html_autoCloseTag/plugin/html_autoclosetag.vim"
     else
         au FileType xhtml,xml,html,xaml,erb source "~/.vim/bundle/html_autoCloseTag/plugin/html_autoclosetag.vim"
     endif
@@ -503,7 +503,7 @@ endif
 "}}}
 
 " Fugitive {{{
-    if isdirectory(expand("%:p:h") . '/bundle/fugitive.vim/')
+    if isdirectory(expand("%:p:h") . '/vimfiles/bundle/fugitive.vim/')
         nnoremap <silent> <leader>gs :Gstatus<CR>
         nnoremap <silent> <leader>gd :Gdiff<CR>
         nnoremap <silent> <leader>gc :Gcommit<CR>
