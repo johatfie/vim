@@ -182,3 +182,6 @@
 [submodule "bundle/cscope-menu"]
 	path = bundle/cscope-menu
 	url = https://github.com/vim-scripts/cscope-menu
+[submodule "bundle/vim-rubocop"]
+	path = bundle/vim-rubocop
+	url = git@github.com:ngmy/vim-rubocop.git
