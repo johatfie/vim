@@ -1,6 +1,6 @@
 
 " Author: Jon Hatfield
-" Last Modified: Thu Jan 07, 2016  03:20PM
+" Last Modified: Mon Mar 07, 2016  04:41PM
 
 " evim {{{
 
@@ -461,6 +461,9 @@
         au BufWinEnter * silent! loadview           " make vim load view (state) (folds, cursor, etc)
 
         autocmd BufEnter * silent! lcd %:p:h        " change local current directory to the directory of the current file
+
+        autocmd Filetype ruby setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
+
     endif " has("autocmd")
 
 " }}}
@@ -636,19 +639,21 @@
 " Local vimrc {{{
 
     if s:running_windows
-        let local_vimrc  = expand($USERPROFILE . "/.vim/vimrc.local")
-        let local_gvimrc = expand($USERPROFILE . "/.vim/gvimrc.local")
-        let hostfile     = expand($USERPROFILE . "/.vim/vimrc-" . hostname())
+        let g:local_vimrc  = expand($USERPROFILE . "/.vim/vimrc.local")
+        let g:local_gvimrc = expand($USERPROFILE . "/.vim/gvimrc.local")
+        let g:hostfile     = expand($USERPROFILE . "/.vim/vimrc-" . hostname())
     else
-        let local_vimrc  = expand("~/.vim/vimrc.local")
-        let local_gvimrc = expand("~/.vim/gvimrc.local")
-        let hostfile     = expand("~/.vim/vimrc-" . hostname())
+        let g:local_vimrc  = expand("~/.vimrc.local")
+        let g:local_gvimrc = expand("~/.gvimrc.local")
+        let g:hostfile     = expand("~/.vimrc-" . hostname())
     endif
 
+"echo local_vimrc
+"echo g:local_vimrc
 
     " Use local vimrc if available {{{
-        if filereadable(local_vimrc)
-            source local_vimrc
+        if filereadable(g:local_vimrc)
+            "source g:local_vimrc
         endif
     " }}}
 
@@ -760,3 +765,4 @@ autocmd BufWinEnter * if exists('b:swapchoice') && exists('b:swapchoice_likely')
 autocmd BufWinEnter * if exists('b:swapchoice') && b:swapchoice == 'r' | call s:HandleRecover() | endif
 
 " vim:foldmethod=marker:foldlevel=0
+
