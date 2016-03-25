@@ -1,6 +1,6 @@
 
 " Author: Jon Hatfield
-" Last Modified: Mon Mar 07, 2016  04:41PM
+" Last Modified: Thu Mar 24, 2016  10:32AM
 
 " evim {{{
 
@@ -383,11 +383,13 @@
     cnoremap "" ""<Left>
     cnoremap <> <><Left>
     cnoremap // //<Left>
-    cnoremap {} {}<Left><Left>
-    cnoremap [] []<Left><Left>
-    cnoremap () ()<Left><Left>
+    cnoremap {} {}<Left>
+    cnoremap [] []<Left>
+    cnoremap () ()<Left>
 
 " }}}
+
+    cnoremap ntf :NERDTreeFind<cr>
 
 " Syntax Highlighting {{{
 
@@ -587,6 +589,7 @@
     " Arrow keys are NOT for moving around
     nnoremap <down> <C-f>
     nnoremap <up> <C-b>
+    nnoremap <S-left> :NERDTreeFind<cr>
     nnoremap <left> :NERDTreeToggle<cr>
     nnoremap <right> :TagbarToggle<cr>
     nnoremap <C-down> :cnext<cr>zvzz
