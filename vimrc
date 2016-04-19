@@ -1,6 +1,6 @@
 
 " Author: Jon Hatfield
-" Last Modified: Thu Mar 24, 2016  10:32AM
+" Last Modified: Tue Apr 19, 2016  10:42AM
 
 " evim {{{
 
@@ -68,8 +68,9 @@
     set mousehide                   " Hide the mouse cursor while typing
     set splitright                  " Puts new vsplit windows to the right of the current
     set splitbelow                  " Puts new split windows to the bottom of the current
-    set scrolloff=3               " keep at least 3 lines above/below
-    set sidescrolloff=3           " keep at least 3 lines left/right
+    set scrolloff=3                 " keep at least 3 lines above/below
+    set sidescrolloff=3             " keep at least 3 lines left/right
+    set autoread                    " Automatically reload changed file
 
     set sessionoptions=buffers,curdir,folds,globals,help,options,localoptions,resize,slash,tabpages,winpos,winsize
 
@@ -371,13 +372,13 @@
     inoremap <> <><Left>
     inoremap // //<Left>
     inoremap {} {  }<Left><Left>
-    inoremap [] [  ]<Left><Left>
-    inoremap () (  )<Left><Left>
+    inoremap [] []<Left>
+    inoremap () ()<Left>
     "inoremap {} {}<Left>
     "inoremap [] []<Left>
     "inoremap () ()<Left>
-    inoremap %% %  %<Left><Left><Left>
-    inoremap `` `  `<Left><Left>
+    inoremap %% %%<Left>
+    inoremap `` ``<Left>
 
     cnoremap '' ''<Left>
     cnoremap "" ""<Left>
