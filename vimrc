@@ -1,6 +1,6 @@
 
 " Author: Jon Hatfield
-" Last Modified: Tue Apr 19, 2016  10:42AM
+" Last Modified: Tue Apr 26, 2016  09:03PM
 
 " evim {{{
 
@@ -22,6 +22,8 @@
 " DRY Helpers {{{
 
     let s:running_windows = has("win16") || has("win32") || has("win64")
+    let s:running_unix    = has("unix")
+    let s:running_mac     = system("uname") == "Darwin\n" "&& !s:running_unix
     let s:colorful_term   = (&term =~ "xterm") || (&term =~ "screen")
 
 " }}}
@@ -37,6 +39,8 @@
     if s:running_windows
         set guifont=Consolas:h11:cANSI
         "set guifont=Monospace:h10:cANSI
+    elseif s:running_mac
+        set guifont=Inconsolata\ for\ Powerline:h13
     endif
 
 " }}}
@@ -308,8 +312,10 @@
     match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 
     " shortcut to jump to next conflict marker
-    "nnoremap <silent> <leader>c /^\(<\\|=\\|>\)\{7\}\([^=].\+\)\?$<CR>
-    nnoremap  <leader>c /^\(<\\|=\\|>\)\{7\}\([^=].\+\)\?$<CR>
+    nnoremap <silent> <leader>c /^\(<\\|=\\|>\)\{7\}\([^=].\+\)\?$<CR>
+    "match ErrorMsg      '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
+    "nnoremap  <leader>c /^\(<\\|=\\|>\)\{7\}\([^=].\+\)\?$
+    "<CR>
 
 " }}}
 
@@ -389,8 +395,6 @@
     cnoremap () ()<Left>
 
 " }}}
-
-    cnoremap ntf :NERDTreeFind<cr>
 
 " Syntax Highlighting {{{
 
@@ -637,6 +641,17 @@
     "let g:gutentags_modules = ['ctags', 'cscope']
     let g:MRU_num = 12
     "let g:MRU = expand("~/.vim/_vimrecent")
+
+    if s:running_mac
+        " powerline symbols
+        let g:airline_left_sep = ''
+        let g:airline_left_alt_sep = ''
+        let g:airline_right_sep = ''
+        let g:airline_right_alt_sep = ''
+        let g:airline_symbols.branch = ''
+        let g:airline_symbols.readonly = ''
+        let g:airline_symbols.linenr = ''
+    end
 
 " }}}
 
