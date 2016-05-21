@@ -1,6 +1,6 @@
 
 " Author: Jon Hatfield
-" Last Modified: Tue Apr 26, 2016  09:03PM
+" Last Modified: Sat May 21, 2016  05:53PM
 
 " evim {{{
 
@@ -39,8 +39,8 @@
     if s:running_windows
         set guifont=Consolas:h11:cANSI
         "set guifont=Monospace:h10:cANSI
-    elseif s:running_mac
-        set guifont=Inconsolata\ for\ Powerline:h13
+    elseif s:running_mac || s:running_unix
+        set guifont=Inconsolata\ for\ Powerline 10
     endif
 
 " }}}
@@ -144,7 +144,7 @@
     "call add(g:pathogen_disabled, 'eunuch.vim')
     ""call add(g:pathogen_disabled, 'fugitive.vim')
     "call add(g:pathogen_disabled, 'gem-shut-the-fudge-up')
-    "call add(g:pathogen_disabled, 'gitgutter.vim')
+    call add(g:pathogen_disabled, 'gitgutter.vim')
     "call add(g:pathogen_disabled, 'gundo')
     "call add(g:pathogen_disabled, 'HTML-AutoCloseTag')
     "call add(g:pathogen_disabled, 'matchit')
@@ -190,9 +190,10 @@
 
     "" for some reason the csscolor plugin is very slow when run on the terminal
     "" but not in GVim, so disable it if no GUI is running
-    "if !has('gui_running')
+    if !has('gui_running')
         "call add(g:pathogen_disabled, 'csscolor')
-    "endif
+        call add(g:pathogen_disabled, 'vim-airline')
+    endif
 
     " Gundo requires at least vim 7.3
     if v:version < '703' || !has('python')
@@ -642,7 +643,7 @@
     let g:MRU_num = 12
     "let g:MRU = expand("~/.vim/_vimrecent")
 
-    if s:running_mac
+    if s:running_mac || s:running_unix
         " powerline symbols
         let g:airline_left_sep = ''
         let g:airline_left_alt_sep = ''
@@ -651,7 +652,7 @@
         let g:airline_symbols.branch = ''
         let g:airline_symbols.readonly = ''
         let g:airline_symbols.linenr = ''
-    end
+    endif
 
 " }}}
 
