@@ -1,6 +1,6 @@
 
 " Author: Jon Hatfield
-" Last Modified: Tue Apr 26, 2016  09:03PM
+" Last Modified: Fri May 27, 2016  12:13PM
 
 " evim {{{
 
@@ -312,7 +312,9 @@
     match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 
     " shortcut to jump to next conflict marker
-    nnoremap <silent> <leader>c /^\(<\\|=\\|>\)\{7\}\([^=].\+\)\?$<CR>
+    nnoremap <silent> <leader>C /^\(<\\|=\\|>\)\{7\}\([^=].\+\)\?$<CR>
+    "nnoremap <silent> <leader>c /^\(<\|=\|>\)\{7\}\([^=].\+\)\?$<CR>
+    "nnoremap  <leader>c /^\(<\|=\|>\)\{7\}\([^=].\+\)\?$<CR>
     "match ErrorMsg      '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
     "nnoremap  <leader>c /^\(<\\|=\\|>\)\{7\}\([^=].\+\)\?$
     "<CR>
@@ -471,6 +473,10 @@
 
         autocmd Filetype ruby setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
 
+        "execute the current line, then re-open the command window at the same line 
+        "autocmd CmdwinEnter * nnoremap <buffer> <F5> <CR>q:
+        autocmd CmdwinEnter * nnoremap <buffer> <F5> :let g:CmdWindowLineMark=line(".")<CR>
+
     endif " has("autocmd")
 
 " }}}
@@ -621,8 +627,8 @@
 " Function Key Mappings {{{
 
     noremap <F2> :set rnu!<CR>
-    noremap <f4>  <ESC>:%s/\(.\{80\}\)\n/\1/g<CR>
-    noremap <f5>  <ESC>:%s/\(.\{100\}\)\n/\1/g<CR>
+    noremap <f3>  <ESC>:%s/\(.\{80\}\)\n/\1/g<CR>
+    noremap <f4>  <ESC>:%s/\(.\{100\}\)\n/\1/g<CR>
     nnoremap <F6>  :GundoToggle<CR>
     nnoremap <F8>  :TagbarToggle<CR>
     nnoremap <F11> :NERDTreeToggle<CR>
@@ -783,5 +789,5 @@ autocmd BufEnter    * let b:swapchoice_likely = (&l:ro ? 'o' : 'e')
 autocmd BufWinEnter * if exists('b:swapchoice') && exists('b:swapchoice_likely') | let b:swapchoice = b:swapchoice_likely | unlet b:swapchoice_likely | endif
 autocmd BufWinEnter * if exists('b:swapchoice') && b:swapchoice == 'r' | call s:HandleRecover() | endif
 
-" vim:foldmethod=marker:foldlevel=0
+"" vim:foldmethod=marker:foldlevel=0
 
