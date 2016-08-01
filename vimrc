@@ -1,6 +1,6 @@
 
 " Author: Jon Hatfield
-" Last Modified: Fri May 27, 2016  12:13PM
+" Last Modified: Fri Jul 22, 2016  10:31AM
 
 " evim {{{
 
@@ -473,7 +473,7 @@
 
         autocmd Filetype ruby setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
 
-        "execute the current line, then re-open the command window at the same line 
+        "execute the current line, then re-open the command window at the same line
         "autocmd CmdwinEnter * nnoremap <buffer> <F5> <CR>q:
         autocmd CmdwinEnter * nnoremap <buffer> <F5> :let g:CmdWindowLineMark=line(".")<CR>
 
