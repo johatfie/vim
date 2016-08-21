@@ -1,6 +1,6 @@
 
 " Author: Jon Hatfield
-" Last Modified: Sat May 21, 2016  05:53PM
+" Last Modified: Sat Jul 02, 2016  04:40PM
 
 " evim {{{
 
@@ -40,7 +40,8 @@
         set guifont=Consolas:h11:cANSI
         "set guifont=Monospace:h10:cANSI
     elseif s:running_mac || s:running_unix
-        set guifont=Inconsolata\ for\ Powerline 10
+        "set guifont=Inconsolata\ for\ Powerline 10
+        set guifont=Inconsolata\ for\ Powerline
     endif
 
 " }}}
@@ -784,5 +785,5 @@ autocmd BufEnter    * let b:swapchoice_likely = (&l:ro ? 'o' : 'e')
 autocmd BufWinEnter * if exists('b:swapchoice') && exists('b:swapchoice_likely') | let b:swapchoice = b:swapchoice_likely | unlet b:swapchoice_likely | endif
 autocmd BufWinEnter * if exists('b:swapchoice') && b:swapchoice == 'r' | call s:HandleRecover() | endif
 
-" vim:foldmethod=marker:foldlevel=0
+"" vim:foldmethod=marker:foldlevel=0
 
