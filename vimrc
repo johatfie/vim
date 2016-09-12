@@ -1,6 +1,6 @@
 
 " Author: Jon Hatfield
-" Last Modified: Sat Jul 02, 2016  04:40PM
+" Last Modified: Sun Aug 21, 2016  10:28PM
 
 " evim {{{
 
@@ -314,7 +314,7 @@
     match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 
     " shortcut to jump to next conflict marker
-    nnoremap <silent> <leader>c /^\(<\\|=\\|>\)\{7\}\([^=].\+\)\?$<CR>
+    nnoremap <silent> <leader>C /^\(<\\|=\\|>\)\{7\}\([^=].\+\)\?$<CR>
     "match ErrorMsg      '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
     "nnoremap  <leader>c /^\(<\\|=\\|>\)\{7\}\([^=].\+\)\?$
     "<CR>
@@ -534,7 +534,7 @@
         let MRU_File = expand($USERPROFILE . "/.vim/_vim_mru_files")
         let MRU_Exclude_Files = '.*\.tmp$\|.*\\Temp\\.*\|.*\\Temporary Internet Files\\.*'
     else
-        "let MRU_File = '~/.vim/vim_mru_files'
+        let MRU_File = '~/.vim/vim_mru_files'
         "let MRU_File = '~/vim_mru_files'
         let MRU_Exclude_Files = '^/tmp/.*\|^/var/tmp/.*'  " For Unix
     endif
