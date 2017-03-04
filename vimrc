@@ -1,6 +1,6 @@
 
 " Author: Jon Hatfield
-" Last Modified: Fri Jul 22, 2016  10:31AM
+" Last Modified: Fri Feb 17, 2017  11:33AM
 
 " evim {{{
 
@@ -41,6 +41,8 @@
         "set guifont=Monospace:h10:cANSI
     elseif s:running_mac
         set guifont=Inconsolata\ for\ Powerline:h13
+    elseif s:running_unix
+        set guifont=DejaVu\ Sans\ Mono\ for\ Powerline
     endif
 
 " }}}
@@ -75,6 +77,7 @@
     set scrolloff=3                 " keep at least 3 lines above/below
     set sidescrolloff=3             " keep at least 3 lines left/right
     set autoread                    " Automatically reload changed file
+    set autochdir                   " Automatically cd to directory of open file
 
     set sessionoptions=buffers,curdir,folds,globals,help,options,localoptions,resize,slash,tabpages,winpos,winsize
 
@@ -195,7 +198,7 @@
     "endif
 
     " Gundo requires at least vim 7.3
-    if v:version < '703' || !has('python')
+    if v:version < '703' || !has('python3')
         call add(g:pathogen_disabled, 'gundo')
     endif
 
@@ -648,7 +651,7 @@
     let g:MRU_num = 12
     "let g:MRU = expand("~/.vim/_vimrecent")
 
-    if s:running_mac
+    if s:running_mac || s:running_unix
         " powerline symbols
         let g:airline_left_sep = ''
         let g:airline_left_alt_sep = ''
@@ -762,25 +765,25 @@
 " }}}
 
 function! s:HandleRecover()
-  echo system('diff - ' . shellescape(expand('%:p')), join(getline(1, '$'), "\n") . "\n")
-  if v:shell_error
-    call s:DiffOrig()
-  else
-    echohl WarningMsg
-    echomsg "No differences; deleting the old swap file."
-    echohl NONE
-    call delete(b:swapname)
-  endif
+    echo system('diff - ' . shellescape(expand('%:p')), join(getline(1, '$'), "\n") . "\n")
+    if v:shell_error
+        call s:DiffOrig()
+    else
+        echohl WarningMsg
+        echomsg "No differences; deleting the old swap file."
+        echohl NONE
+        call delete(b:swapname)
+    endif
 endfunction
 
 function! s:DiffOrig()
-  vert new
-  set bt=nofile
-  r #
-  0d_
-  diffthis
-  wincmd p
-  diffthis
+    vert new
+    set bt=nofile
+    r #
+    0d_
+    diffthis
+    wincmd p
+    diffthis
 endfunction
 
 autocmd SwapExists  * let b:swapchoice = '?' | let b:swapname = v:swapname
@@ -789,5 +792,4 @@ autocmd BufEnter    * let b:swapchoice_likely = (&l:ro ? 'o' : 'e')
 autocmd BufWinEnter * if exists('b:swapchoice') && exists('b:swapchoice_likely') | let b:swapchoice = b:swapchoice_likely | unlet b:swapchoice_likely | endif
 autocmd BufWinEnter * if exists('b:swapchoice') && b:swapchoice == 'r' | call s:HandleRecover() | endif
 
-"" vim:foldmethod=marker:foldlevel=0
 

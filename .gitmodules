@@ -185,3 +185,18 @@
 [submodule "bundle/vim-rubocop"]
 	path = bundle/vim-rubocop
 	url = git@github.com:ngmy/vim-rubocop.git
+[submodule "bundle/vim-gradle"]
+	path = bundle/vim-gradle
+	url = https://github.com/gisphm/vim-gradle
+[submodule "bundle/grails-vim"]
+	path = bundle/grails-vim
+	url = https://github.com/vim-scripts/grails-vim
+[submodule "bundle/vimport"]
+	path = bundle/vimport
+	url = git://github.com/sjurgemeyer/vimport.git
+[submodule "bundle/vim-css-color"]
+	path = bundle/vim-css-color
+	url = https://github.com/ap/vim-css-color
+[submodule "bundle/jshint2.vim"]
+	path = bundle/jshint2.vim
+	url = https://github.com/Shutnik/jshint2.vim
