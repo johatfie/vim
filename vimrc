@@ -1,6 +1,6 @@
 
 " Author: Jon Hatfield
-" Last Modified: Fri Feb 17, 2017  11:33AM
+" Last Modified: Mon Mar 06, 2017  09:58AM
 
 " evim {{{
 
@@ -735,7 +735,7 @@
     nnoremap <leader>x Y:<C-R>"<C-H><CR>
 
     " map http://kb.perforce.com/article/11/checking-out-a-file-from-vi
-    noremap  :!p4 edit "%":set noro
+    "noremap  :!p4 edit "%":set noro
 
 
     " For Win32 GUI: remove 't' flag from 'guioptions': no tearoff menu entries
