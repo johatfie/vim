@@ -1,6 +1,6 @@
 
 " Author: Jon Hatfield
-" Last Modified: Tue Apr 26, 2016  09:03PM
+" Last Modified: Mon Mar 06, 2017  09:58AM
 
 " evim {{{
 
@@ -41,6 +41,8 @@
         "set guifont=Monospace:h10:cANSI
     elseif s:running_mac
         set guifont=Inconsolata\ for\ Powerline:h13
+    elseif s:running_unix
+        set guifont=DejaVu\ Sans\ Mono\ for\ Powerline
     endif
 
 " }}}
@@ -75,6 +77,7 @@
     set scrolloff=3                 " keep at least 3 lines above/below
     set sidescrolloff=3             " keep at least 3 lines left/right
     set autoread                    " Automatically reload changed file
+    set autochdir                   " Automatically cd to directory of open file
 
     set sessionoptions=buffers,curdir,folds,globals,help,options,localoptions,resize,slash,tabpages,winpos,winsize
 
@@ -195,7 +198,7 @@
     "endif
 
     " Gundo requires at least vim 7.3
-    if v:version < '703' || !has('python')
+    if v:version < '703' || !has('python3')
         call add(g:pathogen_disabled, 'gundo')
     endif
 
@@ -312,7 +315,9 @@
     match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 
     " shortcut to jump to next conflict marker
-    nnoremap <silent> <leader>c /^\(<\\|=\\|>\)\{7\}\([^=].\+\)\?$<CR>
+    nnoremap <silent> <leader>C /^\(<\\|=\\|>\)\{7\}\([^=].\+\)\?$<CR>
+    "nnoremap <silent> <leader>c /^\(<\|=\|>\)\{7\}\([^=].\+\)\?$<CR>
+    "nnoremap  <leader>c /^\(<\|=\|>\)\{7\}\([^=].\+\)\?$<CR>
     "match ErrorMsg      '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
     "nnoremap  <leader>c /^\(<\\|=\\|>\)\{7\}\([^=].\+\)\?$
     "<CR>
@@ -471,6 +476,10 @@
 
         autocmd Filetype ruby setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
 
+        "execute the current line, then re-open the command window at the same line
+        "autocmd CmdwinEnter * nnoremap <buffer> <F5> <CR>q:
+        autocmd CmdwinEnter * nnoremap <buffer> <F5> :let g:CmdWindowLineMark=line(".")<CR>
+
     endif " has("autocmd")
 
 " }}}
@@ -621,8 +630,8 @@
 " Function Key Mappings {{{
 
     noremap <F2> :set rnu!<CR>
-    noremap <f4>  <ESC>:%s/\(.\{80\}\)\n/\1/g<CR>
-    noremap <f5>  <ESC>:%s/\(.\{100\}\)\n/\1/g<CR>
+    noremap <f3>  <ESC>:%s/\(.\{80\}\)\n/\1/g<CR>
+    noremap <f4>  <ESC>:%s/\(.\{100\}\)\n/\1/g<CR>
     nnoremap <F6>  :GundoToggle<CR>
     nnoremap <F8>  :TagbarToggle<CR>
     nnoremap <F11> :NERDTreeToggle<CR>
@@ -642,7 +651,7 @@
     let g:MRU_num = 12
     "let g:MRU = expand("~/.vim/_vimrecent")
 
-    if s:running_mac
+    if s:running_mac || s:running_unix
         " powerline symbols
         let g:airline_left_sep = ''
         let g:airline_left_alt_sep = ''
@@ -726,7 +735,7 @@
     nnoremap <leader>x Y:<C-R>"<C-H><CR>
 
     " map http://kb.perforce.com/article/11/checking-out-a-file-from-vi
-    noremap  :!p4 edit "%":set noro
+    "noremap  :!p4 edit "%":set noro
 
 
     " For Win32 GUI: remove 't' flag from 'guioptions': no tearoff menu entries
@@ -756,25 +765,25 @@
 " }}}
 
 function! s:HandleRecover()
-  echo system('diff - ' . shellescape(expand('%:p')), join(getline(1, '$'), "\n") . "\n")
-  if v:shell_error
-    call s:DiffOrig()
-  else
-    echohl WarningMsg
-    echomsg "No differences; deleting the old swap file."
-    echohl NONE
-    call delete(b:swapname)
-  endif
+    echo system('diff - ' . shellescape(expand('%:p')), join(getline(1, '$'), "\n") . "\n")
+    if v:shell_error
+        call s:DiffOrig()
+    else
+        echohl WarningMsg
+        echomsg "No differences; deleting the old swap file."
+        echohl NONE
+        call delete(b:swapname)
+    endif
 endfunction
 
 function! s:DiffOrig()
-  vert new
-  set bt=nofile
-  r #
-  0d_
-  diffthis
-  wincmd p
-  diffthis
+    vert new
+    set bt=nofile
+    r #
+    0d_
+    diffthis
+    wincmd p
+    diffthis
 endfunction
 
 autocmd SwapExists  * let b:swapchoice = '?' | let b:swapname = v:swapname
@@ -783,5 +792,4 @@ autocmd BufEnter    * let b:swapchoice_likely = (&l:ro ? 'o' : 'e')
 autocmd BufWinEnter * if exists('b:swapchoice') && exists('b:swapchoice_likely') | let b:swapchoice = b:swapchoice_likely | unlet b:swapchoice_likely | endif
 autocmd BufWinEnter * if exists('b:swapchoice') && b:swapchoice == 'r' | call s:HandleRecover() | endif
 
-" vim:foldmethod=marker:foldlevel=0
 
