@@ -1,6 +1,6 @@
 
 " Author: Jon Hatfield
-" Last Modified: Sun Aug 21, 2016  10:28PM
+" Last Modified: Wed Jun 07, 2017  03:56PM
 
 " evim {{{
 
@@ -534,7 +534,8 @@
         let MRU_File = expand($USERPROFILE . "/.vim/_vim_mru_files")
         let MRU_Exclude_Files = '.*\.tmp$\|.*\\Temp\\.*\|.*\\Temporary Internet Files\\.*'
     else
-        let MRU_File = '~/.vim/vim_mru_files'
+        let MRU_File = $HOME . '/.vim/.vim_mru_files'
+        "let MRU_File = '~/.vim/vim_mru_files'
         "let MRU_File = '~/vim_mru_files'
         let MRU_Exclude_Files = '^/tmp/.*\|^/var/tmp/.*'  " For Unix
     endif
@@ -758,25 +759,25 @@
 " }}}
 
 function! s:HandleRecover()
-  echo system('diff - ' . shellescape(expand('%:p')), join(getline(1, '$'), "\n") . "\n")
-  if v:shell_error
-    call s:DiffOrig()
-  else
-    echohl WarningMsg
-    echomsg "No differences; deleting the old swap file."
-    echohl NONE
-    call delete(b:swapname)
-  endif
+    echo system('diff - ' . shellescape(expand('%:p')), join(getline(1, '$'), "\n") . "\n")
+    if v:shell_error
+        call s:DiffOrig()
+    else
+        echohl WarningMsg
+        echomsg "No differences; deleting the old swap file."
+        echohl NONE
+        call delete(b:swapname)
+    endif
 endfunction
 
 function! s:DiffOrig()
-  vert new
-  set bt=nofile
-  r #
-  0d_
-  diffthis
-  wincmd p
-  diffthis
+    vert new
+    set bt=nofile
+    r #
+    0d_
+    diffthis
+    wincmd p
+    diffthis
 endfunction
 
 autocmd SwapExists  * let b:swapchoice = '?' | let b:swapname = v:swapname
@@ -785,5 +786,5 @@ autocmd BufEnter    * let b:swapchoice_likely = (&l:ro ? 'o' : 'e')
 autocmd BufWinEnter * if exists('b:swapchoice') && exists('b:swapchoice_likely') | let b:swapchoice = b:swapchoice_likely | unlet b:swapchoice_likely | endif
 autocmd BufWinEnter * if exists('b:swapchoice') && b:swapchoice == 'r' | call s:HandleRecover() | endif
 
-"" vim:foldmethod=marker:foldlevel=0
+" vim:foldmethod=marker:foldlevel=0
 
