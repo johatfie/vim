@@ -1,6 +1,6 @@
 
 " Author: Jon Hatfield
-" Last Modified: Wed Jun 07, 2017  03:56PM
+" Last Modified: Thu Jun 08, 2017  03:44PM
 
 " evim {{{
 
@@ -145,7 +145,7 @@
     "call add(g:pathogen_disabled, 'eunuch.vim')
     ""call add(g:pathogen_disabled, 'fugitive.vim')
     "call add(g:pathogen_disabled, 'gem-shut-the-fudge-up')
-    call add(g:pathogen_disabled, 'gitgutter.vim')
+    "call add(g:pathogen_disabled, 'gitgutter.vim')
     "call add(g:pathogen_disabled, 'gundo')
     "call add(g:pathogen_disabled, 'HTML-AutoCloseTag')
     "call add(g:pathogen_disabled, 'matchit')
@@ -461,7 +461,8 @@
         autocmd BufWritePre * call LastModified()
 
         if s:running_windows
-            au FileType xhtml,xml,html,xaml,erb exec "source " . expand("%:p:h") . "/vimfiles/bundle/html_autoCloseTag/plugin/html_autoclosetag.vim"
+            au FileType xhtml,xml,html,xaml,erb exec "source " . expand("%:p:h") .
+                \ "/vimfiles/bundle/html_autoCloseTag/plugin/html_autoclosetag.vim"
         else
             au FileType xhtml,xml,html,xaml,erb source "~/.vim/bundle/html_autoCloseTag/plugin/html_autoclosetag.vim"
         endif
@@ -472,6 +473,8 @@
         autocmd BufEnter * silent! lcd %:p:h        " change local current directory to the directory of the current file
 
         autocmd Filetype ruby setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
+        autocmd Filetype tex inoremap {} {}<Left>
+        autocmd Filetype Makefile set noexpandtab
 
     endif " has("autocmd")
 
@@ -637,7 +640,10 @@
     let g:outlook_use_tabs = 1
     let g:outlook_servername = 'GVIM'
 
-    let g:airline_section_z = airline#section#create(['%{ObsessionStatus(''$'', '''')}', 'windowswap', '%3p%% ', 'linenr', ':%3v '])
+    if (index(pathogen_disabled, 'vim-airline') == -1)
+        let g:airline_section_z = airline#section#create(['%{ObsessionStatus(''$'', '''')}', 'windowswap', '%3p%% ', 'linenr', ':%3v '])
+    endif
+
     let g:gutentags_define_advanced_commands = 0
     let g:gutentags_trace = 0
     let g:indent_guides_enable_on_vim_startup = 1
@@ -646,14 +652,16 @@
     "let g:MRU = expand("~/.vim/_vimrecent")
 
     if s:running_mac || s:running_unix
-        " powerline symbols
-        let g:airline_left_sep = ''
-        let g:airline_left_alt_sep = ''
-        let g:airline_right_sep = ''
-        let g:airline_right_alt_sep = ''
-        let g:airline_symbols.branch = ''
-        let g:airline_symbols.readonly = ''
-        let g:airline_symbols.linenr = ''
+        if (index(pathogen_disabled, 'vim-airline') == -1)
+            " powerline symbols
+            let g:airline_left_sep = ''
+            let g:airline_left_alt_sep = ''
+            let g:airline_right_sep = ''
+            let g:airline_right_alt_sep = ''
+            let g:airline_symbols.branch = ''
+            let g:airline_symbols.readonly = ''
+            let g:airline_symbols.linenr = ''
+        endif
     endif
 
 " }}}
@@ -786,5 +794,5 @@ autocmd BufEnter    * let b:swapchoice_likely = (&l:ro ? 'o' : 'e')
 autocmd BufWinEnter * if exists('b:swapchoice') && exists('b:swapchoice_likely') | let b:swapchoice = b:swapchoice_likely | unlet b:swapchoice_likely | endif
 autocmd BufWinEnter * if exists('b:swapchoice') && b:swapchoice == 'r' | call s:HandleRecover() | endif
 
-" vim:foldmethod=marker:foldlevel=0
+" vim:foldmethod=marker:foldlevel=99
 
