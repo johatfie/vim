@@ -1,202 +1,202 @@
 [submodule "bundle/nerdtree"]
-	path = bundle/nerdtree
-	url = https://github.com/scrooloose/nerdtree
+    path = bundle/nerdtree
+    url = https://github.com/scrooloose/nerdtree
 [submodule "bundle/pathogen"]
-	path = bundle/pathogen
-	url = https://github.com/tpope/vim-pathogen
+    path = bundle/pathogen
+    url = https://github.com/tpope/vim-pathogen
 [submodule "bundle/surround.vim"]
-	path = bundle/surround.vim
-	url = https://github.com/tpope/vim-surround
+    path = bundle/surround.vim
+    url = https://github.com/tpope/vim-surround
 [submodule "bundle/repeat.vim"]
-	path = bundle/repeat.vim
-	url = https://github.com/tpope/vim-repeat
+    path = bundle/repeat.vim
+    url = https://github.com/tpope/vim-repeat
 [submodule "bundle/fugitive.vim"]
-	path = bundle/fugitive.vim
-	url = https://github.com/tpope/vim-fugitive
+    path = bundle/fugitive.vim
+    url = https://github.com/tpope/vim-fugitive
 [submodule "bundle/tabular"]
-	path = bundle/tabular
-	url = https://github.com/godlygeek/tabular
+    path = bundle/tabular
+    url = https://github.com/godlygeek/tabular
 [submodule "bundle/vim-showmarks"]
-	path = bundle/vim-showmarks
-	url = https://github.com/jacquesbh/vim-showmarks
+    path = bundle/vim-showmarks
+    url = https://github.com/jacquesbh/vim-showmarks
 [submodule "bundle/nerdcommenter"]
-	path = bundle/nerdcommenter
-	url = https://github.com/scrooloose/nerdcommenter
+    path = bundle/nerdcommenter
+    url = https://github.com/scrooloose/nerdcommenter
 [submodule "bundle/checksyntax_vim"]
-	path = bundle/checksyntax_vim
-	url = https://github.com/tomtom/checksyntax_vim
+    path = bundle/checksyntax_vim
+    url = https://github.com/tomtom/checksyntax_vim
 [submodule "bundle/tagbar"]
-	path = bundle/tagbar
-	url = https://github.com/majutsushi/tagbar
+    path = bundle/tagbar
+    url = https://github.com/majutsushi/tagbar
 [submodule "bundle/bufexplorer"]
-	path = bundle/bufexplorer
-	url = https://github.com/jlanzarotta/bufexplorer
+    path = bundle/bufexplorer
+    url = https://github.com/jlanzarotta/bufexplorer
 [submodule "bundle/a.vim"]
-	path = bundle/a.vim
-	url = https://github.com/vim-scripts/a.vim
+    path = bundle/a.vim
+    url = https://github.com/vim-scripts/a.vim
 [submodule "bundle/vim-airline"]
-	path = bundle/vim-airline
-	url = https://github.com/bling/vim-airline
+    path = bundle/vim-airline
+    url = https://github.com/bling/vim-airline
 [submodule "bundle/syntastic"]
-	path = bundle/syntastic
-	url = https://github.com/scrooloose/syntastic
+    path = bundle/syntastic
+    url = https://github.com/scrooloose/syntastic
 [submodule "bundle/ack.vim"]
-	path = bundle/ack.vim
-	url = https://github.com/mileszs/ack.vim
+    path = bundle/ack.vim
+    url = https://github.com/mileszs/ack.vim
 [submodule "bundle/rails.vim"]
-	path = bundle/rails.vim
-	url = https://github.com/tpope/vim-rails
+    path = bundle/rails.vim
+    url = https://github.com/tpope/vim-rails
 [submodule "bundle/endwise.vim"]
-	path = bundle/endwise.vim
-	url = https://github.com/tpope/vim-endwise
+    path = bundle/endwise.vim
+    url = https://github.com/tpope/vim-endwise
 [submodule "bundle/obsession.vim"]
-	path = bundle/obsession.vim
-	url = https://github.com/tpope/vim-obsession
+    path = bundle/obsession.vim
+    url = https://github.com/tpope/vim-obsession
 [submodule "bundle/rake.vim"]
-	path = bundle/rake.vim
-	url = https://github.com/tpope/vim-rake
+    path = bundle/rake.vim
+    url = https://github.com/tpope/vim-rake
 [submodule "bundle/eunuch.vim"]
-	path = bundle/eunuch.vim
-	url = https://github.com/tpope/vim-eunuch
+    path = bundle/eunuch.vim
+    url = https://github.com/tpope/vim-eunuch
 [submodule "bundle/vim-ruby"]
-	path = bundle/vim-ruby
-	url = https://github.com/vim-ruby/vim-ruby
+    path = bundle/vim-ruby
+    url = https://github.com/vim-ruby/vim-ruby
 [submodule "bundle/CamelCaseMotion"]
-	path = bundle/CamelCaseMotion
-	url = https://github.com/bkad/CamelCaseMotion
+    path = bundle/CamelCaseMotion
+    url = https://github.com/bkad/CamelCaseMotion
 [submodule "bundle/abolish.vim"]
-	path = bundle/abolish.vim
-	url = https://github.com/tpope/vim-abolish
+    path = bundle/abolish.vim
+    url = https://github.com/tpope/vim-abolish
 [submodule "bundle/vim-easytags"]
-	path = bundle/vim-easytags
-	url = https://github.com/xolox/vim-easytags
+    path = bundle/vim-easytags
+    url = https://github.com/xolox/vim-easytags
 [submodule "bundle/vim-misc"]
-	path = bundle/vim-misc
-	url = https://github.com/xolox/vim-misc
+    path = bundle/vim-misc
+    url = https://github.com/xolox/vim-misc
 [submodule "bundle/ToggleLineNumberMode"]
-	path = bundle/ToggleLineNumberMode
-	url = https://github.com/vim-scripts/ToggleLineNumberMode
+    path = bundle/ToggleLineNumberMode
+    url = https://github.com/vim-scripts/ToggleLineNumberMode
 [submodule "bundle/vim-ps1"]
-	path = bundle/vim-ps1
-	url = https://github.com/PProvost/vim-ps1
+    path = bundle/vim-ps1
+    url = https://github.com/PProvost/vim-ps1
 [submodule "bundle/HTML-AutoCloseTag"]
-	path = bundle/HTML-AutoCloseTag
-	url = https://github.com/vim-scripts/HTML-AutoCloseTag
+    path = bundle/HTML-AutoCloseTag
+    url = https://github.com/vim-scripts/HTML-AutoCloseTag
 [submodule "bundle/SrcExpl"]
-	path = bundle/SrcExpl
-	url = https://github.com/wesleyche/SrcExpl
+    path = bundle/SrcExpl
+    url = https://github.com/wesleyche/SrcExpl
 [submodule "bundle/vim-indent-guides"]
-	path = bundle/vim-indent-guides
-	url = https://github.com/nathanaelkane/vim-indent-guides
+    path = bundle/vim-indent-guides
+    url = https://github.com/nathanaelkane/vim-indent-guides
 [submodule "bundle/mru"]
-	path = bundle/mru
-	url = https://github.com/yegappan/mru
+    path = bundle/mru
+    url = https://github.com/yegappan/mru
 [submodule "bundle/yankring.vim"]
-	path = bundle/yankring.vim
-	url = https://github.com/vim-scripts/YankRing.vim
+    path = bundle/yankring.vim
+    url = https://github.com/vim-scripts/YankRing.vim
     ignore = dirty
 [submodule "bundle/gem-shut-the-fudge-up"]
-	path = bundle/gem-shut-the-fudge-up
-	url = https://github.com/tpope/gem-shut-the-fuck-up
+    path = bundle/gem-shut-the-fudge-up
+    url = https://github.com/tpope/gem-shut-the-fuck-up
 [submodule "bundle/gundo"]
-	path = bundle/gundo
-	url = https://github.com/vim-scripts/Gundo
+    path = bundle/gundo
+    url = https://github.com/vim-scripts/Gundo
     ignore = dirty
 [submodule "bundle/matchit"]
-	path = bundle/matchit
-	url = https://github.com/vim-scripts/matchit.zip
+    path = bundle/matchit
+    url = https://github.com/vim-scripts/matchit.zip
     ignore = dirty
 [submodule "bundle/scratch.vim"]
-	path = bundle/scratch.vim
-	url = https://github.com/mtth/scratch.vim
+    path = bundle/scratch.vim
+    url = https://github.com/mtth/scratch.vim
     ignore = dirty
 [submodule "bundle/vim-speeddating"]
-	path = bundle/vim-speeddating
-	url = https://github.com/tpope/vim-speeddating.git
+    path = bundle/vim-speeddating
+    url = https://github.com/tpope/vim-speeddating.git
 [submodule "bundle/vim-dispatch"]
-	path = bundle/vim-dispatch
-	url = git://github.com/tpope/vim-dispatch.git
+    path = bundle/vim-dispatch
+    url = git://github.com/tpope/vim-dispatch.git
 [submodule "bundle/refactor-rails"]
-	path = bundle/refactor-rails
-	url = https://github.com/sandeepravi/refactor-rails.vim
+    path = bundle/refactor-rails
+    url = https://github.com/sandeepravi/refactor-rails.vim
 [submodule "bundle/recover.vim"]
-	path = bundle/recover.vim
-	url = https://github.com/chrisbra/Recover.vim
+    path = bundle/recover.vim
+    url = https://github.com/chrisbra/Recover.vim
     ignore = dirty
 [submodule "bundle/colour-sampler-pack"]
-	path = bundle/colour-sampler-pack
-	url = https://github.com/vim-scripts/Colour-Sampler-Pack
+    path = bundle/colour-sampler-pack
+    url = https://github.com/vim-scripts/Colour-Sampler-Pack
 [submodule "bundle/scrollcolors"]
-	path = bundle/scrollcolors
-	url = https://github.com/vim-scripts/ScrollColors
+    path = bundle/scrollcolors
+    url = https://github.com/vim-scripts/ScrollColors
 [submodule "bundle/switch.vim"]
-	path = bundle/switch.vim
-	url = http://github.com/AndrewRadev/switch.vim
+    path = bundle/switch.vim
+    url = http://github.com/AndrewRadev/switch.vim
 [submodule "bundle/bash-suppport.vim"]
-	path = bundle/bash-suppport.vim
-	url = http://github.com/vim-scripts/bash-support.vim
+    path = bundle/bash-suppport.vim
+    url = http://github.com/vim-scripts/bash-support.vim
     ignore = dirty
 [submodule "bundle/tab-name"]
-	path = bundle/tab-name
-	url = https://github.com/vim-scripts/Tab-Name
+    path = bundle/tab-name
+    url = https://github.com/vim-scripts/Tab-Name
 [submodule "bundle/gitgutter.vim"]
-	path = bundle/gitgutter.vim
-	url = https://github.com/airblade/vim-gitgutter
+    path = bundle/gitgutter.vim
+    url = https://github.com/airblade/vim-gitgutter
 [submodule "bundle/MRU.vim"]
-	path = bundle/MRU.vim
-	url = https://github.com/vim-scripts/MRU.git
+    path = bundle/MRU.vim
+    url = https://github.com/vim-scripts/MRU.git
 [submodule "bundle/vimp4python"]
-	path = bundle/vimp4python
-	url = https://github.com/jpflouret/vimp4python
+    path = bundle/vimp4python
+    url = https://github.com/jpflouret/vimp4python
 [submodule "bundle/vim-bufkill"]
-	path = bundle/vim-bufkill
-	url = https://github.com/qpkorr/vim-bufkill
+    path = bundle/vim-bufkill
+    url = https://github.com/qpkorr/vim-bufkill
     ignore = dirty
 [submodule "bundle/vim-better-whitespace"]
-	path = bundle/vim-better-whitespace
-	url = https://github.com/ntpeters/vim-better-whitespace
+    path = bundle/vim-better-whitespace
+    url = https://github.com/ntpeters/vim-better-whitespace
 [submodule "bundle/tab-menu"]
-	path = bundle/tab-menu
-	url = https://github.com/johatfie/Tab-Menu.git
+    path = bundle/tab-menu
+    url = https://github.com/johatfie/Tab-Menu.git
 [submodule "bundle/splitjoin.vim"]
-	path = bundle/splitjoin.vim
-	url = https://github.com/AndrewRadev/splitjoin.vim
+    path = bundle/splitjoin.vim
+    url = https://github.com/AndrewRadev/splitjoin.vim
 [submodule "bundle/vim-ir_black"]
-	path = bundle/vim-ir_black
-	url = https://github.com/wesgibbs/vim-irblack
+    path = bundle/vim-ir_black
+    url = https://github.com/wesgibbs/vim-irblack
 [submodule "bundle/vim-gutentags"]
-	path = bundle/vim-gutentags
-	url = https://github.com/johatfie/vim-gutentags
+    path = bundle/vim-gutentags
+    url = https://github.com/ludovicchabant/vim-gutentags
     ignore = dirty
 [submodule "bundle/darkerdesert"]
-	path = bundle/darkerdesert
-	url = https://github.com/vim-scripts/darkerdesert
+    path = bundle/darkerdesert
+    url = https://github.com/vim-scripts/darkerdesert
 [submodule "bundle/VimBookmarking"]
-	path = bundle/VimBookmarking
-	url = https://github.com/dterei/VimBookmarking
+    path = bundle/VimBookmarking
+    url = https://github.com/dterei/VimBookmarking
     ignore = dirty
 [submodule "bundle/vim-textobj-user"]
-	path = bundle/vim-textobj-user
-	url = https://github.com/kana/vim-textobj-user
+    path = bundle/vim-textobj-user
+    url = https://github.com/kana/vim-textobj-user
     ignore = dirty
 [submodule "bundle/cscope-menu"]
-	path = bundle/cscope-menu
-	url = https://github.com/vim-scripts/cscope-menu
+    path = bundle/cscope-menu
+    url = https://github.com/vim-scripts/cscope-menu
 [submodule "bundle/vim-rubocop"]
-	path = bundle/vim-rubocop
-	url = git@github.com:ngmy/vim-rubocop.git
+    path = bundle/vim-rubocop
+    url = git@github.com:ngmy/vim-rubocop.git
 [submodule "bundle/vim-gradle"]
-	path = bundle/vim-gradle
-	url = https://github.com/gisphm/vim-gradle
+    path = bundle/vim-gradle
+    url = https://github.com/gisphm/vim-gradle
 [submodule "bundle/grails-vim"]
-	path = bundle/grails-vim
-	url = https://github.com/vim-scripts/grails-vim
+    path = bundle/grails-vim
+    url = https://github.com/vim-scripts/grails-vim
 [submodule "bundle/vimport"]
-	path = bundle/vimport
-	url = git://github.com/sjurgemeyer/vimport.git
+    path = bundle/vimport
+    url = git://github.com/sjurgemeyer/vimport.git
 [submodule "bundle/vim-css-color"]
-	path = bundle/vim-css-color
-	url = https://github.com/ap/vim-css-color
+    path = bundle/vim-css-color
+    url = https://github.com/ap/vim-css-color
 [submodule "bundle/jshint2.vim"]
-	path = bundle/jshint2.vim
-	url = https://github.com/Shutnik/jshint2.vim
+    path = bundle/jshint2.vim
+    url = https://github.com/Shutnik/jshint2.vim
