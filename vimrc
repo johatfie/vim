@@ -1,6 +1,6 @@
 
 " Author: Jon Hatfield
-" Last Modified: Mon Mar 06, 2017  09:58AM
+" Last Modified: Thu Jul 06, 2017  11:36AM
 
 " evim {{{
 
@@ -181,9 +181,9 @@
     "call add(g:pathogen_disabled, 'vim-gutentags')
     "call add(g:pathogen_disabled, 'vim-indent-guides')
     "call add(g:pathogen_disabled, 'vim-ir_black')
-    "call add(g:pathogen_disabled, 'vim-misc')
+    call add(g:pathogen_disabled, 'vim-misc')
     "call add(g:pathogen_disabled, 'vim-ps1')
-    "call add(g:pathogen_disabled, 'vim-ruby')
+    call add(g:pathogen_disabled, 'vim-ruby')
     "call add(g:pathogen_disabled, 'vim-showmarks')
     "call add(g:pathogen_disabled, 'vim-speeddating')
     "call add(g:pathogen_disabled, 'vim-textobj-user')
