@@ -1,6 +1,6 @@
 
 " Author: Jon Hatfield
-" Last Modified: Thu Jul 06, 2017  11:36AM
+" Last Modified: Mon Jun 11, 2018  11:47PM
 
 " evim {{{
 
@@ -37,8 +37,9 @@
 " Font {{{
 
     if s:running_windows
-        set guifont=Consolas:h11:cANSI
+        "set guifont=Consolas:h11:cANSI
         "set guifont=Monospace:h10:cANSI
+        set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h9
     elseif s:running_mac
         set guifont=Inconsolata\ for\ Powerline:h13
     elseif s:running_unix
@@ -224,11 +225,11 @@
 
 
     if s:running_windows
-        set backupdir=$USERPROFILE/.vim/vimbackup//     " but not when they clog.
-        set directory=$USERPROFILE/.vim/vimswap//       " Same for swap files
-        set viewdir=$USERPROFILE/.vim/vimviews//        " same for view files
-        set undodir=$USERPROFILE/.vim/vimundos//        " Same for undo files
-        set viminfo+=n$USERPROFILE/.vim/_viminfo
+        set backupdir=$USERPROFILE/vim/vimbackup//     " but not when they clog.
+        set directory=$USERPROFILE/vim/vimswap//       " Same for swap files
+        set viewdir=$USERPROFILE/vim/vimviews//        " same for view files
+        set undodir=$USERPROFILE/vim/vimundos//        " Same for undo files
+        set viminfo+=n$USERPROFILE/vim/_viminfo
     else
         set backupdir=~/.vim/vimbackup//         " but not when they clog.
         set directory=~/.vim/vimswap//           " same for swap files
@@ -538,7 +539,7 @@
 " MRU {{{
 
     if s:running_windows
-        let MRU_File = expand($USERPROFILE . "/.vim/_vim_mru_files")
+        let MRU_File = expand($USERPROFILE . "/vim/_vim_mru_files")
         let MRU_Exclude_Files = '.*\.tmp$\|.*\\Temp\\.*\|.*\\Temporary Internet Files\\.*'
     else
         "let MRU_File = '~/.vim/vim_mru_files'
@@ -620,7 +621,7 @@
 " Yankring {{{
 
     if s:running_windows
-        let g:yankring_history_dir = expand($USERPROFILE . '/.vim')
+        let g:yankring_history_dir = expand($USERPROFILE . '/vim')
     else
         let g:yankring_history_dir = '~/.vim/'
     endif
@@ -667,9 +668,9 @@
 " Local vimrc {{{
 
     if s:running_windows
-        let g:local_vimrc  = expand($USERPROFILE . "/.vim/vimrc.local")
-        let g:local_gvimrc = expand($USERPROFILE . "/.vim/gvimrc.local")
-        let g:hostfile     = expand($USERPROFILE . "/.vim/vimrc-" . hostname())
+        let g:local_vimrc  = expand($USERPROFILE . "/vim/vimrc.local")
+        let g:local_gvimrc = expand($USERPROFILE . "/vim/gvimrc.local")
+        let g:hostfile     = expand($USERPROFILE . "/vim/vimrc-" . hostname())
     else
         let g:local_vimrc  = expand("~/.vimrc.local")
         let g:local_gvimrc = expand("~/.gvimrc.local")
