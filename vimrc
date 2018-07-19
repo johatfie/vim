@@ -1,6 +1,6 @@
 
 " Author: Jon Hatfield
-" Last Modified: Thu Jul 06, 2017  11:36AM
+" Last Modified: Wed Jul 18, 2018  10:29AM
 
 " evim {{{
 
@@ -42,7 +42,8 @@
     elseif s:running_mac
         set guifont=Inconsolata\ for\ Powerline:h13
     elseif s:running_unix
-        set guifont=DejaVu\ Sans\ Mono\ for\ Powerline
+        set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 7.5
+        "set guifont=DejaVu\ Sans\ Mono\ for\ Powerline
     endif
 
 " }}}
@@ -466,7 +467,7 @@
         if s:running_windows
             au FileType xhtml,xml,html,xaml,erb exec "source " . expand("%:p:h") . "/vimfiles/bundle/html_autoCloseTag/plugin/html_autoclosetag.vim"
         else
-            au FileType xhtml,xml,html,xaml,erb source "~/.vim/bundle/html_autoCloseTag/plugin/html_autoclosetag.vim"
+            au FileType xhtml,xml,html,xaml,erb source "~/.vim/bundle/HTML-AutoCloseTag/ftplugin/html_autoclosetag.vim"
         endif
 
         au BufWinLeave * silent! mkview             " make vim save view (state) (folds, cursor, etc)
