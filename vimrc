@@ -1,6 +1,6 @@
 
 " Author: Jon Hatfield
-" Last Modified: Mon Jun 11, 2018  11:47PM
+" Last Modified: Wed Aug 22, 2018  02:32PM
 
 " evim {{{
 
@@ -191,6 +191,8 @@
     "call add(g:pathogen_disabled, 'VimBookmarking')
     "call add(g:pathogen_disabled, 'vimp4python')
     "call add(g:pathogen_disabled, 'yankring.vim')
+    call add(g:pathogen_disabled, 'grails-vim')
+    call add(g:pathogen_disabled, 'vim-gradle')
 
     "" for some reason the csscolor plugin is very slow when run on the terminal
     "" but not in GVim, so disable it if no GUI is running
