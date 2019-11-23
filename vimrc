@@ -1,6 +1,6 @@
 
 " Author: Jon Hatfield
-" Last Modified: Wed Jul 18, 2018  10:29AM
+" Last Modified: Wed Oct 23, 2019  06:15PM
 
 " evim {{{
 
@@ -475,7 +475,7 @@
 
         autocmd BufEnter * silent! lcd %:p:h        " change local current directory to the directory of the current file
 
-        autocmd Filetype ruby setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
+        autocmd Filetype ruby json setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
 
         "execute the current line, then re-open the command window at the same line
         "autocmd CmdwinEnter * nnoremap <buffer> <F5> <CR>q:
