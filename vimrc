@@ -1,6 +1,6 @@
 
 " Author: Jon Hatfield
-" Last Modified: Wed Oct 23, 2019  06:15PM
+" Last Modified: Fri Nov 22, 2019  08:36PM
 
 " evim {{{
 
@@ -190,7 +190,6 @@
     "call add(g:pathogen_disabled, 'vim-textobj-user')
     "call add(g:pathogen_disabled, 'VimBookmarking')
     "call add(g:pathogen_disabled, 'vimp4python')
-    "call add(g:pathogen_disabled, 'yankring.vim')
 
     "" for some reason the csscolor plugin is very slow when run on the terminal
     "" but not in GVim, so disable it if no GUI is running
@@ -615,16 +614,6 @@
     " inoremap <down> <nop>
     " inoremap <left> <nop>
     " inoremap <right> <nop>
-
-" }}}
-
-" Yankring {{{
-
-    if s:running_windows
-        let g:yankring_history_dir = expand($USERPROFILE . '/.vim')
-    else
-        let g:yankring_history_dir = '~/.vim/'
-    endif
 
 " }}}
 
