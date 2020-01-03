@@ -98,10 +98,6 @@
 [submodule "bundle/gem-shut-the-fudge-up"]
     path = bundle/gem-shut-the-fudge-up
     url = https://github.com/tpope/gem-shut-the-fuck-up
-[submodule "bundle/gundo"]
-    path = bundle/gundo
-    url = https://github.com/vim-scripts/Gundo
-    ignore = dirty
 [submodule "bundle/matchit"]
     path = bundle/matchit
     url = https://github.com/vim-scripts/matchit.zip
@@ -209,3 +205,6 @@
 [submodule "bundle/vim-autosave"]
 	path = bundle/vim-autosave
 	url = https://github.com/chrisbra/vim-autosave.git
+[submodule "bundle/gundo"]
+	path = bundle/gundo
+	url = https://github.com/sjl/gundo.vim
