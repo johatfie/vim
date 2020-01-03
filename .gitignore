@@ -8,3 +8,4 @@ vimviews/*
 vim_mru_files
 tags
 tags.log
+.vim_mru_files
