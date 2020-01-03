@@ -1,6 +1,6 @@
 
 " Author: Jon Hatfield
-" Last Modified: Mon Dec 23, 2019  05:08PM
+" Last Modified: Fri Jan 03, 2020  06:17PM
 
 " evim {{{
 
@@ -130,7 +130,6 @@
         let g:pathogen_disabled = []
     endif
 
-    call add(g:pathogen_disabled, 'vim-easytags')
     "call add(g:pathogen_disabled, 'vim-bufkill')
     "call add(g:pathogen_disabled, '')
     "call add(g:pathogen_disabled, '')
@@ -153,7 +152,7 @@
     "call add(g:pathogen_disabled, 'HTML-AutoCloseTag')
     "call add(g:pathogen_disabled, 'matchit')
     "call add(g:pathogen_disabled, 'mru')
-    "call add(g:pathogen_disabled, 'MRU.vim')
+    call add(g:pathogen_disabled, 'MRU.vim')
     "call add(g:pathogen_disabled, 'nerdcommenter')
     "call add(g:pathogen_disabled, 'nerdtree')
     "call add(g:pathogen_disabled, 'obsession.vim')
@@ -182,9 +181,8 @@
     "call add(g:pathogen_disabled, 'vim-gutentags')
     "call add(g:pathogen_disabled, 'vim-indent-guides')
     "call add(g:pathogen_disabled, 'vim-ir_black')
-    call add(g:pathogen_disabled, 'vim-misc')
     "call add(g:pathogen_disabled, 'vim-ps1')
-    call add(g:pathogen_disabled, 'vim-ruby')
+    "call add(g:pathogen_disabled, 'vim-ruby')
     "call add(g:pathogen_disabled, 'vim-showmarks')
     "call add(g:pathogen_disabled, 'vim-speeddating')
     "call add(g:pathogen_disabled, 'vim-textobj-user')
@@ -382,12 +380,10 @@
     inoremap "" ""<Left>
     inoremap <> <><Left>
     inoremap // //<Left>
+    "inoremap {} {}<Left>
     inoremap {} {  }<Left><Left>
     inoremap [] []<Left>
     inoremap () ()<Left>
-    "inoremap {} {}<Left>
-    "inoremap [] []<Left>
-    "inoremap () ()<Left>
     inoremap %% %%<Left>
     inoremap `` ``<Left>
 
@@ -475,6 +471,7 @@
         autocmd BufEnter * silent! lcd %:p:h        " change local current directory to the directory of the current file
 
         autocmd Filetype ruby setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
+        autocmd Filetype json setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
 
         "execute the current line, then re-open the command window at the same line
         "autocmd CmdwinEnter * nnoremap <buffer> <F5> <CR>q:
@@ -535,15 +532,20 @@
 
 " }}}
 
+" Gundo {{{
+    if has('python3')
+        let g:gundo_prefer_python3 = 1          " workaround for homebrew install Vim
+    endif
+" }}}
+
 " MRU {{{
 
     if s:running_windows
         let MRU_File = expand($USERPROFILE . "/.vim/_vim_mru_files")
         let MRU_Exclude_Files = '.*\.tmp$\|.*\\Temp\\.*\|.*\\Temporary Internet Files\\.*'
     else
-        "let MRU_File = '~/.vim/vim_mru_files'
-        "let MRU_File = '~/vim_mru_files'
-        let MRU_Exclude_Files = '^/tmp/.*\|^/var/tmp/.*'  " For Unix
+        let MRU_File = '~/.vim/.vim_mru_files'
+        let MRU_Exclude_Files = '^/tmp/.*\|^/var/tmp/.*\|COMMIT_EDITMSG\|bash-fc'  " For Unix
     endif
 
     let MRU_Max_Entries = 1000
