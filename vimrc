@@ -1,6 +1,6 @@
 
 " Author: Jon Hatfield
-" Last Modified: Fri Jan 03, 2020  06:17PM
+" Last Modified: Thu Feb 13, 2020  11:57AM
 
 " evim {{{
 
@@ -703,6 +703,10 @@
 
     " This is totally awesome - remap jj to escape in insert mode.  You'll never type jj anyway, so it's great!
     inoremap jj <Esc>
+    inoremap JJ <Esc>
+
+    " If attempting to save in insert mode, switch to normal mode first
+    inoremap ;w <Esc> ;w
 
     nnoremap <leader>tp :tabnew +pu
     vnoremap <leader>ps  daputs "<ESC>pa: #{ <ESC>pa }"<ESC>
