@@ -1,6 +1,6 @@
 
 " Author: Jon Hatfield
-" Last Modified: Thu Feb 13, 2020  11:57AM
+" Last Modified: Mon Feb 17, 2020  02:48PM
 
 " evim {{{
 
@@ -706,7 +706,7 @@
     inoremap JJ <Esc>
 
     " If attempting to save in insert mode, switch to normal mode first
-    inoremap ;w <Esc> ;w
+    inoremap ;w <Esc>:w
 
     nnoremap <leader>tp :tabnew +pu
     vnoremap <leader>ps  daputs "<ESC>pa: #{ <ESC>pa }"<ESC>
