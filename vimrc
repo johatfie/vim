@@ -1,6 +1,6 @@
 
 " Author: Jon Hatfield
-" Last Modified: Mon Feb 17, 2020  02:48PM
+" Last Modified: Mon Feb 24, 2020  06:48PM
 
 " evim {{{
 
@@ -545,7 +545,7 @@
         let MRU_Exclude_Files = '.*\.tmp$\|.*\\Temp\\.*\|.*\\Temporary Internet Files\\.*'
     else
         let MRU_File = '~/.vim/.vim_mru_files'
-        let MRU_Exclude_Files = '^/tmp/.*\|^/var/tmp/.*\|COMMIT_EDITMSG\|bash-fc'  " For Unix
+        let MRU_Exclude_Files = '^/tmp/.*\|^/var/tmp/.*\|COMMIT_EDITMSG\|MERGE_MSG\|bash-fc'  " For Unix
     endif
 
     let MRU_Max_Entries = 1000
@@ -631,6 +631,7 @@
 " }}}
 
 " Variables {{{
+    let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 
     let g:outlook_use_tabs = 1
     let g:outlook_servername = 'GVIM'
@@ -712,6 +713,9 @@
     vnoremap <leader>ps  daputs "<ESC>pa: #{ <ESC>pa }"<ESC>
     cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
     nnoremap <expr> gV '`['.getregtype(v:register)[0].'`]l'
+    "
+    " select last pasted text
+    nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
 
     " Create Blank Newlines and stay in Normal mode
     nnoremap <silent> zj o<Esc>
@@ -760,6 +764,7 @@
 
 " }}}
 
+" Recovery {{{
 function! s:HandleRecover()
     echo system('diff - ' . shellescape(expand('%:p')), join(getline(1, '$'), "\n") . "\n")
     if v:shell_error
@@ -788,4 +793,6 @@ autocmd BufEnter    * let b:swapchoice_likely = (&l:ro ? 'o' : 'e')
 autocmd BufWinEnter * if exists('b:swapchoice') && exists('b:swapchoice_likely') | let b:swapchoice = b:swapchoice_likely | unlet b:swapchoice_likely | endif
 autocmd BufWinEnter * if exists('b:swapchoice') && b:swapchoice == 'r' | call s:HandleRecover() | endif
 
+" }}}
 
+" vim:ft=vim:fdm=marker
