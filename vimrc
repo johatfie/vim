@@ -1,6 +1,6 @@
 
 " Author: Jon Hatfield
-" Last Modified: Mon Feb 24, 2020  06:48PM
+" Last Modified: Fri Mar 13, 2020  12:11PM
 
 " evim {{{
 
@@ -597,6 +597,14 @@
 
     " // Set "<F12>" key for updating the tags file artificially
     let g:SrcExpl_updateTagsKey = "<F12>"
+
+" }}}
+
+" NERDTree {{{
+
+    let NERDTreeQuitOnOpen = 1
+    let NERDTreeDirArrows = 1
+    let NERDTreeMinimalUI = 1
 
 " }}}
 
