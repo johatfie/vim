@@ -1,6 +1,6 @@
 
 " Author: Jon Hatfield
-" Last Modified: Fri Mar 13, 2020  12:11PM
+" Last Modified: Tue Mar 17, 2020  05:15PM
 
 " evim {{{
 
@@ -40,7 +40,8 @@
         set guifont=Consolas:h11:cANSI
         "set guifont=Monospace:h10:cANSI
     elseif s:running_mac
-        set guifont=Inconsolata\ for\ Powerline:h13
+        set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h13
+        "set guifont=Inconsolata\ for\ Powerline:h13
     elseif s:running_unix
         set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 7.5
         "set guifont=DejaVu\ Sans\ Mono\ for\ Powerline
@@ -405,6 +406,7 @@
         syntax on
         syntax sync minlines=100 " helps to avoid syntax highlighting bugs
         set hlsearch
+        let do_syntax_sel_menu = 1
     endif
 
 " }}}
@@ -603,8 +605,9 @@
 " NERDTree {{{
 
     let NERDTreeQuitOnOpen = 1
-    let NERDTreeDirArrows = 1
-    let NERDTreeMinimalUI = 1
+    let NERDTreeDirArrows  = 1
+    "let NERDTreeMinimalUI  = 1
+    let NERDTreeShowHidden = 1
 
 " }}}
 
