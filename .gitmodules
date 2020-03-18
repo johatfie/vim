@@ -214,3 +214,9 @@
 [submodule "bundle/fzf"]
 	path = bundle/fzf
 	url = https://github.com/junegunn/fzf.git
+[submodule "bundle/nerdtree-git-plugin"]
+	path = bundle/nerdtree-git-plugin
+	url = https://github.com/Xuyuanp/nerdtree-git-plugin.git
+[submodule "bundle/nerdtree-visual-selection"]
+	path = bundle/nerdtree-visual-selection
+	url = https://github.com/PhilRunninger/nerdtree-visual-selection.git
