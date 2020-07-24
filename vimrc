@@ -1,6 +1,6 @@
 
 " Author: Jon Hatfield
-" Last Modified: Tue Mar 17, 2020  05:15PM
+" Last Modified: Tue Jul 07, 2020  06:14PM
 
 " evim {{{
 
@@ -135,6 +135,7 @@
     "call add(g:pathogen_disabled, '')
     "call add(g:pathogen_disabled, '')
     "call add(g:pathogen_disabled, 'a.vim')
+    "call add(g:pathogen_disabled, 'ale')
     "call add(g:pathogen_disabled, 'abolish.vim')
     "call add(g:pathogen_disabled, 'ack.vim')
     "call add(g:pathogen_disabled, 'bash-suppport.vim')
@@ -474,6 +475,7 @@
 
         autocmd Filetype ruby setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
         autocmd Filetype json setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
+        autocmd Filetype vue  setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
 
         "execute the current line, then re-open the command window at the same line
         "autocmd CmdwinEnter * nnoremap <buffer> <F5> <CR>q:
@@ -635,6 +637,7 @@
     noremap <F2> :set rnu!<CR>
     noremap <f3>  <ESC>:%s/\(.\{80\}\)\n/\1/g<CR>
     noremap <f4>  <ESC>:%s/\(.\{100\}\)\n/\1/g<CR>
+    nnoremap <F5>  :A<CR>
     nnoremap <F6>  :GundoToggle<CR>
     nnoremap <F8>  :TagbarToggle<CR>
     nnoremap <F11> :NERDTreeToggle<CR>
@@ -776,6 +779,7 @@
 " }}}
 
 " Recovery {{{
+
 function! s:HandleRecover()
     echo system('diff - ' . shellescape(expand('%:p')), join(getline(1, '$'), "\n") . "\n")
     if v:shell_error
@@ -803,6 +807,30 @@ autocmd BufReadPost * let b:swapchoice_likely = (&l:ro ? 'o' : 'r')
 autocmd BufEnter    * let b:swapchoice_likely = (&l:ro ? 'o' : 'e')
 autocmd BufWinEnter * if exists('b:swapchoice') && exists('b:swapchoice_likely') | let b:swapchoice = b:swapchoice_likely | unlet b:swapchoice_likely | endif
 autocmd BufWinEnter * if exists('b:swapchoice') && b:swapchoice == 'r' | call s:HandleRecover() | endif
+
+" }}}
+
+" NERDCommenter {{{
+
+    let g:ft = ''
+    function! NERDCommenter_before()
+        if &ft == 'vue'
+            let g:ft = 'vue'
+            let stack = synstack(line('.'), col('.'))
+            if len(stack) > 0
+                let syn = synIDattr((stack)[0], 'name')
+                if len(syn) > 0
+                    exe 'setf ' . substitute(tolower(syn), '^vue_', '', '')
+                endif
+            endif
+        endif
+    endfunction
+    function! NERDCommenter_after()
+        if g:ft == 'vue'
+            setf vue
+            let g:ft = ''
+        endif
+    endfunction
 
 " }}}
 
