@@ -196,33 +196,30 @@
 [submodule "bundle/jshint2.vim"]
     path = bundle/jshint2.vim
     url = https://github.com/Shutnik/jshint2.vim
-[submodule "vim-autosave"]
-	path = vim-autosave
-	url = https://github.com/chrisbra/vim-autosave.git
 [submodule "bundle/vim-autosave"]
-	path = bundle/vim-autosave
-	url = https://github.com/chrisbra/vim-autosave.git
+    path = bundle/vim-autosave
+    url = https://github.com/chrisbra/vim-autosave.git
 [submodule "bundle/gundo"]
-	path = bundle/gundo
-	url = https://github.com/sjl/gundo.vim
+    path = bundle/gundo
+    url = https://github.com/sjl/gundo.vim
 [submodule "bundle/pgsql.vim"]
-	path = bundle/pgsql.vim
-	url = https://github.com/lifepillar/pgsql.vim.git
+    path = bundle/pgsql.vim
+    url = https://github.com/lifepillar/pgsql.vim.git
 [submodule "bundle/fzf.vim"]
-	path = bundle/fzf.vim
-	url = https://github.com/junegunn/fzf.vim.git
+    path = bundle/fzf.vim
+    url = https://github.com/junegunn/fzf.vim.git
 [submodule "bundle/fzf"]
-	path = bundle/fzf
-	url = https://github.com/junegunn/fzf.git
+    path = bundle/fzf
+    url = https://github.com/junegunn/fzf.git
 [submodule "bundle/nerdtree-git-plugin"]
-	path = bundle/nerdtree-git-plugin
-	url = https://github.com/Xuyuanp/nerdtree-git-plugin.git
+    path = bundle/nerdtree-git-plugin
+    url = https://github.com/Xuyuanp/nerdtree-git-plugin.git
 [submodule "bundle/nerdtree-visual-selection"]
-	path = bundle/nerdtree-visual-selection
-	url = https://github.com/PhilRunninger/nerdtree-visual-selection.git
+    path = bundle/nerdtree-visual-selection
+    url = https://github.com/PhilRunninger/nerdtree-visual-selection.git
 [submodule "bundle/editorconfig-vim"]
-	path = bundle/editorconfig-vim
-	url = https://github.com/editorconfig/editorconfig-vim.git
+    path = bundle/editorconfig-vim
+    url = https://github.com/editorconfig/editorconfig-vim.git
 [submodule "bundle/emmet-vim"]
-	path = bundle/emmet-vim
-	url = https://github.com/mattn/emmet-vim.git
+    path = bundle/emmet-vim
+    url = https://github.com/mattn/emmet-vim.git
