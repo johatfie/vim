@@ -1,6 +1,6 @@
 
 " Author: Jon Hatfield
-" Last Modified: Tue Jul 07, 2020  06:14PM
+" Last Modified: Fri Aug 28, 2020  12:37AM
 
 " evim {{{
 
@@ -43,7 +43,7 @@
         set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h13
         "set guifont=Inconsolata\ for\ Powerline:h13
     elseif s:running_unix
-        set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 7.5
+        set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 10
         "set guifont=DejaVu\ Sans\ Mono\ for\ Powerline
     endif
 
