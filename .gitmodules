@@ -67,9 +67,6 @@
 [submodule "bundle/abolish.vim"]
     path = bundle/abolish.vim
     url = https://github.com/tpope/vim-abolish
-[submodule "bundle/vim-easytags"]
-    path = bundle/vim-easytags
-    url = https://github.com/xolox/vim-easytags
 [submodule "bundle/vim-misc"]
     path = bundle/vim-misc
     url = https://github.com/xolox/vim-misc
