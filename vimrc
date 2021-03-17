@@ -1,6 +1,6 @@
 
 " Author: Jon Hatfield
-" Last Modified: Mon Feb 08, 2021  11:18AM
+" Last Modified: Wed Mar 17, 2021  12:50PM
 
 " evim {{{
 
@@ -191,7 +191,7 @@
     "call add(g:pathogen_disabled, 'vim-bufkill')
     "call add(g:pathogen_disabled, 'vim-css-color')
     "call add(g:pathogen_disabled, 'vim-dispatch')
-    "call add(g:pathogen_disabled, 'vim-easytags')
+    call add(g:pathogen_disabled, 'vim-easytags')
     "call add(g:pathogen_disabled, 'vim-gradle')
     "call add(g:pathogen_disabled, 'vim-gutentags')
     "call add(g:pathogen_disabled, 'vim-indent-guides')
@@ -492,6 +492,7 @@
         autocmd Filetype ruby setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
         autocmd Filetype json setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
         autocmd Filetype vue  setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
+        autocmd Filetype yaml,yml  setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
 
         "execute the current line, then re-open the command window at the same line
         "autocmd CmdwinEnter * nnoremap <buffer> <F5> <CR>q:
