@@ -234,3 +234,6 @@
 [submodule "bundle/vim-vue"]
     path = bundle/vim-vue
     url = https://github.com/posva/vim-vue.git
+[submodule "bundle/vim-peekaboo"]
+	path = bundle/vim-peekaboo
+	url = https://github.com/junegunn/vim-peekaboo
