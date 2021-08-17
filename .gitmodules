@@ -237,3 +237,6 @@
 [submodule "bundle/vim-peekaboo"]
 	path = bundle/vim-peekaboo
 	url = https://github.com/junegunn/vim-peekaboo
+[submodule "bundle/vim-highlightedyank"]
+	path = bundle/vim-highlightedyank
+	url = https://github.com/machakann/vim-highlightedyank
