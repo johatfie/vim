@@ -1,6 +1,6 @@
 
 " Author: Jon Hatfield
-" Last Modified: Wed Mar 17, 2021  12:50PM
+" Last Modified: Thu Aug 19, 2021  06:01PM
 
 " evim {{{
 
@@ -490,7 +490,7 @@
         autocmd BufEnter * silent! lcd %:p:h        " change local current directory to the directory of the current file
 
         autocmd Filetype ruby setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
-        autocmd Filetype json setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
+        autocmd Filetype json setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4
         autocmd Filetype vue  setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
         autocmd Filetype yaml,yml  setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
 
