@@ -1,6 +1,6 @@
 
 " Author: Jon Hatfield
-" Last Modified: Thu Aug 19, 2021  06:01PM
+" Last Modified: Sat May 07, 2022  05:35PM
 
 " evim {{{
 
@@ -755,6 +755,8 @@
     nnoremap <silent> zJ zj
     nnoremap <silent> zK zk
 
+    " save as ROOT
+    command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
 
     " Always open help in a new tab
     if has("gui_running")
