@@ -108,7 +108,7 @@
     url = https://github.com/tpope/vim-speeddating.git
 [submodule "bundle/vim-dispatch"]
     path = bundle/vim-dispatch
-    url = git://github.com/tpope/vim-dispatch.git
+    url = https://github.com/tpope/vim-dispatch.git
 [submodule "bundle/refactor-rails"]
     path = bundle/refactor-rails
     url = https://github.com/sandeepravi/refactor-rails.vim
@@ -125,9 +125,9 @@
 [submodule "bundle/switch.vim"]
     path = bundle/switch.vim
     url = https://github.com/AndrewRadev/switch.vim
-[submodule "bundle/bash-suppport.vim"]
-    path = bundle/bash-suppport.vim
-    url = http://github.com/vim-scripts/bash-support.vim
+[submodule "bundle/bash-support.vim"]
+    path = bundle/bash-support.vim
+    url = https://github.com/vim-scripts/bash-support.vim
     ignore = dirty
 [submodule "bundle/tab-name"]
     path = bundle/tab-name
@@ -187,7 +187,7 @@
     ignore = dirty
 [submodule "bundle/vimport"]
     path = bundle/vimport
-    url = git://github.com/sjurgemeyer/vimport.git
+    url = https://github.com/sjurgemeyer/vimport.git
 [submodule "bundle/vim-css-color"]
     path = bundle/vim-css-color
     url = https://github.com/ap/vim-css-color
