@@ -125,8 +125,8 @@
 [submodule "bundle/switch.vim"]
     path = bundle/switch.vim
     url = https://github.com/AndrewRadev/switch.vim
-[submodule "bundle/bash-support.vim"]
-    path = bundle/bash-support.vim
+[submodule "bundle/bash-suppport.vim"]
+    path = bundle/bash-suppport.vim
     url = https://github.com/vim-scripts/bash-support.vim
     ignore = dirty
 [submodule "bundle/tab-name"]
